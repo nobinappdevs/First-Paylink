@@ -24,7 +24,7 @@ const SpecialSlider = () => {
       >
         {promoBanners.map((banner) => (
           <SwiperSlide key={banner.id}>
-            <div className={`bg-gradient-to-r ${banner.color} rounded-2xl p-8 text-white`}>
+            <div className={`bg-gradient-to-r ${banner.color} rounded-2xl py-[52px] p-8 text-white`}>
               <h2 className="text-3xl font-bold">{banner.title}</h2>
               <p className="text-lg opacity-90 mb-4">{banner.subtitle}</p>
               <button className="bg-white cursor-pointer text-black px-5 py-2 rounded-md font-semibold hover:bg-gray-200">

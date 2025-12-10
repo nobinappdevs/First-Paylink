@@ -4,13 +4,14 @@ import { FaEye, FaEyeSlash, FaPlus } from "react-icons/fa";
 import Button from "../../Sheared/Button";
 import BalanceCard from "./BalanceCard";
 import TransactionHistory from "./TransactionHistory";
+import { ArrowUpRight } from "lucide-react";
 
 const DashboardHomeLeft = () => {
   const [showBalance, setShowBalance] = useState(true);
   const balance = "$98,000.00";
   return (
     <div>
-      <div className="md:flex justify-between items-center">
+      <div className="md:flex justify-between items-start">
         <div className="flex md:justify-normal justify-between items-center gap-x-8 mb-6">
           <div>
             <p className="text-text font-medium font-roboto leading-6 text-base ">
@@ -29,18 +30,18 @@ const DashboardHomeLeft = () => {
           </button>
         </div>
         <div className="lg:flex gap-3  hidden">
-          <Button size="md" rightIcon={<FaPlus />}>
+          <Button size="lg" rightIcon={<FaPlus />}>
             Add Money
           </Button>
-          <Button size="sm" gradient rightIcon={<FaPlus />}>
+          <Button size="lg" gradient rightIcon={<ArrowUpRight />}>
             Send Money
           </Button>
         </div>
-        <div className="flex lg:hidden gap-3">
+        <div className="flex justify-between lg:hidden">
           <Button size="sm" rightIcon={<FaPlus />}>
             Add Money
           </Button>
-          <Button size="md" gradient rightIcon={<FaPlus />}>
+          <Button size="sm" gradient rightIcon={<ArrowUpRight />}>
             Send Money
           </Button>
         </div>

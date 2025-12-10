@@ -5,9 +5,9 @@ import Navbar from "./Navbar";
 const DashboardHome = () => {
 
   return (
-    <div className="lg:pr-6">
+    <div className="2xl:pr-6">
       <Navbar />
-      <div className="grid grid-cols-1 lg:grid-cols-5 2xl:gap-x-9">
+      <div className="grid grid-cols-1 2xl:gap-x-8 xl:gap-x-4 gap-2.5 lg:grid-cols-5">
         <div className="xl:col-span-3 col-span-5">
           <DashboardHomeLeft />
         </div>

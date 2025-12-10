@@ -11,8 +11,8 @@ const VirtualCardSlider = () => {
     ];
 
     return (
-        <div className="px-4 py-4"> 
-            <div className="flex justify-between items-center mb-5">
+        <div className=" py-4 "> 
+            <div className="flex justify-between items-center mb-5 px-2 lg:px-5">
                 <h3 className="text-xl font-bold text-secondery font-montserrat">My Virtual Card</h3>
                 <button className="text-teal-700 font-semibold cursor-pointer">See All</button>
             </div>
@@ -24,8 +24,8 @@ const VirtualCardSlider = () => {
                 loop={true}
             >
                 {cards.map((card) => (
-                    <SwiperSlide key={card.id} className="!w-[82.5%]"> 
-                        <div className={`${card.color} text-white p-6 rounded-2xl shadow-[0_0_20px_rgba(0,0,0,0.3)]`}>
+                    <SwiperSlide key={card.id} className="!w-[82.9%]"> 
+                        <div className={`${card.color} text-white  p-6 rounded-2xl`}>
                             
                             <div className="flex justify-between mb-6">
                                 <p className="opacity-80">{card.name}</p>

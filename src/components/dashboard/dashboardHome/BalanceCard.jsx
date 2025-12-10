@@ -42,7 +42,7 @@ const BalanceCard = () => {
 
   
   return (
-    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 2xl:grid-cols-5 gap-1.5 lg:mt-0 mt-5 md:gap-4">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 2xl:grid-cols-5 gap-1.5 gap-y-4 lg:mt-0 mt-5 md:gap-4">
 
   {balanceData.map((item) => (
     <div

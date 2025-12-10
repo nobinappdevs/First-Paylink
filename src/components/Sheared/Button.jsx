@@ -22,7 +22,7 @@ export default function Button({
         alignItems: "center",
         gap: "8px", 
         border: "none",
-        borderRadius: "6px",
+        borderRadius: "16px",
         cursor: "pointer",
         color: "#fff",
 
