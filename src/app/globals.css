@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #0EBE98;
+    --color-primary_light: #50C631;
+    --color-secondery: #012C20;
+    --color-basic: #FFFFFF;
+    --color-body: #F8F8F8;
+    --color-title: #012C20;
+    --color-text: #555555;
+    --font-roboto: "Roboto", sans-serif; 
+    --font-montserrat: "Montserrat", sans-serif;
+
+}
+
+
+@keyframes slideDown {
+  0% { opacity:0; transform:translateY(-10px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+
+.animate-slideDown {
+  animation:slideDown .3s ease forwards;
+}
