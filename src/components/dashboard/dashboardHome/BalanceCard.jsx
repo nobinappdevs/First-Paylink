@@ -67,7 +67,7 @@ const BalanceCard = () => {
         </div>
 
       </div>
-      <h2 className="mt-4 text-sm font-roboto pb-2 text-text font-semibold">{item.title}</h2>
+      <h2 className="mt-2.5 text-sm font-roboto pb-1 text-text font-semibold">{item.title}</h2>
 
       <p className=" font-montserrat text-title text-base leading-6 font-bold" >
         {item.amount}

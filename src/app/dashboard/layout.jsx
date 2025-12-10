@@ -18,9 +18,9 @@ const Layouts = ({ children }) => {
   }, []);
 
   return (
-    <div className="flex min-h-screen justify-between 2xl:gap-x-5">
-      <div className="xl:w-[15%] hidden xl:block">
-        <div className="fixed h-full w-[15%]  top-0 left-0">
+    <div className="flex min-h-screen justify-between gap-x-20 2xl:gap-x-5">
+      <div className="2xl:w-[12.5%] xl:w[15%] hidden xl:block">
+        <div className="fixed h-full w-full  top-0 left-0">
           <Sidebar />
         </div>
       </div>
@@ -31,7 +31,7 @@ const Layouts = ({ children }) => {
       >
         <Sidebar />
       </div>
-      <div className="xl:w-[85%] w-full p-4 lg:pt-10  relative">
+      <div className="2xl:w-[87.5%] xl:w-[85%] w-full p-4 lg:pt-10  relative">
         <button
           onClick={() => setOpen(!open)}
           className="flex justify-between xl:hidden mb-4 items-center bg-linear-to-r from-primary to-primary_light w-full py-2 px-2 rounded-md text-white font-roboto "

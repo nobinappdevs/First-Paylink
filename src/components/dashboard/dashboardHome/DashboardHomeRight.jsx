@@ -13,12 +13,10 @@ export default function DashboardHomeRight() {
     <div className="overflow-hidden">
       <SpecialSlider />
       <div className=" bg-white rounded-2xl shadow py-3">
-        {/* Card Slider */}
         <VirtualCardSlider />
 
-        <div className="md:flex justify-between mt-10 md:px-4 px-2 ">
-          {/* Header */}
-          <div className="flex items-center gap-x-8 mb-6">
+        <div className="md:flex justify-between md:px-4 px-2 ">
+          <div className="flex items-center gap-x-8 mb-4">
             <div>
               <p className="text-text font-medium font-roboto leading-6 text-base ">
                 Total Wallet Balance
