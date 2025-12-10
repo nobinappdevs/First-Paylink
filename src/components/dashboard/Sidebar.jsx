@@ -30,7 +30,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="bg-basic font-roboto h-full overflow-y-auto flex flex-col w-full px-8 pt-10">
+    <div className="font-roboto h-full overflow-y-auto flex flex-col w-full px-8 pt-10">
       {/* Logo Section */}
       <div className="mb-10  cursor-pointer">
         <Image
