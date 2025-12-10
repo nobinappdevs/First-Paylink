@@ -13,7 +13,6 @@ const HistoryTable = () => {
     <div className="mt-5 lg:rounded-lg border-3 border-body overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
       
       <table className=" w-full text-left">
-        {/* Header */}
         <thead>
           <tr className="bg-body lg:rounded-3xl">
             <th className="p-3 text-title font-semibold text-base whitespace-nowrap">Description</th>
@@ -22,13 +21,9 @@ const HistoryTable = () => {
             <th className="p-3 text-title font-semibold text-base whitespace-nowrap">Status</th>
           </tr>
         </thead>
-
-        {/* Body */}
         <tbody>
           {data.map((item, index) => (
             <tr key={index} className={`${index % 2 === 0 ? "bg-basic" : "bg-body"}`}>
-              
-              {/* Description */}
               <td className="p-3 flex items-center gap-2.5 whitespace-nowrap">
                 <div className="w-[42px] h-[42px] bg-black/10 rounded-full flex items-center justify-center">
                   {item.description === "Money Out" ? (
@@ -43,18 +38,12 @@ const HistoryTable = () => {
                   <h4 className="text-xs font-medium text-text">{item.data}</h4>
                 </div>
               </td>
-
-              {/* Trx ID */}
               <td className="p-3 text-text font-medium whitespace-nowrap">{item.trxId}</td>
-
-              {/* Amount */}
               <td className={`p-3 font-semibold whitespace-nowrap ${
                 item.amount.startsWith("+") ? "text-primary_light" : "text-red-600"
               }`}>
                 {item.amount}
               </td>
-
-              {/* Status Badge */}
               <td className="p-3 whitespace-nowrap">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                   item.status === "Success" 
