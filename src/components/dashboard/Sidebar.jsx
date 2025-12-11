@@ -18,22 +18,22 @@ const NavItem = ({ icon, title, link, active }) => {
     <Link
       href={link}
       aria-current={active ? "page" : undefined}
-      className={`group flex mb-2 items-center  gap-3 w-full transition-all duration-200 
-        ${active ? "text-primary_light border-l-3 pl-[35px] -ml-[35px] " : ""}
+      className={`group flex mb-2 items-center gap-3 w-full transition-all duration-200 lg:py-1
+        ${active ? "text-primary_light border-l-3 pl-[35px] -ml-[35px] lg:pl-10 lg:-ml-10 " : "pl-1"}
         ${!active && ""} `}
     >
+
       <span
-        className={`text-lg transition-colors duration-200 ${
-          active
+        className={`text-lg transition-colors duration-200 
+          ${active
             ? "text-primary_light"
             : "text-text/60 group-hover:text-primary_light"
-        }`}
+          }`}
       >
         {icon}
       </span>
-
       <span
-        className={`font-semibold text-sm transition-colors duration-200 ${
+        className={`font-semibold text-sm transition-colors duration-200 lg:text-base ${ // *** এখানে lg:text-base যোগ করা হয়েছে ***
           active
             ? "text-primary_light"
             : "font-roboto font-semibold text-sm text-secondery/80 group-hover:text-primary_light"
@@ -47,7 +47,6 @@ const NavItem = ({ icon, title, link, active }) => {
 
 const Sidebar = () => {
   const pathname = usePathname();
-
   const moneyTransfer = [
     {
       id: 1,
@@ -104,7 +103,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className="font-roboto h-full overflow-y-auto flex flex-col pl-9 pt-5"
+      className="font-roboto h-full overflow-y-auto flex flex-col pl-9 pt-5 lg:pt-8 lg:pl-12"
       role="navigation"
       aria-label="Sidebar Navigation"
     >
@@ -116,7 +115,7 @@ const Sidebar = () => {
             loading="eager"
             width={150}
             height={60}
-            className="w-44 h-10"
+            className="w-44 h-10" 
           />
         </Link>
       </div>
@@ -131,21 +130,21 @@ const Sidebar = () => {
       </div>
 
       <div className="">
-        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60">
+        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60 lg:text-base lg:mb-5"> 
           Money Transfer
         </h3>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 lg:gap-2"> 
           {moneyTransfer.map((item) => (
             <NavItem key={item.id} {...item} active={pathname === item.link} />
           ))}
         </div>
       </div>
 
-      <div className="mt-5">
-        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60">
+      <div className="mt-5 lg:mt-6">
+        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60 lg:text-base lg:mb-5">
           Wallet Action
         </h3>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 lg:gap-2">
           {walletAction.map((item) => (
             <NavItem key={item.id} {...item} active={pathname === item.link} />
           ))}

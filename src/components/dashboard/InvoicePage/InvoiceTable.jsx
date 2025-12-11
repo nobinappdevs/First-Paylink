@@ -169,7 +169,7 @@ export default function InvoiceTable({ invoices }) {
                   <div className="flex items-center justify-end gap-1">
                     <button
                       onClick={() => handleCopy(inv.id)}
-                      className="group/btn p-2 text-slate-400 hover:text-primary hover:bg-indigo-50 rounded-md transition-all relative"
+                      className="group/btn p-2 text-slate-400 cursor-pointer hover:text-primary hover:bg-indigo-50 rounded-md transition-all relative"
                       title={`Copy Invoice ID ${inv.id}`}
                       aria-live="polite"
                     >
@@ -179,7 +179,7 @@ export default function InvoiceTable({ invoices }) {
                         <Copy size={16} />
                       )}
                       {copiedId === inv.id && (
-                        <span className="absolute right-0 -top-7 bg-text text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-30 transition-opacity duration-300">
+                        <span className="absolute right-0 -top-7  bg-text text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-30 transition-opacity duration-300">
                           Copied!
                         </span>
                       )}
@@ -190,7 +190,7 @@ export default function InvoiceTable({ invoices }) {
                         setOpenMenuId(openMenuId === inv.id ? null : inv.id)
                       }
                       data-menu-toggle={inv.id}
-                      className={`p-2 rounded-md transition-all ${openMenuId === inv.id ? 'bg-slate-100 text-slate-700' : 'text-slate-400 hover:text-slate-700 hover:bg-slate-100'}`}
+                      className={`p-2 rounded-md transition-all cursor-pointer ${openMenuId === inv.id ? 'bg-slate-100 text-slate-700' : 'text-slate-400 hover:text-slate-700 hover:bg-slate-100'}`}
                       aria-expanded={openMenuId === inv.id}
                       aria-controls={`menu-${inv.id}`}
                       aria-label="More options"
@@ -208,20 +208,20 @@ export default function InvoiceTable({ invoices }) {
                       aria-orientation="vertical"
                     >
                       <button 
-                        className="w-full flex items-center gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-primary transition-colors rounded-t-lg"
+                        className="w-full  cursor-pointer flex items-center gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-primary transition-colors rounded-t-lg"
                         role="menuitem"
                       >
                         <FileText size={16} /> Download PDF
                       </button>
                       <button 
-                        className="w-full flex items-center gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-primary transition-colors"
+                        className="w-full cursor-pointer  flex items-center gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-primary transition-colors"
                         role="menuitem"
                       >
                         <Search size={16} /> Show Invoice
                       </button>
                       <div className="border-t border-slate-100 my-1"></div>
                       <button 
-                        className="w-full flex items-center gap-2 text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
+                        className="w-full flex  cursor-pointer items-center gap-2 text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
                         role="menuitem"
                       >
                         Delete

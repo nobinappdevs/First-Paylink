@@ -63,9 +63,8 @@ export default function ProductTaible() {
   };
   
   return (
-    <div className="bg-white font-roboto rounded-xl shadow-lg border border-slate-100 overflow-hidden  text-slate-900">
+    <div className="bg-white font-roboto rounded-xl shadow-lg border border-slate-100 overflow-hidden text-slate-900">
       
-
       <div className="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:max-w-sm">
           <Search
@@ -133,22 +132,26 @@ export default function ProductTaible() {
                   </span>
                 </td>
 
-
                 <td className="py-4 px-6 font-bold text-slate-700 whitespace-nowrap">
                   {product.price}
                 </td>
+                
+                {/* *** স্ট্যাটাস টোগল বাটনে পরিবর্তন *** */}
                 <td className="py-4 px-6 text-center">
-                  <div className="relative inline-flex h-8 rounded-lg p-0.5 border border-slate-200 bg-slate-100 shadow-inner w-28">
+                  <div className="relative inline-flex h-10 rounded-lg p-0.5 border border-slate-200 bg-slate-100 shadow-inner w-36">
+                    
+                    {/* Sliding Primary Color Background */}
                     <span
                       aria-hidden="true"
-                      className={`absolute top-0.5 h-7 w-1/2 rounded-lg bg-primary_light transition-transform duration-300 ease-in-out ${
+                      className={`absolute top-0.5 h-9 w-1/2 rounded-lg bg-primary_light transition-transform duration-300 ease-in-out ${
                         product.status === 'Active' ? 'translate-x-0' : 'translate-x-full'
                       }`}
                     ></span>
 
+                    {/* Active Button */}
                     <button
                       onClick={() => handleStatusChange(product.id, 'Active')}
-                      className={`w-1/2 z-10 cursor-pointer text-xs font-semibold transition-colors duration-300 ${
+                      className={`w-1/2 z-10 cursor-pointer text-sm font-semibold transition-colors duration-300 ${
                         product.status === 'Active'
                           ? 'text-white' 
                           : 'text-slate-700 hover:text-slate-900' 
@@ -158,9 +161,10 @@ export default function ProductTaible() {
                       Active
                     </button>
                     
+                    {/* Inactive Button */}
                     <button
                       onClick={() => handleStatusChange(product.id, 'Inactive')}
-                      className={`w-1/2 z-10 text-xs cursor-pointer font-semibold transition-colors duration-300 ${
+                      className={`w-1/2 z-10 text-sm cursor-pointer font-semibold transition-colors duration-300 ${
                         product.status === 'Inactive'
                           ? 'text-white' 
                           : 'text-slate-700 hover:text-slate-900' 
@@ -172,6 +176,7 @@ export default function ProductTaible() {
                   </div>
                 </td>
                 
+                {/* Actions */}
                 <td className="py-4 px-6 text-right relative">
                   <div className="flex items-center justify-end gap-1">
                     <button

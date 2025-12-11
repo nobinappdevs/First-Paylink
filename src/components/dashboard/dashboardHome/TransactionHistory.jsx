@@ -2,6 +2,7 @@ import React from "react";
 import { FaSearch, FaFilter } from "react-icons/fa";
 import HistoryTable from "./HistoryTable";
 import Button from "@/components/Sheared/Button";
+import Link from "next/link";
 
 const TransactionHistory = () => {
   return (
@@ -36,9 +37,11 @@ const TransactionHistory = () => {
               </span>
             </div>
             <div className="">
+              <Link href={'/dashboard/transactions'}>
               <Button gradient className="md:w-full  md:flex items-center justify-center ">
                 View all
               </Button>
+              </Link>
             </div>
           </div>
         </div>
