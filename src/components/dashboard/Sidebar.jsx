@@ -19,7 +19,7 @@ const NavItem = ({ icon, title, link, active }) => {
       href={link}
       aria-current={active ? "page" : undefined}
       className={`group flex mb-2 items-center gap-3 w-full transition-all duration-200 lg:py-1
-        ${active ? "text-primary_light border-l-3 pl-[35px] -ml-[35px] lg:pl-10 lg:-ml-10 " : "pl-1"}
+        ${active ? "text-primary_light border-l-3 pl-[35px] -ml-[35px] lg:pl-12 lg:-ml-12 " : "pl-1"}
         ${!active && ""} `}
     >
 
@@ -33,7 +33,7 @@ const NavItem = ({ icon, title, link, active }) => {
         {icon}
       </span>
       <span
-        className={`font-semibold text-sm transition-colors duration-200 lg:text-base ${ // *** এখানে lg:text-base যোগ করা হয়েছে ***
+        className={`font-semibold text-sm transition-colors duration-200 lg:text-base ${ 
           active
             ? "text-primary_light"
             : "font-roboto font-semibold text-sm text-secondery/80 group-hover:text-primary_light"

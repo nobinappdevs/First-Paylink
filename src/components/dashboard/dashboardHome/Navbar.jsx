@@ -120,12 +120,12 @@ const Navbar = ({ handleOpen }) => {
             <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-xl rounded-md p-3 z-50">
               <div className="flex items-center justify-between">
                 <ThemeToggleSwitch />
-        <button
-          className="p-2 rounded-full cursor-pointer hover:bg-gray-100 transition "
-          aria-label="Change Language"
-        >
-          <FiGlobe size={20} />
-        </button>
+                <button
+                  className="p-2 rounded-full cursor-pointer hover:bg-gray-100 transition "
+                  aria-label="Change Language"
+                >
+                  <FiGlobe size={20} />
+                </button>
               </div>
             </div>
           )}
@@ -135,46 +135,97 @@ const Navbar = ({ handleOpen }) => {
             onClick={() =>
               toggleDropdown(setNotificationOpen, notificationOpen)
             }
-            className="p-2 rounded-full hover:bg-gray-100 cursor-pointer transition relative"
+            className="relative p-3 bg-white rounded-full cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             aria-label="Notifications"
           >
             <FiBell size={20} />
             <span className="absolute top-2 right-2 block w-2 h-2 bg-green-500 rounded-full" />
           </button>
           {notificationOpen && (
+            // <div
+            //   className={`absolute  -right-13   mt-2 w-72 max-h-96 overflow-y-auto bg-white border border-gray-200 shadow-xl rounded-md p-4 z-50`}
+            // >
+            //   <h3 className="text-lg font-bold mb-3 border-b pb-2 text-gray-800">
+            //     Notifications
+            //   </h3>
+            //   {notifications.length === 0 ? (
+            //     <p className="text-gray-500 text-sm">No new notifications.</p>
+            //   ) : (
+            //     notifications.map((notif) => (
+            //       <div
+            //         key={notif.id}
+            //         className="py-3 px-2 border-b last:border-b-0 hover:bg-gray-50 rounded cursor-pointer transition"
+            //       >
+            //         <p className="text-sm font-medium text-gray-800">
+            //           {notif.text}
+            //         </p>
+            //         <p
+            //           className={`text-xs ${
+            //             notif.type === "success"
+            //               ? "text-green-600"
+            //               : notif.type === "warning"
+            //               ? "text-yellow-600"
+            //               : "text-blue-600"
+            //           } mt-1`}
+            //         >
+            //           {notif.time}
+            //         </p>
+            //       </div>
+            //     ))
+            //   )}
+            //   <div className="text-center pt-3">
+            //     <button className="text-teal-600 text-sm hover:text-teal-800">
+            //       See All
+            //     </button>
+            //   </div>
+            // </div>
+
             <div
-              className={`absolute  -right-13   mt-2 w-72 max-h-96 overflow-y-auto bg-white border border-gray-200 shadow-xl rounded-md p-4 z-50`}
+              className={`absolute -right-10 mt-3 w-80 max-h-96 overflow-y-auto bg-white border border-gray-100 shadow-2xl rounded-xl p-4 z-50`}
             >
-              <h3 className="text-lg font-bold mb-3 border-b pb-2 text-gray-800">
-                Notifications
-              </h3>
-              {notifications.length === 0 ? (
-                <p className="text-gray-500 text-sm">No new notifications.</p>
-              ) : (
-                notifications.map((notif) => (
-                  <div
-                    key={notif.id}
-                    className="py-3 px-2 border-b last:border-b-0 hover:bg-gray-50 rounded cursor-pointer transition"
-                  >
-                    <p className="text-sm font-medium text-gray-800">
-                      {notif.text}
-                    </p>
-                    <p
-                      className={`text-xs ${
-                        notif.type === "success"
-                          ? "text-green-600"
-                          : notif.type === "warning"
-                          ? "text-yellow-600"
-                          : "text-blue-600"
-                      } mt-1`}
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  Notifications
+                </h3>
+                <span className="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full">
+                  {notifications.length || 0}
+                </span>
+              </div>
+
+              <div className="border-t border-gray-200 pt-3">
+                {notifications.length === 0 ? (
+                  <p className="text-gray-500 text-sm text-center py-5">
+                    No new notifications
+                  </p>
+                ) : (
+                  notifications.map((notif) => (
+                    <div
+                      key={notif.id}
+                      className="p-3 mb-2 bg-gray-50 hover:bg-gray-100 rounded-lg transition border border-gray-200"
                     >
-                      {notif.time}
-                    </p>
-                  </div>
-                ))
-              )}
+                      <p className="text-sm font-medium text-gray-900">
+                        {notif.text}
+                      </p>
+
+                      <p
+                        className={`inline-block mt-2 text-xs px-2 py-1 rounded-full
+              ${
+                notif.type === "success"
+                  ? "bg-green-100 text-green-700"
+                  : notif.type === "warning"
+                  ? "bg-yellow-100 text-yellow-700"
+                  : "bg-blue-100 text-blue-700"
+              }`}
+                      >
+                        {notif.time}
+                      </p>
+                    </div>
+                  ))
+                )}
+              </div>
+
               <div className="text-center pt-3">
-                <button className="text-teal-600 text-sm hover:text-teal-800">
+                <button className="text-teal-600 cursor-pointer font-medium text-sm hover:text-teal-800 hover:underline">
                   See All
                 </button>
               </div>

@@ -88,9 +88,9 @@ const BalanceCard = () => {
         </div>
 
       </div>
-      <h2 className="mt-2.5 text-sm font-roboto pb-1 md:text-lg md:py-2 md:text-secondery md:font-bold text-text font-semibold">{item.title}</h2>
+      <h2 className="mt-2.5 mb-1 text-sm font-roboto pb-1 md:text-base  md:py-2 md:text-text/80  md:font-bold text-text font-semibold">{item.title}</h2>
 
-      <p className=" font-montserrat text-title md:text-xl text-base leading-6 font-bold" >
+      <p className=" font-montserrat text-title/80 md:text-xl text-base leading-6 font-bold" >
         {item.amount}
       </p>
     </div>
