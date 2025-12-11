@@ -8,7 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const DashboardHomeLeft = () => {
   const [showBalance, setShowBalance] = useState(true);
-  const balance = "$98,000.00";
+  const balance = "1,997.80 BDT";
   return (
     <div>
       <div className="md:flex justify-between items-start">
@@ -29,7 +29,7 @@ const DashboardHomeLeft = () => {
             {showBalance ? <FaEye /> : <FaEyeSlash />}
           </button>
         </div>
-        <div className="lg:flex gap-3  hidden">
+        <div className="lg:flex  gap-3  hidden">
           <Button size="lg" rightIcon={<FaPlus />}>
             Add Money
           </Button>
@@ -37,7 +37,7 @@ const DashboardHomeLeft = () => {
             Send Money
           </Button>
         </div>
-        <div className="flex justify-between lg:hidden">
+        <div className="flex gap-x-4 justify-between lg:hidden">
           <Button size="sm" rightIcon={<FaPlus />}>
             Add Money
           </Button>
@@ -47,7 +47,7 @@ const DashboardHomeLeft = () => {
         </div>
       </div>
       <BalanceCard />
-      <TransactionHistory />
+
     </div>
   );
 };

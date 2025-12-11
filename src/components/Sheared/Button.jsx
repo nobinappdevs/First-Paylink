@@ -1,45 +1,28 @@
-
-
 export default function Button({
   children,
   size = "md",
   gradient = false,
-  rightIcon = null,
+  rightIcon,
   onClick,
+  className = "",
 }) {
-  const sizeStyles = {
-    sm: { padding: "6px 12px", fontSize: "14px" },
-    md: { padding: "10px 18px", fontSize: "16px" },
-    lg: { padding: "14px 24px", fontSize: "18px" },
+  const sizeClasses = {
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-5 py-2 text-base",
+    lg: "px-7 py-3 text-lg",
   };
 
   return (
     <button
-    className="font-roboto"
       onClick={onClick}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px", 
-        border: "none",
-        borderRadius: "16px",
-        cursor: "pointer",
-        color: "#fff",
-
-        background: gradient
-          ? `linear-gradient(90deg, var(--color-primary), var(--color-primary_light))`
-          : "#012C20",
-
-        ...sizeStyles[size],
-      }}
+      className={`font-roboto flex items-center cursor-pointer gap-2 rounded-xl text-white transition-all duration-200 
+        ${gradient ? "bg-linear-to-r from-primary to-primary_light" : "bg-[#012C20]"}
+        ${sizeClasses[size]} 
+        ${className}
+      `}
     >
       {children}
-
-      {rightIcon && (
-        <span style={{ display: "flex", alignItems: "center" }}>
-          {rightIcon}
-        </span>
-      )}
+      {rightIcon && <span className="flex">{rightIcon}</span>}
     </button>
   );
 }

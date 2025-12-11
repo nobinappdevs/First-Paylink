@@ -4,26 +4,26 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   FiBell,
   FiGlobe,
-  FiUser,
-  FiMenu,
   FiLogOut,
   FiSend,
   FiPlusCircle,
   FiMinusCircle,
   FiCheckSquare,
   FiShield,
+  FiChevronDown,
 } from "react-icons/fi";
-import { IoClose } from "react-icons/io5";
 import profile from "@assets/profile.png";
 import ThemeToggleSwitch from "./ThemeToggleSwitch";
+import { AlignStartVertical } from "lucide-react";
 
-const Navbar = () => {
+const Navbar = ({ handleOpen }) => {
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const profileRef = useRef(null);
   const notificationRef = useRef(null);
+  const settingsRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -36,10 +36,21 @@ const Navbar = () => {
       ) {
         setNotificationOpen(false);
       }
+      if (settingsRef.current && !settingsRef.current.contains(e.target)) {
+        setSettingsOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  const toggleDropdown = (setter, state) => {
+    const allSetters = [setProfileOpen, setNotificationOpen, setSettingsOpen];
+
+    allSetters.forEach((s) => {
+      if (s !== setter) s(false);
+    });
+    setter(!state);
+  };
 
   const moneyTransfer = [
     { id: 1, title: "Send Money", icon: FiSend },
@@ -69,8 +80,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full font-roboto mb-[42px] flex items-center justify-between relative">
-      <div>
+    <nav className="w-full pt-5 pb-4 px-4 bg-basic font-roboto flex items-center justify-between relative z-40">
+      <div className="lg:block hidden">
         <h2 className="font-bold leading-6 text-title font-montserrat text-xl sm:text-2xl">
           Welcome Back
         </h2>
@@ -78,15 +89,52 @@ const Navbar = () => {
           Tomas William
         </h3>
       </div>
-      <div className="hidden sm:flex items-center gap-4">
-        <ThemeToggleSwitch />
-
+      <div
+        onClick={handleOpen}
+        className="flex cursor-pointer lg:hidden items-center sm:gap-x-2 gap-x-1"
+      >
+        <AlignStartVertical className="size-6 text-text " />
+        <h3 className="font-montserrat text-xl font-bold text-secondery/90 ">
+          Dahsboard
+        </h3>
+      </div>
+      <div className="flex items-center gap-2 sm:gap-4">
+        <div className="hidden sm:block">
+          <ThemeToggleSwitch />
+        </div>
+        <button
+          className="p-2 rounded-full cursor-pointer hover:bg-gray-100 transition hidden sm:block"
+          aria-label="Change Language"
+        >
+          <FiGlobe size={20} />
+        </button>
+        <div className="relative sm:hidden" ref={settingsRef}>
+          <button
+            onClick={() => toggleDropdown(setSettingsOpen, settingsOpen)}
+            className="flex items-center gap-1 p-2 rounded-full cursor-pointer hover:bg-gray-100 transition"
+            aria-label="Settings Dropdown (Theme)"
+          >
+            <FiChevronDown size={20} />
+          </button>
+          {settingsOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-xl rounded-md p-3 z-50">
+              <div className="flex items-center justify-between">
+                <ThemeToggleSwitch />
+        <button
+          className="p-2 rounded-full cursor-pointer hover:bg-gray-100 transition "
+          aria-label="Change Language"
+        >
+          <FiGlobe size={20} />
+        </button>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="relative" ref={notificationRef}>
           <button
-            onClick={() => {
-              setNotificationOpen(!notificationOpen);
-              setProfileOpen(false);
-            }}
+            onClick={() =>
+              toggleDropdown(setNotificationOpen, notificationOpen)
+            }
             className="p-2 rounded-full hover:bg-gray-100 cursor-pointer transition relative"
             aria-label="Notifications"
           >
@@ -94,7 +142,9 @@ const Navbar = () => {
             <span className="absolute top-2 right-2 block w-2 h-2 bg-green-500 rounded-full" />
           </button>
           {notificationOpen && (
-            <div className="absolute right-0 mt-2 w-80 max-h-96 overflow-y-auto bg-white border border-gray-200 shadow-xl rounded-md p-4 z-50">
+            <div
+              className={`absolute  -right-13   mt-2 w-72 max-h-96 overflow-y-auto bg-white border border-gray-200 shadow-xl rounded-md p-4 z-50`}
+            >
               <h3 className="text-lg font-bold mb-3 border-b pb-2 text-gray-800">
                 Notifications
               </h3>
@@ -131,26 +181,16 @@ const Navbar = () => {
             </div>
           )}
         </div>
-
-        <button
-          className="p-2 rounded-full cursor-pointer hover:bg-gray-100 transition"
-          aria-label="Change Language"
-        >
-          <FiGlobe size={20} />
-        </button>
-
         <div className="relative" ref={profileRef}>
           <button
-            onClick={() => {
-              setProfileOpen(!profileOpen);
-              setNotificationOpen(false);
-            }}
+            onClick={() => toggleDropdown(setProfileOpen, profileOpen)}
             className="p-1 rounded-full cursor-pointer hover:bg-gray-100"
             aria-label="User Profile"
           >
             <Image
               src={profile}
               alt="Profile"
+              loading="eager"
               width={36}
               height={36}
               className="rounded-full"
@@ -163,6 +203,7 @@ const Navbar = () => {
                 <Image
                   src={profile}
                   alt="Profile"
+                  loading="eager"
                   width={40}
                   height={40}
                   className="rounded-full"
@@ -172,7 +213,6 @@ const Navbar = () => {
                   <p className="text-sm text-gray-500">william@gmail.com</p>
                 </div>
               </div>
-
               <div className="border-b border-gray-300 pb-3 mb-4">
                 {moneyTransfer.map((item) => (
                   <div
@@ -186,7 +226,6 @@ const Navbar = () => {
                   </div>
                 ))}
               </div>
-
               <div className="border-b border-gray-300 pb-3 mb-4">
                 <div className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer">
                   <FiCheckSquare size={17} className="text-gray-600" />
@@ -201,7 +240,6 @@ const Navbar = () => {
                   </h3>
                 </div>
               </div>
-
               <div className="flex items-center gap-4 py-2 px-2 hover:bg-red-50 text-red-600 rounded cursor-pointer">
                 <FiLogOut size={18} />
                 <h3 className="text-sm font-semibold">Logout</h3>
@@ -210,105 +248,6 @@ const Navbar = () => {
           )}
         </div>
       </div>
-
-      {/* Mobile Menu Toggle */}
-      <div className="sm:hidden">
-        <button
-          onClick={() => {
-            setMobileMenuOpen(!mobileMenuOpen);
-            setProfileOpen(false);
-            setNotificationOpen(false);
-          }}
-          className="p-2 rounded hover:bg-gray-100 transition"
-        >
-          {mobileMenuOpen ? <IoClose size={24} /> : <FiMenu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="sm:hidden absolute top-full right-0 w-full bg-white border-t border-gray-200 shadow-md z-40">
-          <ul className="flex flex-col p-4 gap-2">
-            <li className="flex justify-center py-2">
-              <ThemeToggleSwitch />
-            </li>
-
-            <li className="relative" ref={notificationRef}>
-              <button
-                onClick={() => {
-                  setNotificationOpen(!notificationOpen);
-                  setProfileOpen(false);
-                }}
-                className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 w-full"
-              >
-                <FiBell /> Notifications
-              </button>
-              {notificationOpen && (
-                <div className="mt-2 w-full bg-gray-50 border border-gray-200 shadow-inner rounded-md p-3 max-h-60 overflow-y-auto">
-                  <h4 className="text-md font-semibold mb-2 text-gray-800">
-                    Alerts
-                  </h4>
-
-                  {notifications.map((notif) => (
-                    <div
-                      key={notif.id}
-                      className="text-sm py-1 border-b last:border-b-0"
-                    >
-                      <p className="font-medium text-gray-700">{notif.text}</p>
-                    </div>
-                  ))}
-                  <div className="text-center pt-2">
-                    <button className="text-teal-600 text-xs hover:text-teal-800">
-                      View All
-                    </button>
-                  </div>
-                </div>
-              )}
-            </li>
-
-            <li>
-              <button className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 w-full">
-                <FiGlobe /> Language
-              </button>
-            </li>
-
-            <li className="relative">
-              <button
-                onClick={() => {
-                  setProfileOpen(!profileOpen);
-                  setNotificationOpen(false);
-                }}
-                className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 w-full"
-              >
-                <FiUser /> Profile Settings
-              </button>
-              {profileOpen && (
-                <div className="mt-2 w-full bg-gray-50 border border-gray-200 shadow-inner rounded-md p-3">
-                  {moneyTransfer.map((item) => (
-                    <div
-                      key={item.id}
-                      className="flex items-center gap-3 py-1 px-2 text-sm hover:bg-gray-100 rounded cursor-pointer"
-                    >
-                      <item.icon /> {item.title}
-                    </div>
-                  ))}
-                  <div className="border-t mt-2 pt-2">
-                    <div className="flex items-center gap-3 py-1 px-2 text-sm hover:bg-gray-100 rounded cursor-pointer">
-                      <FiCheckSquare /> KYC Verification
-                    </div>
-                    <div className="flex items-center gap-3 py-1 px-2 text-sm hover:bg-gray-100 rounded cursor-pointer">
-                      <FiShield /> 2FA Verification
-                    </div>
-                    <div className="flex items-center gap-3 py-1 px-2 text-sm hover:bg-red-50 text-red-600 rounded cursor-pointer">
-                      <FiLogOut /> Logout
-                    </div>
-                  </div>
-                </div>
-              )}
-            </li>
-          </ul>
-        </div>
-      )}
     </nav>
   );
 };

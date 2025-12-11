@@ -100,6 +100,7 @@ const VirtualCardSlider = () => {
                   <div className="absolute inset-0 w-full h-full">
                     <Image 
                       src={card.bgImage} 
+                      loading="eager"
                       alt={`Card ${card.id} background`}
                       fill={true} 
                       sizes="(max-width: 768px) 90vw, 40vw"

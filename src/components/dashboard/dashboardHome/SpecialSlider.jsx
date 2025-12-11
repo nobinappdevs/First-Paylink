@@ -30,6 +30,7 @@ const SpecialSlider = () => {
             <div className="relative rounded-2xl py-12 p-8 text-white overflow-hidden">
               <Image
                 src={adsImage}
+                loading="eager"
                 alt="banner"
                 fill
                 className="object-cover"

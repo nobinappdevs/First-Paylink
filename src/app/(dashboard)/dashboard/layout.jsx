@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "@/components/dashboard/Sidebar";
-import { Menu } from "lucide-react";
+import Navbar from "@/components/dashboard/dashboardHome/Navbar";
 
 const Layouts = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -17,12 +17,15 @@ const Layouts = ({ children }) => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  return (
-    <div className="grid grid-cols-12 min-h-screen gap-x-6">
+  const handleOpen = () => {
+    setOpen(!open);
+  };
 
+  return (
+    <div className="grid grid-cols-12 min-h-screen ">
       {/* Desktop Sidebar */}
-      <div className="xl:col-span-2 hidden xl:block bg-basic shadow-sm">
-        <div className="fixed top-0 left-0 h-full w-[16.5%]">
+      <div className="xl:col-span-2 relative hidden xl:block bg-basic shadow-lg z-50">
+        <div className="sticky top-0 h-screen">
           <Sidebar />
         </div>
       </div>
@@ -35,18 +38,18 @@ const Layouts = ({ children }) => {
       >
         <Sidebar />
       </div>
+      <div className="xl:col-span-10 col-span-12 relative">
+        <Navbar handleOpen={handleOpen} />
+              <div className="flex  flex-col mt-5 items-center justify-center lg:hidden">
+        <h2 className="font-bold leading-6 text-title font-montserrat text-xl sm:text-2xl">
+          Welcome Back
+        </h2>
+        <h3 className="text-text text-base font-medium leading-4 font-roboto pt-2">
+          Tomas William
+        </h3>
+      </div>
 
-      {/* Main Content */}
-      <div className="xl:col-span-10 col-span-12 p-4 lg:pt-10 relative">
-        <button
-          onClick={() => setOpen(!open)}
-          className="flex justify-between xl:hidden mb-4 items-center bg-linear-to-r from-primary to-primary_light w-full py-2 px-2 rounded-md text-white font-roboto "
-        >
-          <Menu size={22} className="opacity-90" />
-          <span className="text-base tracking-wide">Dashboard</span>
-        </button>
-
-        {children}
+        <div className="xl:p-8 p-4">{children}</div>
       </div>
     </div>
   );

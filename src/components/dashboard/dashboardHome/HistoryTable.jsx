@@ -3,10 +3,10 @@ import React from "react";
 
 const HistoryTable = () => {
   const data = [
-    { description: "Receive Money", data: "07 Jun 2025", trxId: "TRX982374", amount: "+$2,500", status: "Success" },
-    { description: "Money Out", data: "07 Jun 2025", trxId: "TRX234875", amount: "-$8,600", status: "Success" },
-    { description: "Receive Money", data: "07 Jun 2025", trxId: "TRX987654", amount: "-$6,1400", status: "Success" },
-    { description: "Money Out", data: "07 Jun 2025", trxId: "TRX347654", amount: "+$2,500", status: "Success" },
+    { description: "Money Out Starling Bank", data: "04 Dec 2025, 11:35:35 AM", trxId: "WD86320910", amount: "1,000.00 BDT", status: "Success" },
+    { description: "Money Out US Bank", data: "27 Aug 2025, 01:02:40 PM", trxId: "WD64998703", amount: "200.00 BDT", status: "Pending" },
+    { description: "Add Balance via (PAY-LINK)", data: "26 Aug 2025, 04:57:21 PM", trxId: "PL-29493047", amount: "20.00 USD", status: "Success" },
+    { description: "Money Out", data: "26 Aug 2025, 04:57:21 PM", trxId: "TRX347654", amount: "40.00 USD", status: "Pending" },
   ];
 
   return (

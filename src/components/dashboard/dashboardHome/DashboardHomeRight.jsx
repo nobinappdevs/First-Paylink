@@ -10,8 +10,8 @@ export default function DashboardHomeRight() {
   const balance = "$98,000.00";
 
   return (
-    <div className="overflow-hidden">
-      <SpecialSlider />
+    // <div className="overflow-hidden">
+    //   <SpecialSlider />
       <div className=" bg-white rounded-2xl shadow py-3">
         <VirtualCardSlider />
 
@@ -40,6 +40,6 @@ export default function DashboardHomeRight() {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }

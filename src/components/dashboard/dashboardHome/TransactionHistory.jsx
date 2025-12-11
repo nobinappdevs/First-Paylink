@@ -1,6 +1,7 @@
 import React from "react";
 import { FaSearch, FaFilter } from "react-icons/fa";
 import HistoryTable from "./HistoryTable";
+import Button from "@/components/Sheared/Button";
 
 const TransactionHistory = () => {
   return (
@@ -17,13 +18,13 @@ const TransactionHistory = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10  placeholder:font-roboto rounded-lg  w-full placeholder:text-text placeholder:text-sm pr-3 py-2 border-black/20 border text-sm focus:ring-primary focus:border-primary"
+                className="pl-10  placeholder:font-roboto  rounded-lg  w-full placeholder:text-text placeholder:text-sm pr-3 py-2 border-black/20 border text-sm focus:ring-primary focus:border-primary"
               />
             </div>
 
             <div className="relative">
               <FaFilter className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              <select className="pl-10 pr-6 py-2  w-full font-roboto text-text rounded-lg border-black/20 border text-sm appearance-none bg-white focus:ring-primary focus:border-primary">
+              <select className="pl-10 pr-6 py-2 cursor-pointer  w-full font-roboto text-text rounded-lg border-black/20 border text-sm appearance-none bg-white focus:ring-primary focus:border-primary">
                 <option value="">Filter</option>
                 <option value="today">Today</option>
                 <option value="week">This Week</option>
@@ -33,6 +34,11 @@ const TransactionHistory = () => {
               <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                 ▼
               </span>
+            </div>
+            <div className="">
+              <Button gradient className="md:w-full  md:flex items-center justify-center ">
+                View all
+              </Button>
             </div>
           </div>
         </div>

@@ -1,101 +1,157 @@
+"use client";
 import Image from "next/image";
-import logo from "@assets/logo.png";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import logo from "@assets/logo.webp";
+
 import {
-  FaPaperPlane,
-  FaDownload,
-  FaMoneyBillWave,
-  FaCreditCard,
-} from "react-icons/fa";
-import { RiMoneyDollarBoxLine } from "react-icons/ri";
-import { Grid2x2 } from "lucide-react";
+  LayoutGrid,
+  CreditCard,
+  SendHorizonal,
+  Wallet,
+  ArrowDownToLine,
+  Box,
+} from "lucide-react";
+
+const NavItem = ({ icon, title, link, active }) => {
+  return (
+    <Link
+      href={link}
+      aria-current={active ? "page" : undefined}
+      className={`group flex mb-2 items-center  gap-3 w-full transition-all duration-200 
+        ${active ? "text-primary_light border-l-3 pl-[35px] -ml-[35px] " : ""}
+        ${!active && ""} `}
+    >
+      <span
+        className={`text-lg transition-colors duration-200 ${
+          active
+            ? "text-primary_light"
+            : "text-text/60 group-hover:text-primary_light"
+        }`}
+      >
+        {icon}
+      </span>
+
+      <span
+        className={`font-semibold text-sm transition-colors duration-200 ${
+          active
+            ? "text-primary_light"
+            : "font-roboto font-semibold text-sm text-secondery/80 group-hover:text-primary_light"
+        }`}
+      >
+        {title}
+      </span>
+    </Link>
+  );
+};
+
 const Sidebar = () => {
+  const pathname = usePathname();
+
   const moneyTransfer = [
-    { id: 1, title: "Send Money", icon: <FaPaperPlane /> },
-    { id: 2, title: "Receive Money", icon: <FaDownload /> },
-    { id: 3, title: "Request Money", icon: <RiMoneyDollarBoxLine /> },
-    { id: 4, title: "Make Payment", icon: <FaMoneyBillWave /> },
+    {
+      id: 1,
+      title: "Payments",
+      icon: <ArrowDownToLine size={20} />,
+      link: "/dashboard/payments",
+    },
+    {
+      id: 2,
+      title: "Invoice",
+      icon: <Wallet size={20} />,
+      link: "/dashboard/invoice",
+    },
+    {
+      id: 3,
+      title: "Products",
+      icon: <Box size={20} />,
+      link: "/dashboard/products",
+    },
+    {
+      id: 4,
+      title: "Money Out",
+      icon: <Box size={20} />,
+      link: "/dashboard/withdraw",
+    },
   ];
 
   const walletAction = [
-    { id: 1, title: "Send Money", icon: <FaPaperPlane /> },
-    { id: 2, title: "Receive Money", icon: <FaDownload /> },
-    { id: 3, title: "Request Money", icon: <RiMoneyDollarBoxLine /> },
-    { id: 4, title: "Make Payment", icon: <FaMoneyBillWave /> },
-    { id: 5, title: "Cards", icon: <FaCreditCard /> },
-  ];
-
-  const cards = [
-    { id: 1, title: "My Cards", icon: <FaCreditCard /> },
-    { id: 2, title: "Payment Cards", icon: <FaMoneyBillWave /> },
+    {
+      id: 2,
+      title: "Transactions",
+      icon: <SendHorizonal size={20} />,
+      link: "/dashboard/transactions",
+    },
+    {
+      id: 3,
+      title: "Request Money",
+      icon: <Wallet size={20} />,
+      link: "/dashboard/requestMoney",
+    },
+    {
+      id: 4,
+      title: "Make Payment",
+      icon: <ArrowDownToLine size={20} />,
+      link: "/dashboard/makePayment",
+    },
+    {
+      id: 5,
+      title: "Help Center",
+      icon: <CreditCard size={20} />,
+      link: "/dashboard/helpCenter",
+    },
   ];
 
   return (
-    <div className="font-roboto h-full overflow-y-auto flex flex-col w-full px-8 pt-10">
-      {/* Logo Section */}
-      <div className="mb-10  cursor-pointer">
-        <Image
-          className="w-48 h-10"
-          src={logo}
-          alt="site Logo"
-          width={100}
-          height={100}
+    <aside
+      className="font-roboto h-full overflow-y-auto flex flex-col pl-9 pt-5"
+      role="navigation"
+      aria-label="Sidebar Navigation"
+    >
+      <div className="mb-10 cursor-pointer">
+        <Link href="/" aria-label="Go to homepage">
+          <Image
+            src={logo}
+            alt="Site Logo"
+            loading="eager"
+            width={150}
+            height={60}
+            className="w-44 h-10"
+          />
+        </Link>
+      </div>
+
+      <div className="mb-5">
+        <NavItem
+          icon={<LayoutGrid size={22} />}
+          title="Dashboard"
+          link="/dashboard"
+          active={pathname === "/dashboard"}
         />
       </div>
 
-      {/* Sidebar Content */}
-      <div>
-        {/* Dashboard */}
-<div className="flex items-center gap-3 text-primary mb-5 cursor-pointer">
-        <Grid2x2 size={22} />
-        <span className="font-semibold">Dashboard</span>
-      </div>
-
-        {/* Money Transfer */}
-        <div>
-          <h3 className="font-semibold text-sm  pb-5 text-text/60">
-            Money Transfer
-          </h3>
+      <div className="">
+        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60">
+          Money Transfer
+        </h3>
+        <div className="flex flex-col gap-1">
           {moneyTransfer.map((item) => (
-            <div key={item.id} className="flex pb-5 cursor-pointer items-center gap-x-3">
-              <span className="text-lg text-text/80 ">{item.icon}</span>
-              <h3 className="font-semibold text-sm text-secondery/60">
-                {item.title}
-              </h3>
-            </div>
-          ))}
-        </div>
-
-        {/* Wallet Action */}
-        <div>
-          <h3 className="font-semibold text-sm pt-5 pb-[26px] text-text/60">
-            Wallet Action
-          </h3>
-          {walletAction.map((item) => (
-            <div key={item.id} className="flex pb-5 cursor-pointer items-center gap-x-3">
-              <span className="text-lg text-text/80 ">{item.icon}</span>
-              <h3 className="font-semibold text-sm text-secondery/60">
-                {item.title}
-              </h3>
-            </div>
-          ))}
-        </div>
-
-        {/* Cards */}
-        <div>
-          <h3 className="font-semibold text-sm pt-5 pb-5 text-text/60">
-            Cards
-          </h3>
-          {cards.map((item) => (
-            <div key={item.id} className="flex cursor-pointer pb-5 items-center gap-x-3">
-              <span className="text-lg text-text/80 ">{item.icon}</span>
-              <h3 className="font-semibold text-sm text-secondery/60">
-                {item.title}
-              </h3>
-            </div>
+            <NavItem key={item.id} {...item} active={pathname === item.link} />
           ))}
         </div>
       </div>
-    </div>
+
+      <div className="mt-5">
+        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60">
+          Wallet Action
+        </h3>
+        <div className="flex flex-col gap-1">
+          {walletAction.map((item) => (
+            <NavItem key={item.id} {...item} active={pathname === item.link} />
+          ))}
+        </div>
+      </div>
+    </aside>
   );
 };
 
