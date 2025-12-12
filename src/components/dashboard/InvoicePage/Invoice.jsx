@@ -60,7 +60,7 @@ const invoices = [
   return (
     <div className="">
         {/* Header Section */}
-        <DahsboardHeader />
+        <DahsboardHeader url={'/'} />
         {/* Table Card */}
         <InvoiceTable invoices={invoices} />
     </div>

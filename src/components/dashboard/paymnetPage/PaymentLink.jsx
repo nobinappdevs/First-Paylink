@@ -71,7 +71,7 @@ const PaymentLinksModern = () => {
     <div className="">
       <div className="">
         {/* Header */}
-        <DahsboardHeader />
+        <DahsboardHeader url={'/dashboard/payments/create'} />
 
         {/* Main Card */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden">

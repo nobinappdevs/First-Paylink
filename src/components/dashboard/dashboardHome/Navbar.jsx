@@ -80,7 +80,7 @@ const Navbar = ({ handleOpen }) => {
   ];
 
   return (
-    <nav className="w-full pt-5 pb-4 px-4 bg-basic font-roboto flex items-center justify-between relative z-40">
+    <nav className="w-full pt-5 pb-4 px-4 bg-basic font-roboto flex items-center justify-between relative z-40 shadow-sm">
       <div className="lg:block hidden">
         <h2 className="font-bold leading-6 text-title font-montserrat text-xl sm:text-2xl">
           Welcome Back
@@ -142,43 +142,6 @@ const Navbar = ({ handleOpen }) => {
             <span className="absolute top-2 right-2 block w-2 h-2 bg-green-500 rounded-full" />
           </button>
           {notificationOpen && (
-            // <div
-            //   className={`absolute  -right-13   mt-2 w-72 max-h-96 overflow-y-auto bg-white border border-gray-200 shadow-xl rounded-md p-4 z-50`}
-            // >
-            //   <h3 className="text-lg font-bold mb-3 border-b pb-2 text-gray-800">
-            //     Notifications
-            //   </h3>
-            //   {notifications.length === 0 ? (
-            //     <p className="text-gray-500 text-sm">No new notifications.</p>
-            //   ) : (
-            //     notifications.map((notif) => (
-            //       <div
-            //         key={notif.id}
-            //         className="py-3 px-2 border-b last:border-b-0 hover:bg-gray-50 rounded cursor-pointer transition"
-            //       >
-            //         <p className="text-sm font-medium text-gray-800">
-            //           {notif.text}
-            //         </p>
-            //         <p
-            //           className={`text-xs ${
-            //             notif.type === "success"
-            //               ? "text-green-600"
-            //               : notif.type === "warning"
-            //               ? "text-yellow-600"
-            //               : "text-blue-600"
-            //           } mt-1`}
-            //         >
-            //           {notif.time}
-            //         </p>
-            //       </div>
-            //     ))
-            //   )}
-            //   <div className="text-center pt-3">
-            //     <button className="text-teal-600 text-sm hover:text-teal-800">
-            //       See All
-            //     </button>
-            //   </div>
-            // </div>
 
             <div
               className={`absolute -right-10 mt-3 w-80 max-h-96 overflow-y-auto bg-white border border-gray-100 shadow-2xl rounded-xl p-4 z-50`}
@@ -235,7 +198,7 @@ const Navbar = ({ handleOpen }) => {
         <div className="relative" ref={profileRef}>
           <button
             onClick={() => toggleDropdown(setProfileOpen, profileOpen)}
-            className="p-1 rounded-full cursor-pointer hover:bg-gray-100"
+            className="p-1 rounded-full cursor-pointer shadow-sm "
             aria-label="User Profile"
           >
             <Image

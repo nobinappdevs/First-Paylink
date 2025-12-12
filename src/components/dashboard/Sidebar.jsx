@@ -103,7 +103,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className="font-roboto h-full overflow-y-auto flex flex-col pl-9 pt-5 lg:pt-8 lg:pl-12"
+      className="font-roboto h-full overflow-y-auto flex flex-col pl-9 pt-5 lg:pt-6 lg:pl-12"
       role="navigation"
       aria-label="Sidebar Navigation"
     >
@@ -115,7 +115,7 @@ const Sidebar = () => {
             loading="eager"
             width={150}
             height={60}
-            className="w-44 h-10" 
+            className="w-40 h-8" 
           />
         </Link>
       </div>

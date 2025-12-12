@@ -3,7 +3,7 @@ import React from 'react';
 
 const page = () => {
     return (
-        <div>
+        <div className="xl:p-8 p-4">
             <Invoice />
         </div>
     );

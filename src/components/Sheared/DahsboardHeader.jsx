@@ -1,7 +1,8 @@
 import { Plus, Filter } from "lucide-react";
 import Button from "./Button";
+import Link from "next/link";
 
-const DahsboardHeader = () => {
+const DahsboardHeader = ({url}) => {
   return (
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 mb-4 border-b border-b-text/10 ">
         <div>
@@ -43,10 +44,11 @@ const DahsboardHeader = () => {
               </svg>
             </div>
           </div>
-
+          <Link href={url}>
           <Button className="cursor-pointer" rightIcon={<Plus size={16} />}>
             New Payment Link
           </Button>
+          </Link>
         </div>
       </div>
   );
