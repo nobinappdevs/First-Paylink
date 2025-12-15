@@ -41,7 +41,7 @@ const page = async ({ params }) => {
     <div className="">
       <InvoiceView data={invoiceData} />
      {/* ================= Actions ================= */}
-       <div className="mt-8 flex gap-4 justify-center">
+       <div className="mb-8 flex gap-4 justify-center">
         <Link href={'/dashboard/invoice'}>
         <Button gradient size="lg"> Save as Draft</Button>
         </Link>

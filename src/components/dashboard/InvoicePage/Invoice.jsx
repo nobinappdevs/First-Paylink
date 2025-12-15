@@ -50,7 +50,7 @@ const invoices = [
     email: 'user@appdevs.net',
     amount: '95.00 AUD',
     qty: 3,
-    status: 'Paid',
+    status: 'Unpaid',
     dueDate: '11 Nov 2023',
     dueTime: '01:30:10 PM',
   },

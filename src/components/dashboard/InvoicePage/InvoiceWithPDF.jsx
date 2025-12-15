@@ -56,7 +56,10 @@ const InvoiceWithPDF = forwardRef(({ data }, ref) => {
         ref={invoiceRef}
         className="mx-auto max-w-4xl bg-white p-10"
       >
+        <div className=" bg-body">
         <InvoiceView data={data} />
+
+        </div>
       </div>
     </div>
   );

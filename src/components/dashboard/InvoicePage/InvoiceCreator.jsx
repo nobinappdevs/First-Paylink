@@ -1,32 +1,38 @@
-'use client';
+"use client";
 
-import React, { useState, useMemo } from 'react';
-import { Plus, X } from 'lucide-react';
-import { InvoiceView } from './InvoiceView';
-import Button from '@/components/Sheared/Button';
-import Link from 'next/link';
+import React, { useState, useMemo } from "react";
+import { Plus, X, Building2, Package } from "lucide-react";
+import { InvoiceView } from "./InvoiceView";
+import Button from "@/components/Sheared/Button";
+import Link from "next/link";
+
+/* ---------------- Currency Options ---------------- */
+
+const currencyOptions = [
+  { label: "USD ($)", value: "$" },
+  { label: "EUR (€)", value: "€" },
+  { label: "GBP (£)", value: "£" },
+  { label: "BDT (৳)", value: "৳" },
+  { label: "INR (₹)", value: "₹" },
+];
 
 /* ---------------- Initial State ---------------- */
 
 const initialCustomer = {
-  title: 'ABC LTD',
-  phone: '',
-  name: 'App Devs',
-  email: 'user@appdevs.net',
-  currency: '$',
+  title: "ABC LTD",
+  phone: "",
+  name: "App Devs",
+  email: "user@appdevs.net",
+  currency: "$",
 };
 
 const initialItems = [
-  { id: 1, title: 'Collecting Payment Platform', quantity: 1, price: 100 },
+  { id: 1, title: "Collecting Payment Platform", quantity: 1, price: 100 },
 ];
-
-/* ---------------- Component ---------------- */
 
 export default function InvoiceCreator() {
   const [customer, setCustomer] = useState(initialCustomer);
   const [items, setItems] = useState(initialItems);
-
-  /* ---------------- Handlers ---------------- */
 
   const handleCustomerChange = (e) => {
     const { name, value } = e.target;
@@ -35,16 +41,14 @@ export default function InvoiceCreator() {
 
   const handleItemChange = (id, field, value) => {
     setItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, [field]: value } : item
-      )
+      prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
     );
   };
 
   const addItem = () => {
     setItems((prev) => [
       ...prev,
-      { id: Date.now(), title: '', quantity: 1, price: 0 },
+      { id: Date.now(), title: "", quantity: 1, price: 0 },
     ]);
   };
 
@@ -52,27 +56,22 @@ export default function InvoiceCreator() {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  /* ---------------- Invoice Data ---------------- */
-
   const invoiceData = useMemo(() => {
-    const subtotal = items.reduce(
-      (sum, i) => sum + i.quantity * i.price,
-      0
-    );
+    const subtotal = items.reduce((sum, i) => sum + i.quantity * i.price, 0);
 
     const totalQty = items.reduce((sum, i) => sum + i.quantity, 0);
 
     return {
-      invoiceNumber: 'INV-000123',
-      dateDue: '15 December 2025',
+      invoiceNumber: "INV-000123",
+      dateDue: "15 December 2025",
       senderName: customer.title,
-      senderAddress: customer.phone || '-',
+      senderAddress: customer.phone || "-",
       recipientName: customer.name,
       recipientEmail: customer.email,
       currency: customer.currency,
       amountDue: subtotal,
       items: items.map((i) => ({
-        description: i.title || 'Item',
+        description: i.title || "Item",
         qty: i.quantity,
         unitPrice: i.price,
         amount: i.quantity * i.price,
@@ -85,107 +84,209 @@ export default function InvoiceCreator() {
     };
   }, [customer, items]);
 
-  /* ---------------- UI ---------------- */
-
   return (
-    <main className="min-h-screen bg-gray-50 p-6">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2">
-        
-        {/* -------- LEFT : FORM -------- */}
-        <section className="rounded-lg bg-white p-6 shadow">
-          <h1 className="mb-6 text-2xl font-semibold">Create Invoice</h1>
+    <main className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-6">
+      <div className="mx-auto max-w-7xl">
+        {/* Page Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Create Invoice
+          </h1>
+          <p className="text-gray-600">
+            Fill in the details below to generate your professional invoice
+          </p>
+        </div>
 
-          {/* Customer Info */}
-          <div className="space-y-4">
-            <input
-              name="title"
-              value={customer.title}
-              onChange={handleCustomerChange}
-              placeholder="Company Name"
-              className="w-full rounded-md border px-3 py-2 text-sm"
-            />
-
-            <input
-              name="name"
-              value={customer.name}
-              onChange={handleCustomerChange}
-              placeholder="Customer Name"
-              className="w-full rounded-md border px-3 py-2 text-sm"
-            />
-
-            <input
-              name="email"
-              type="email"
-              value={customer.email}
-              onChange={handleCustomerChange}
-              placeholder="Customer Email"
-              className="w-full rounded-md border px-3 py-2 text-sm"
-            />
-          </div>
-
-          {/* Items */}
-          <div className="my-6 flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Items</h2>
-            <button
-              type="button"
-              onClick={addItem}
-              className="flex items-center gap-1 rounded-md bg-indigo-600 px-3 py-2 text-sm text-white"
-            >
-              <Plus size={16} /> Add Item
-            </button>
-          </div>
-
-          <div className="space-y-3">
-            {items.map((item) => (
-              <div key={item.id} className="flex gap-2">
-                <input
-                  value={item.title}
-                  onChange={(e) =>
-                    handleItemChange(item.id, 'title', e.target.value)
-                  }
-                  placeholder="Item name"
-                  className="flex-1 rounded-md border px-3 py-2 text-sm"
-                />
-
-                <input
-                  type="number"
-                  value={item.quantity}
-                  onChange={(e) =>
-                    handleItemChange(item.id, 'quantity', Number(e.target.value))
-                  }
-                  className="w-20 rounded-md border px-2 py-2 text-sm text-center"
-                />
-
-                <input
-                  type="number"
-                  value={item.price}
-                  onChange={(e) =>
-                    handleItemChange(item.id, 'price', Number(e.target.value))
-                  }
-                  className="w-24 rounded-md border px-2 py-2 text-sm text-right"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => removeItem(item.id)}
-                  className="rounded-md bg-red-500 px-3 text-white"
-                >
-                  <X size={16} />
-                </button>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {/* -------- LEFT : FORM -------- */}
+          <section>
+            <div className="rounded-2xl bg-white shadow-xl border border-gray-200 overflow-hidden transform transition-all hover:shadow-2xl">
+              {/* Form Header */}
+              <div className="bg-linear-to-r from-gray-50 to-gray-100 border-b border-gray-200 px-6 py-5">
+                <h2 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Building2 className="w-5 h-5 text-indigo-600" />
+                  Invoice Information
+                </h2>
               </div>
-            ))}
-          </div>
-          <div className=" mt-10">
-            <Link href={'/dashboard/invoice/preview/20'}>
-            <Button gradient size='lg' className='w-full flex justify-center'>
-              Create Invoice
-            </Button>
-            </Link>
-          </div>
-        </section>
 
-        {/* -------- RIGHT : LIVE PREVIEW -------- */}
-        <InvoiceView data={invoiceData} />
+              <div className="p-8 space-y-6">
+                {/* Customer Info */}
+                <div className="space-y-5">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Title*
+                    </label>
+                    <input
+                      name="title"
+                      value={customer.title}
+                      onChange={handleCustomerChange}
+                      placeholder="Title"
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Phone*
+                    </label>
+                    <input
+                      name="title"
+                      value={customer.title}
+                      onChange={handleCustomerChange}
+                      placeholder="Phone"
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Customer Name*
+                    </label>
+                    <input
+                      name="name"
+                      value={customer.name}
+                      onChange={handleCustomerChange}
+                      placeholder="name"
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Customer Email*
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      value={customer.email}
+                      onChange={handleCustomerChange}
+                      placeholder="Customer Email"
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Currency
+                    </label>
+                    <select
+                      name="currency"
+                      value={customer.currency}
+                      onChange={handleCustomerChange}
+                      className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                    >
+                      {currencyOptions.map((c) => (
+                        <option key={c.value} value={c.value}>
+                          {c.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Items Section */}
+                <div className="pt-6 border-t border-gray-200">
+                  <div className="flex items-center justify-between mb-5">
+                    <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                      <Package className="w-5 h-5 text-indigo-600" />
+                      Invoice Items
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={addItem}
+                      className="flex items-center gap-2 rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:border-indigo-300 shadow-sm hover:shadow-md transition-all"
+                    >
+                      <Plus size={16} /> Add Item
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    {items.map((item, index) => (
+                      <div
+                        key={item.id}
+                        className="bg-gray-50 border-2 border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+                      >
+                        <div className="space-y-3">
+                          <input
+                            value={item.title}
+                            onChange={(e) =>
+                              handleItemChange(item.id, "title", e.target.value)
+                            }
+                            placeholder="Item description"
+                            className="w-full rounded-lg border-2 border-gray-200 bg-white px-4 py-2.5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                          />
+
+                          <div className="flex gap-3">
+                            <div className="flex-1">
+                              <label className="block text-xs font-semibold text-gray-600 mb-1.5">
+                                Quantity
+                              </label>
+                              <input
+                                type="number"
+                                value={item.quantity}
+                                onChange={(e) =>
+                                  handleItemChange(
+                                    item.id,
+                                    "quantity",
+                                    Number(e.target.value)
+                                  )
+                                }
+                                className="w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2.5 text-sm text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                              />
+                            </div>
+
+                            <div className="flex-1">
+                              <label className="block text-xs font-semibold text-gray-600 mb-1.5">
+                                Price
+                              </label>
+                              <input
+                                type="number"
+                                value={item.price}
+                                onChange={(e) =>
+                                  handleItemChange(
+                                    item.id,
+                                    "price",
+                                    Number(e.target.value)
+                                  )
+                                }
+                                className="w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2.5 text-sm text-right shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
+                              />
+                            </div>
+
+                            <div className="flex items-end">
+                              <button
+                                type="button"
+                                onClick={() => removeItem(item.id)}
+                                className="rounded-lg border-2 border-red-200 bg-red-50 p-2.5 text-red-600 hover:bg-red-100 hover:border-red-300 shadow-sm hover:shadow transition-all"
+                                aria-label="Remove item"
+                              >
+                                <X size={18} />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Create Button */}
+                <div className="pt-6">
+                  <Link href={"/dashboard/invoice/preview/20"}>
+                    <Button
+                      gradient
+                      size="lg"
+                      className="w-full flex justify-center shadow-lg hover:shadow-xl transition-all"
+                    >
+                      Create Invoice
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* -------- RIGHT : LIVE PREVIEW -------- */}
+          <InvoiceView data={invoiceData} />
+        </div>
       </div>
     </main>
   );
