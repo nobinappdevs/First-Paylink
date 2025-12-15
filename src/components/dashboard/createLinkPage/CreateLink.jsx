@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Upload } from "lucide-react";
 import Button from "@/components/Sheared/Button";
 import Preview from "./Preview";
+import Link from "next/link";
 
 export default function PaymentPage() {
   const [activeTab, setActiveTab] = useState("fixed");
@@ -50,7 +51,7 @@ export default function PaymentPage() {
             <div
               role="tablist"
               aria-label="Payment type selection"
-              className="flex gap-2 mb-6 bg-slate-100 rounded-xl p-1"
+              className="flex lg:flex-row flex-col mb-6 bg-slate-100 rounded-xl p-1"
             >
               <button
                 role="tab"
@@ -60,7 +61,7 @@ export default function PaymentPage() {
                 tabIndex={activeTab === "fixed" ? 0 : -1}
                 onClick={() => handleTabChange("fixed")}
                 onKeyDown={(e) => handleKeyDown(e, "fixed")}
-                className={`flex-1 py-3 px-4 rounded-lg cursor-pointer font-semibold transition-all ${
+                className={`flex-1 py-3 px-4 lg:px-2 lg:text-base md:text text-xs rounded-lg cursor-pointer  font-bold transition-all ${
                   activeTab === "fixed"
                     ? "bg-white text-emerald-600 shadow-md"
                     : "text-slate-600 hover:text-slate-800"
@@ -76,7 +77,7 @@ export default function PaymentPage() {
                 tabIndex={activeTab === "custom" ? 0 : -1}
                 onClick={() => handleTabChange("custom")}
                 onKeyDown={(e) => handleKeyDown(e, "custom")}
-                className={`flex-1 py-3 px-4 cursor-pointer rounded-lg font-semibold transition-all ${
+                className={`flex-1 py-3 px-4 md:text lg:text-base  text-xs cursor-pointer rounded-lg font-semibold transition-all ${
                   activeTab === "custom"
                     ? "bg-white text-emerald-600 shadow-md"
                     : "text-slate-600 hover:text-slate-800"
@@ -249,7 +250,9 @@ export default function PaymentPage() {
                     </span>
                   </label>
                 </div>
+                <Link href={'/dashboard/payments/share/2'}>
                 <Button gradient className="w-full flex items-center py-3 justify-center">Create New Link</Button>
+                </Link>
               </div>
 
               {/* Customer Choose Panel */}
@@ -338,7 +341,9 @@ export default function PaymentPage() {
                   </div>
 
                   {/* Button */}
-                   <Button gradient className="w-full flex col-span-2 items-center py-3 justify-center">Create New Link</Button>
+                   <Link href='/dashboard/payments/share/2' className="col-span-2">
+                   <Button gradient className="w-full flex  items-center py-3 justify-center">Create New Link</Button>
+                   </Link>
                 </div>
               </div>
             </div>

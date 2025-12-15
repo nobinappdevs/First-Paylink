@@ -40,7 +40,7 @@ const invoices = [
     email: 'user@appdevs.net',
     amount: '120.00 BDT',
     qty: 1,
-    status: 'Unpaid',
+    status: 'Draft',
     dueDate: '11 Nov 2023',
     dueTime: '05:12:44 PM',
   },
@@ -60,7 +60,7 @@ const invoices = [
   return (
     <div className="">
         {/* Header Section */}
-        <DahsboardHeader url={'/'} />
+        <DahsboardHeader url={'/dashboard/invoice/create'} />
         {/* Table Card */}
         <InvoiceTable invoices={invoices} />
     </div>

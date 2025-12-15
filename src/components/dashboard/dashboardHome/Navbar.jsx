@@ -80,8 +80,11 @@ const Navbar = ({ handleOpen }) => {
   ];
 
   return (
-    <nav className="w-full pt-5 pb-4 px-4 bg-basic font-roboto flex items-center justify-between relative z-40 shadow-sm">
-      <div className="lg:block hidden">
+    <nav className="sticky top-0 z-40">
+      <div className="relative w-full pt-5 pb-4 px-4   bg-basic font-roboto flex items-center justify-between   shadow-sm">
+
+
+      <div className="xl:block hidden">
         <h2 className="font-bold leading-6 text-title font-montserrat text-xl sm:text-2xl">
           Welcome Back
         </h2>
@@ -91,7 +94,7 @@ const Navbar = ({ handleOpen }) => {
       </div>
       <div
         onClick={handleOpen}
-        className="flex cursor-pointer lg:hidden items-center sm:gap-x-2 gap-x-1"
+        className="flex cursor-pointer xl:hidden items-center sm:gap-x-2 gap-x-1"
       >
         <AlignStartVertical className="size-6 text-text " />
         <h3 className="font-montserrat text-xl font-bold text-secondery/90 ">
@@ -262,6 +265,7 @@ const Navbar = ({ handleOpen }) => {
           )}
         </div>
       </div>
+            </div>
     </nav>
   );
 };
