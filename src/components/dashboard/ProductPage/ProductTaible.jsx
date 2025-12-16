@@ -1,27 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Search,
-  Link,
-  MoreVertical,
-  Trash2,
-  Edit,
-  CheckCircle,
-  Plus,
-} from "lucide-react";
+import { Search, MoreVertical, Trash2, Edit, Plus, Link2 } from "lucide-react";
 import Button from "@/components/Sheared/Button";
+import Link from "next/link";
 
 const MOCK_PRODUCTS = [
   {
     id: 1,
-    image: "/path/to/rogan_massey.png",
-    name: "Rogan Massey",
-    description: "N/A",
-    price: "50.00 USD",
-    status: "Active",
-  },
-  {
-    id: 2,
     image: "/path/to/amazfit_watch.png",
     name: "Amazfit Balance AMOLED Display Bluetooth Calling AI-Powered Fitness Smart Watch",
     description: "150+ Sports Modes with Personal AI Coach...",
@@ -29,11 +14,19 @@ const MOCK_PRODUCTS = [
     status: "Inactive",
   },
   {
-    id: 3,
+    id: 2,
     image: "/path/to/lenovo_laptop.png",
     name: 'Lenovo IdeaPad 1 15AMN7 Ryzen 5 7520U 15.6" FHD Laptop',
     description: "AMD Ryzen 5 7520U | 4C / 8T, 2.8 / 4.3GHz...",
     price: "100.00 USD",
+    status: "Active",
+  },
+  {
+    id: 3,
+    image: "/path/to/rogan_massey.png",
+    name: "Rogan Massey",
+    description: "N/A",
+    price: "50.00 USD",
     status: "Active",
   },
 ];
@@ -85,7 +78,9 @@ export default function ProductTaible() {
             aria-label="Search products"
           />
         </div>
-        <Button rightIcon={<Plus size={18} />}>Add New Product</Button>
+        <Link href={"/dashboard/products/create"}>
+          <Button gradient rightIcon={<Plus size={18} />}>Add New Product</Button>
+        </Link>
       </div>
 
       <div className="overflow-x-auto w-full">
@@ -140,8 +135,6 @@ export default function ProductTaible() {
                 <td className="py-4 px-6 font-bold text-slate-700 whitespace-nowrap">
                   {product.price}
                 </td>
-
-                {/* *** স্ট্যাটাস টোগল বাটনে পরিবর্তন *** */}
                 <td className="py-4 px-6 text-center">
                   <div className="flex items-center justify-center gap-4">
                     {/* Toggle */}
@@ -157,7 +150,7 @@ export default function ProductTaible() {
         transition-all duration-300 ease-in-out
         ${
           product.status === "Active"
-            ? "bg-primary_light shadow-[inset_0_2px_6px_rgba(255,255,255,0.25),0_6px_12px_rgba(115,103,240,0.45)]"
+            ? "bg-emerald-500  shadow-[inset_0_2px_6px_rgba(255,255,255,0.25),0_6px_12px_rgba(115,103,240,0.45)]"
             : "bg-slate-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.6),0_4px_10px_rgba(0,0,0,0.15)]"
         }
       `}
@@ -197,7 +190,7 @@ export default function ProductTaible() {
                       className="p-2 text-slate-400 cursor-pointer hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-all"
                       title="Copy Product Link"
                     >
-                      <Link size={16} />
+                      <Link2 size={16} />
                     </button>
                     <button
                       onClick={() =>
@@ -227,12 +220,14 @@ export default function ProductTaible() {
                       role="menu"
                       aria-orientation="vertical"
                     >
+                      <Link href={`/dashboard/products/edit/${product.id}`}>
                       <button
                         className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors rounded-t-lg"
                         role="menuitem"
-                      >
+                        >
                         <Edit size={16} /> Edit
                       </button>
+                        </Link>
                       <button
                         className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
                         role="menuitem"

@@ -80,8 +80,8 @@ const Navbar = ({ handleOpen }) => {
   ];
 
   return (
-    <nav className="sticky top-0 z-40">
-      <div className="relative w-full pt-5 pb-4 px-4   bg-basic font-roboto flex items-center justify-between   shadow-sm">
+    <nav className="sticky top-0 z-40 lg:z-50">
+      <div className="relative w-full pt-5 pb-4 px-4   bg-basic font-roboto flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.15)]">
 
 
       <div className="xl:block hidden">

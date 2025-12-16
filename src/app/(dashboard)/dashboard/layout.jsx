@@ -24,7 +24,7 @@ const Layouts = ({ children }) => {
   return (
     <div className="grid grid-cols-12 min-h-screen ">
       {/* Desktop Sidebar */}
-      <div className="xl:col-span-2 relative hidden xl:block bg-basic shadow-sm z-50">
+      <div className="xl:col-span-2 relative hidden xl:block bg-basic shadow-sm z-50 lg:z-40">
         <div className="sticky top-0 h-screen">
           <Sidebar />
         </div>

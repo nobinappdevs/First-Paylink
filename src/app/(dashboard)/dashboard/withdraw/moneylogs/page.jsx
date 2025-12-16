@@ -1,10 +1,10 @@
-import TicketDashboard from '@/components/dashboard/helpCenter/TicketDashboard';
+import AllMoneyLogs from '@/components/dashboard/moneyOutPage/AllMoneyLogs';
 import React from 'react';
 
 const page = () => {
     return (
         <div className="xl:p-8 p-4">
-          <TicketDashboard />
+          <AllMoneyLogs />
         </div>
     );
 };

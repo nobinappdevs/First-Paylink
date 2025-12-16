@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { Copy, MoreHorizontal, Search, Eye, Trash } from "lucide-react";
+import { Copy, MoreHorizontal, Search, Eye, Trash, Edit } from "lucide-react";
 import DahsboardHeader from "@/components/Sheared/DahsboardHeader";
+import Link from "next/link";
 
 const PaymentLinksModern = () => {
   const [copied, setCopied] = useState(null);
@@ -201,9 +202,11 @@ const PaymentLinksModern = () => {
                             ref={menuRef}
                             className="absolute right-0 mt-2 w-32 bg-white shadow-lg border border-slate-200 rounded-lg py-1 z-20"
                           >
+                            <Link href={`/dashboard/payments/edit/${link.id}`}>
                             <button className="flex items-center cursor-pointer gap-2 w-full text-left px-3 py-2 hover:bg-slate-50 text-sm text-slate-700">
-                              <Eye size={14} /> View
+                              <Edit size={14} /> Edit
                             </button>
+                            </Link>
                             <button className="flex items-center cursor-pointer gap-2 w-full text-left px-3 py-2 hover:bg-red-50 text-sm text-red-600">
                               <Trash size={14} /> Delete
                             </button>

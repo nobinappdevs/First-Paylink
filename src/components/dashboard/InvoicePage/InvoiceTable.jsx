@@ -124,9 +124,7 @@ export default function InvoiceTable({ invoices }) {
         </div>
         <p className="text-sm text-text/80 whitespace-nowrap">
           Showing{" "}
-          <span className="font-semibold text-text">
-            {invoices.length}
-          </span>{" "}
+          <span className="font-semibold text-text">{invoices.length}</span>{" "}
           recent invoices
         </p>
       </div>
@@ -168,13 +166,18 @@ export default function InvoiceTable({ invoices }) {
                 <td className="py-4 px-6 font-medium">
                   <div className="flex items-center gap-2">
                     <FileText size={16} className="text-text/40" />
-                    <a
+                    <button
+                      onClick={() => {
+                        setSelectedInvoice(mapInvoiceForView(inv));
+                        setShowInvoiceModal(true);
+                        setOpenMenuId(null);
+                      }}
                       href={`/invoices/${inv.id}`}
-                      className="text-primary font-mono text-sm hover:text-primary hover:underline transition-colors"
+                      className="text-primary font-mono cursor-pointer text-sm hover:text-primary hover:underline transition-colors"
                       aria-label={`View invoice ${inv.id}`}
                     >
                       {inv.id}
-                    </a>
+                    </button>
                   </div>
                 </td>
 
@@ -234,26 +237,25 @@ export default function InvoiceTable({ invoices }) {
 
                 <td className="py-4 px-6 text-right relative">
                   <div className="flex items-center justify-end gap-1">
-                                          {inv.status === "Unpaid"
-                      &&
-                    <button
-                      onClick={() => handleCopy(inv.id)}
-                      className="group/btn p-2 text-slate-400 cursor-pointer hover:text-primary hover:bg-indigo-50 rounded-md transition-all relative"
-                      title={`Copy Invoice ID ${inv.id}`}
-                      aria-live="polite"
-                    >
-                      {copiedId === inv.id ? (
-                        <CheckCircle size={16} className="text-emerald-500" />
-                      ) : (
-                        <Copy size={16} />
-                      )}
-                      {copiedId === inv.id && (
-                        <span className="absolute right-0 -top-7  bg-text text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-30 transition-opacity duration-300">
-                          Copied!
-                        </span>
-                      )}
-                    </button>
-                      }
+                    {inv.status === "Unpaid" && (
+                      <button
+                        onClick={() => handleCopy(inv.id)}
+                        className="group/btn p-2 text-slate-400 cursor-pointer hover:text-primary hover:bg-indigo-50 rounded-md transition-all relative"
+                        title={`Copy Invoice ID ${inv.id}`}
+                        aria-live="polite"
+                      >
+                        {copiedId === inv.id ? (
+                          <CheckCircle size={16} className="text-emerald-500" />
+                        ) : (
+                          <Copy size={16} />
+                        )}
+                        {copiedId === inv.id && (
+                          <span className="absolute right-0 -top-7  bg-text text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-30 transition-opacity duration-300">
+                            Copied!
+                          </span>
+                        )}
+                      </button>
+                    )}
 
                     <button
                       onClick={() =>
@@ -308,18 +310,17 @@ export default function InvoiceTable({ invoices }) {
                           <Edit size={16} /> Edit
                         </button>
                       </Link>
-                      {inv.status === "Unpaid"
-                      &&
-                      <>
-                      <div className="border-t border-slate-100 my-1"></div>
-                      <button
-                      className="w-full justify-center flex  cursor-pointer items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
-                      role="menuitem"
-                      >
-                        Delete
-                      </button>
+                      {inv.status === "Unpaid" && (
+                        <>
+                          <div className="border-t border-slate-100 my-1"></div>
+                          <button
+                            className="w-full justify-center flex  cursor-pointer items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
+                            role="menuitem"
+                          >
+                            Delete
+                          </button>
                         </>
-                      }
+                      )}
                     </div>
                   )}
                 </td>

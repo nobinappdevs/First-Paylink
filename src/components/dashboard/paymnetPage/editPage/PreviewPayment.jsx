@@ -14,7 +14,7 @@ import sslcommezLogo from "@assets/sslcommezLogo.webp";
 import stipeLogo from "@assets/stipeLogo.webp";
 import Image from "next/image";
 
-const Preview = ({ formData, activeTab, handleInputChange }) => {
+const PreviewPayment = ({ formData, activeTab, handleInputChange }) => {
   const [selectedGateway, setSelectedGateway] = useState(null);
 
   const paymentGateways = [
@@ -89,7 +89,7 @@ const Preview = ({ formData, activeTab, handleInputChange }) => {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-8">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-800">Preview</h2>
+        <h2 className="text-2xl font-bold text-slate-800">PreviewPayment</h2>
         <div className="flex items-center space-x-2 text-slate-400">
           <div
             className="w-8 h-8 border-2 border-slate-300 rounded-lg"
@@ -113,7 +113,7 @@ const Preview = ({ formData, activeTab, handleInputChange }) => {
       {/* Amount Display */}
       <div className="mb-6">
         <label
-          htmlFor="preview-amount"
+          htmlFor="PreviewPayment-amount"
           className="block text-sm font-medium text-slate-700 mb-2"
         >
           Amount
@@ -124,7 +124,7 @@ const Preview = ({ formData, activeTab, handleInputChange }) => {
           </span>
           <input
             type="text"
-            id="preview-amount"
+            id="PreviewPayment-amount"
             value={activeTab === "fixed" ? formData.amount : "0.00"}
             readOnly
             aria-label="Payment amount"
@@ -146,62 +146,31 @@ const Preview = ({ formData, activeTab, handleInputChange }) => {
         <legend className="text-sm font-bold text-slate-800 mb-4">
           Pay With Payment Gateway
         </legend>
-{/* First 4 rows → 2 items per row */}
-<div className="grid grid-cols-2 gap-3">
-  {paymentGateways.slice(0, 8).map((gateway) => (
-    <button
-      key={gateway.id}
-      type="button"
-      onClick={() => setSelectedGateway(gateway.id)}
-      aria-pressed={selectedGateway === gateway.id}
-      className={`p-4 border-2 cursor-pointer rounded-xl transition-all
-        flex items-center justify-center
-        ${
-          selectedGateway === gateway.id
-            ? "border-emerald-500 bg-emerald-50"
-            : "border-slate-200 hover:border-emerald-300"
-        }
-      `}
-    >
-      <Image
-        src={gateway.image}
-        alt={gateway.name}
-        className="h-[50px]"
-        height={0}
-        width={0}
-      />
-    </button>
-  ))}
-</div>
-
-{/* 5th row → 3 items */}
-{paymentGateways.length > 8 && (
-  <div className="grid grid-cols-3 gap-3 mt-3">
-    {paymentGateways.slice(8).map((gateway) => (
-      <button
-        key={gateway.id}
-        type="button"
-        onClick={() => setSelectedGateway(gateway.id)}
-        aria-pressed={selectedGateway === gateway.id}
-        className={`p-4 border-2 cursor-pointer rounded-xl transition-all
-          flex items-center justify-center
-          ${
-            selectedGateway === gateway.id
-              ? "border-emerald-500 bg-emerald-50"
-              : "border-slate-200 hover:border-emerald-300"
-          }
-        `}
-      >
-        <Image
-          src={gateway.image}
-          alt={gateway.name}
-          className="h-[45px] w-full"
-        />
-      </button>
-    ))}
-  </div>
-)}
-
+        <div className="grid grid-cols-2 gap-3">
+          {paymentGateways.map((gateway) => (
+            <button
+              key={gateway.id}
+              type="button"
+              onClick={() => setSelectedGateway(gateway.id)}
+              aria-pressed={selectedGateway === gateway.id}
+              aria-label={`Pay with ${gateway.name}`}
+              className={`p-4 border-2 cursor-pointer rounded-xl transition-all 
+      flex items-center justify-center
+      focus:outline-none focus:ring-2 focus:ring-emerald-300
+      ${
+        selectedGateway === gateway.id
+          ? "border-emerald-500 bg-emerald-50"
+          : "border-slate-200 hover:border-emerald-300"
+      }`}
+            >
+              <Image
+                src={gateway.image}
+                alt={gateway.name}
+                className="w-6/12 h-8 object-cover "
+              />
+            </button>
+          ))}
+        </div>
       </fieldset>
 
       {/* Card Payment Section */}
@@ -293,8 +262,9 @@ const Preview = ({ formData, activeTab, handleInputChange }) => {
         {" "}
         Pay
       </Button>
+      <Image src={coingateLogo} width={200} alt="logo" height={100}></Image>
     </div>
   );
 };
 
-export default Preview;
+export default PreviewPayment;

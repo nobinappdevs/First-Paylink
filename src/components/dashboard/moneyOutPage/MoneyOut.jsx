@@ -7,6 +7,7 @@ import {
   CreditCard,
   DollarSign,
   Receipt,
+  ReceiptCent,
 } from "lucide-react";
 import Button from "@/components/Sheared/Button";
 
@@ -120,10 +121,10 @@ export default function MoneyOut() {
         };
 
   return (
-    <div className="min-h-screen bg-slate-50 md:p-10 p-4">
+    <div className="mb-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
         {/* Left */}
-        <div className="bg-white border border-slate-200 rounded-xl shadow-md p-4 md:p-8">
+        <div className="bg-white  rounded-xl shadow-sm p-4 md:p-8">
           <h1 className="text-xl md:text-3xl font-bold text-slate-800 mb-6 md:mb-8">
             Money Out Request
           </h1>
@@ -203,6 +204,7 @@ export default function MoneyOut() {
             {/* Button */}
             <Button
               type="submit"
+              size="lg"
               disabled={!formData.gateway || !formData.amount}
               className="w-full font-bold flex justify-center"
             >
@@ -213,7 +215,7 @@ export default function MoneyOut() {
         </div>
 
         {/* Right */}
-        <div className="bg-white border border-slate-200 rounded-xl shadow-md p-4 md:p-8 lg:sticky lg:top-12">
+        <div className="bg-white  rounded-xl shadow-sm p-4 md:p-8 lg:sticky lg:top-12">
           <h2 className="text-xl md:text-3xl font-bold text-slate-800 mb-6 md:mb-8">
             Transaction Preview
           </h2>
@@ -271,7 +273,7 @@ export default function MoneyOut() {
               )}
 
             <PreviewItem
-              icon={<Receipt className="w-5 h-5 text-white" />}
+              icon={<ReceiptCent className="w-5 h-5 text-text/80" />}
               label="Final Payable Amount"
               value={
                 calculations.payableAmount

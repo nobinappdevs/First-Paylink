@@ -1,11 +1,11 @@
+import InvoiceEdit from '@/components/dashboard/InvoicePage/invoiceEdit/InvoiceEdit';
 import React from 'react';
 
 const page = async ({params}) => {
     const {id}  = await params; 
-    console.log(id);
     return (
         <div>
-            this is edit {id} page
+            <InvoiceEdit />
         </div>
     );
 };
