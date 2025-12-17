@@ -51,27 +51,33 @@ const moneyOutLogs = [
 export default function MoneyOutLog() {
   return (
     <section className="overflow-hidden font-roboto  rounded-2xl  bg-white shadow-sm">
-      <header className="flex items-center justify-between bg-white px-6 py-5 border-b border-gray-100">
+      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
         <div>
-          <h2 className="text-lg font-bold text-secondery/80">Money Out Log</h2>
-          <p className="text-xs text-gray-500">
+          <h2 className="text-base sm:text-lg font-bold text-secondery/80">
+            Money Out Log
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-500">
             Track your recent withdrawal activities
           </p>
         </div>
-        <Link href={'/dashboard/withdraw/moneylogs'}>
-        
-        <button
-          type="button"
-          className="group flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700 transition-all  cursor-pointer border-text "
+
+        <Link
+          href="/dashboard/withdraw/moneylogs"
+          className="w-full sm:w-auto sm:self-auto"
+        >
+          <button
+            type="button"
+            className="group flex w-full sm:w-auto items-center justify-center sm:justify-start gap-1 rounded-full bg-gray-100 px-4 py-2 text-sm font-semibold text-gray-700 border border-transparent transition-all cursor-pointer hover:bg-white hover:border-gray-200 hover:shadow-sm"
           >
-          View More
-          <ChevronRight
-            size={16}
-            className="transition-transform group-hover:translate-x-0.5"
+            View More
+            <ChevronRight
+              size={16}
+              className="transition-transform group-hover:translate-x-0.5"
             />
-        </button>
-            </Link>
+          </button>
+        </Link>
       </header>
+
       <MoneyOutLogTable moneyOutLogs={moneyOutLogs} />
       <div className="bg-gray-50/30 px-6 py-4 border-t border-gray-100">
         <p className="text-[11px] text-gray-400 font-medium italic flex items-center gap-1">

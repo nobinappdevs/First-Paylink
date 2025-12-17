@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Search, MoreVertical, Trash2, Edit, Plus, Link2 } from "lucide-react";
 import Button from "@/components/Sheared/Button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 const MOCK_PRODUCTS = [
   {
@@ -35,6 +37,20 @@ export default function ProductTaible() {
   const [products, setProducts] = useState(MOCK_PRODUCTS);
   const [openMenuId, setOpenMenuId] = useState(null);
   const menuRefs = useRef({});
+  const router = useRouter();
+
+  const handleClick = (product) => {
+    if (product.status !== "Active") {
+      Swal.fire({
+        icon: "warning",
+        title: "Product Inactive",
+        text: "This product is not active. You cannot access the link.",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+    router.push(`/dashboard/product-link/${product.id}`);
+  };
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -79,7 +95,9 @@ export default function ProductTaible() {
           />
         </div>
         <Link href={"/dashboard/products/create"}>
-          <Button gradient rightIcon={<Plus size={18} />}>Add New Product</Button>
+          <Button gradient rightIcon={<Plus size={18} />}>
+            Add New Product
+          </Button>
         </Link>
       </div>
 
@@ -187,6 +205,7 @@ export default function ProductTaible() {
                 <td className="py-4 px-6 text-right relative">
                   <div className="flex items-center justify-end gap-1">
                     <button
+                      onClick={() => handleClick(product)}
                       className="p-2 text-slate-400 cursor-pointer hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-all"
                       title="Copy Product Link"
                     >
@@ -221,13 +240,13 @@ export default function ProductTaible() {
                       aria-orientation="vertical"
                     >
                       <Link href={`/dashboard/products/edit/${product.id}`}>
-                      <button
-                        className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors rounded-t-lg"
-                        role="menuitem"
+                        <button
+                          className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors rounded-t-lg"
+                          role="menuitem"
                         >
-                        <Edit size={16} /> Edit
-                      </button>
-                        </Link>
+                          <Edit size={16} /> Edit
+                        </button>
+                      </Link>
                       <button
                         className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
                         role="menuitem"

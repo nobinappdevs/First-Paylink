@@ -7,26 +7,6 @@ import Link from "next/link";
 
 export default function PaymentPage() {
   const [activeTab, setActiveTab] = useState("fixed");
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    amount: "0.00",
-    minAmount: "",
-    maxAmount: "",
-    currency: "",
-    email: "",
-    cardName: "",
-    cardNumber: "",
-    saveInfo: false,
-    setLimits: false,
-  });
-  console.log(formData);
-
-
-  const handleInputChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
@@ -119,10 +99,6 @@ export default function PaymentPage() {
                       id="fixed-amount"
                       aria-required="true"
                       placeholder="Enter fixed amount"
-                      value={formData.amount}
-                      onChange={(e) =>
-                        handleInputChange("amount", e.target.value)
-                      }
                       className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                     />
                   </div>
@@ -139,10 +115,6 @@ export default function PaymentPage() {
                     <select
                       id="currency-fixed"
                       aria-required="true"
-                      value={formData.currency}
-                      onChange={(e) =>
-                        handleInputChange("currency", e.target.value)
-                      }
                       className="w-full cursor-pointer px-4 py-3 border-2 border-slate-200 rounded-xl text-slate-600 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                     >
                       <option value="">Select Currency</option>
@@ -170,10 +142,6 @@ export default function PaymentPage() {
                       id="title"
                       aria-required="true"
                       placeholder="Name of cause or service"
-                      value={formData.title}
-                      onChange={(e) =>
-                        handleInputChange("title", e.target.value)
-                      }
                       className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                     />
                   </div>
@@ -222,10 +190,6 @@ export default function PaymentPage() {
                     id="description"
                     rows="4"
                     placeholder="Give customers more detail about what they are paying for."
-                    value={formData.description}
-                    onChange={(e) =>
-                      handleInputChange("description", e.target.value)
-                    }
                     className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all resize-none"
                   />
                 </div>
@@ -239,10 +203,6 @@ export default function PaymentPage() {
                     <input
                       type="checkbox"
                       id="set-limits"
-                      checked={formData.setLimits}
-                      onChange={(e) =>
-                        handleInputChange("setLimits", e.target.checked)
-                      }
                       className="w-4 h-4 text-emerald-600 rounded focus:ring-2 focus:ring-emerald-200"
                     />
                     <span className="text-sm font-medium text-slate-700">
@@ -299,10 +259,6 @@ export default function PaymentPage() {
                     <select
                       id="currency-fixed"
                       aria-required="true"
-                      value={formData.currency}
-                      onChange={(e) =>
-                        handleInputChange("currency", e.target.value)
-                      }
                       className="w-full cursor-pointer px-4 py-3 border-2 border-slate-200 rounded-xl text-slate-600 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                     >
                       <option value="">Select Currency</option>
@@ -349,7 +305,7 @@ export default function PaymentPage() {
             </div>
           </div>
         {/* Right Panel - Preview */}
-        <Preview formData={formData} activeTab={activeTab} handleInputChange={handleInputChange} />
+        <Preview />
 
         </div>
       </div>

@@ -13,11 +13,12 @@ import {
   Box,
 } from "lucide-react";
 
-const NavItem = ({ icon, title, link, active }) => {
+const NavItem = ({ icon, title, link, active, onClick  }) => {
   return (
     <Link
       href={link}
       aria-current={active ? "page" : undefined}
+      onClick={onClick}
       className={`group flex mb-2 items-center gap-3 w-full transition-all duration-200 lg:py-1
         ${
           active
@@ -49,7 +50,7 @@ const NavItem = ({ icon, title, link, active }) => {
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ({ onLinkClick }) => {
   const pathname = usePathname();
   const moneyTransfer = [
     {
@@ -86,18 +87,6 @@ const Sidebar = () => {
       link: "/dashboard/transactions",
     },
     {
-      id: 3,
-      title: "Request Money",
-      icon: <Wallet size={20} />,
-      link: "/dashboard/requestMoney",
-    },
-    {
-      id: 4,
-      title: "Make Payment",
-      icon: <ArrowDownToLine size={20} />,
-      link: "/dashboard/makePayment",
-    },
-    {
       id: 5,
       title: "Help Center",
       icon: <CreditCard size={20} />,
@@ -126,6 +115,7 @@ const Sidebar = () => {
 
       <div className="mb-5">
         <NavItem
+          onClick={onLinkClick}
           icon={<LayoutGrid size={22} />}
           title="Dashboard"
           link="/dashboard"
@@ -137,9 +127,9 @@ const Sidebar = () => {
         <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60 lg:text-base lg:mb-5">
           Money Transfer
         </h3>
-        <div className="flex flex-col gap-1 lg:gap-2">
+        <div className="flex flex-col gap-1.5 lg:gap-2">
           {moneyTransfer.map((item) => (
-            <NavItem key={item.id} {...item} active={pathname === item.link} />
+            <NavItem key={item.id} {...item} active={pathname === item.link} onClick={onLinkClick} />
           ))}
         </div>
       </div>
@@ -148,9 +138,9 @@ const Sidebar = () => {
         <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60 lg:text-base lg:mb-5">
           Wallet Action
         </h3>
-        <div className="flex flex-col gap-1 lg:gap-2">
+        <div className="flex flex-col gap-1.5 lg:gap-2">
           {walletAction.map((item) => (
-            <NavItem key={item.id} {...item} active={pathname === item.link} />
+            <NavItem key={item.id} {...item} active={pathname === item.link} onClick={onLinkClick} />
           ))}
         </div>
       </div>

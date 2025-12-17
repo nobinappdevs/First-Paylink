@@ -17,7 +17,7 @@ import razorpayLogo from "@assets/razorpayLogo.webp";
 import sslcommezLogo from "@assets/sslcommezLogo.webp";
 import stipeLogo from "@assets/stipeLogo.webp";
 
-const Preview = () => {
+const LinkPreview = () => {
   const [activeTab] = useState("fixed");
   const [selectedGateway, setSelectedGateway] = useState(null);
 
@@ -165,4 +165,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default LinkPreview;

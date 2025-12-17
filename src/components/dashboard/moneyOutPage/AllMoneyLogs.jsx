@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import React from 'react';
 import MoneyOutLogTable from './MoneyOutLogTable';
+import Pagination from '@/components/Sheared/Pagination';
 
 const AllMoneyLogs = () => {
     const moneyOutLogs = [
@@ -73,47 +74,7 @@ const AllMoneyLogs = () => {
       {/* tible */}
       <MoneyOutLogTable moneyOutLogs={moneyOutLogs}/>
 {/* Pagination Section */}
-      <div className="flex items-center justify-center gap-2 mt-8 pb-4">
-        {/* Previous Button */}
-        <button className="flex items-center cursor-pointer justify-center px-4 py-2 text-sm font-medium rounded-xl border border-gray-200 bg-white text-gray-600 transition-all duration-200 hover:border-seconbg-secondery hover:text-seconbg-secondery hover:shadow-md hover:shadow-seconbg-secondery disabled:opacity-50 disabled:cursor-not-allowed group">
-          <ChevronLeft
-            size={18}
-            className="mr-1 transition-transform group-hover:-translate-x-0.5"
-          />
-          Prev
-        </button>
-
-        {/* Page Numbers */}
-        <div className="flex items-center gap-1.5 px-2 py-1 bg-gray-50/50 rounded-2xl border border-gray-100 shadow-inner">
-          {/* Active Page */}
-          <button className="h-10 w-10 cursor-pointerflex items-center justify-center text-sm font-bold rounded-xl bg-secondery text-white shadow-lg shadow-seconbg-secondery transform transition-transform active:scale-95">
-            1
-          </button>
-
-          <button className="h-10 w-10 cursor-pointer flex items-center justify-center text-sm font-semibold rounded-xl border border-transparent text-gray-600 hover:bg-white hover:border-gray-200 hover:text-seconbg-secondery hover:shadow-sm transition-all">
-            2
-          </button>
-
-          <button className="h-10 w-10 cursor-pointer flex items-center justify-center text-sm font-semibold rounded-xl border border-transparent text-gray-600 hover:bg-white hover:border-gray-200 hover:text-seconbg-secondery hover:shadow-sm transition-all">
-            3
-          </button>
-
-          <span className="px-2 text-gray-400 font-bold">...</span>
-
-          <button className="h-10 w-10 cursor-pointer flex items-center justify-center text-sm font-semibold rounded-xl border border-transparent text-gray-600 hover:bg-white hover:border-gray-200 hover:text-seconbg-secondery hover:shadow-sm transition-all">
-            10
-          </button>
-        </div>
-
-        {/* Next Button */}
-        <button className="flex items-center justify-center cursor-pointer px-4 py-2 text-sm font-medium rounded-xl border border-gray-200 bg-white text-gray-700 transition-all duration-200 hover:border-seconbg-secondery hover:text-seconbg-secondery hover:shadow-md hover:shadow-seconbg-secondery group">
-          Next
-          <ChevronRight
-            size={18}
-            className="ml-1  transition-transform group-hover:translate-x-0.5"
-          />
-        </button>
-      </div>
+<Pagination />
     </div>
     );
 };

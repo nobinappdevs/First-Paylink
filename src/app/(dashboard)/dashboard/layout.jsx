@@ -26,7 +26,7 @@ const Layouts = ({ children }) => {
       {/* Desktop Sidebar */}
       <div className="xl:col-span-2 relative hidden xl:block bg-basic shadow-sm z-50 lg:z-40">
         <div className="sticky top-0 h-screen">
-          <Sidebar />
+          <Sidebar onLinkClick={() => setOpen(false)} />
         </div>
       </div>
 
@@ -36,7 +36,7 @@ const Layouts = ({ children }) => {
         className={`fixed top-0 left-0 h-full w-60 bg-white shadow-lg z-50 transition-transform duration-300 xl:hidden 
         ${open ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <Sidebar />
+        <Sidebar onLinkClick={() => setOpen(false)} />
       </div>
       <div className="xl:col-span-10 col-span-12 relative">
         <Navbar handleOpen={handleOpen} />
