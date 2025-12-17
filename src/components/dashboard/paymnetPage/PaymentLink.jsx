@@ -23,7 +23,7 @@ const PaymentLinksModern = () => {
     {
       id: 1,
       title: "Redragon A101W Keyboard Keycaps",
-      type: "Products or subscriptions",
+      type: "Customers choose what to pay",
       amount: "10.00 USD",
       count: 1,
       status: "Active",
@@ -43,7 +43,7 @@ const PaymentLinksModern = () => {
     {
       id: 3,
       title: "Redragon A101W Keyboard Keycaps",
-      type: "Products or subscriptions",
+      type: "Customers choose what to pay",
       amount: "20.00 AUD",
       count: 2,
       status: "Active",
@@ -53,7 +53,7 @@ const PaymentLinksModern = () => {
     {
       id: 4,
       title: "Make a Difference with a Donation",
-      type: "Customers choose what to pay",
+      type: "Products or subscriptions",
       amount: "200.00 - 5,000.00 BDT",
       count: null,
       status: "Active",
@@ -99,7 +99,7 @@ const PaymentLinksModern = () => {
                   <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
                     Title
                   </th>
-                  <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
+                  <th className="py-4 px-6  text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
                     Type
                   </th>
                   <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
@@ -132,10 +132,8 @@ const PaymentLinksModern = () => {
 
                     {/* Type */}
                     <td className="py-4 px-6 whitespace-nowrap">
-                      <span className="inline-block px-2.5 py-0.5 rounded border font-roboto border-slate-200 bg-white text-slate-600 text-xs font-medium">
-                        {link.type === "Products or subscriptions"
-                          ? "Product"
-                          : "Donation"}
+                      <span className="inline-block  py-0.5 rounded font-roboto  bg-white text-slate-600 text-xs font-medium">
+                        {link.type}
                       </span>
                     </td>
 

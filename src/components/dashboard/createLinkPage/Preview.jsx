@@ -50,17 +50,12 @@ const Preview = () => {
     <div className="bg-white rounded-2xl shadow-lg p-8">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-800">Preview</h2>
-        <div className="flex items-center space-x-2 text-slate-400">
-          <div className="w-8 h-8 border-2 border-slate-300 rounded-lg" />
-          <CreditCard className="w-6 h-6" />
-        </div>
+        <h2 className="text-2xl font-bold text-secondery/80">Preview</h2>
       </div>
-
       {/* Company */}
       <div className="mb-6 pb-6 border-b-2 border-slate-100">
-        <div className="flex items-center space-x-2 text-slate-600">
-          <div className="w-5 h-5 bg-slate-800 rounded" />
+        <div className="flex items-center space-x-2 text-secondery/80">
+          <div className="w-5 h-5 bg-secondery/80 rounded" />
           <span className="font-semibold">ABC LTD</span>
         </div>
       </div>
@@ -99,14 +94,14 @@ const Preview = () => {
             <button
               key={g.id}
               onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border-2 rounded-xl transition-all flex items-center justify-center
+              className={`p-4 border-2 cursor-pointer rounded-xl transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
             >
-              <Image src={g.image} alt={g.id} className="h-[50px]" />
+              <Image src={g.image} alt={g.id} className="h-[50px] w-auto" />
             </button>
           ))}
         </div>
@@ -116,14 +111,14 @@ const Preview = () => {
             <button
               key={g.id}
               onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border-2 rounded-xl transition-all flex items-center justify-center
+              className={`p-4 border-2 cursor-pointer rounded-xl transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
             >
-              <Image src={g.image} alt={g.id} className="h-[45px] w-full" />
+              <Image src={g.image} alt={g.id} className="h-10 w-auto" />
             </button>
           ))}
         </div>

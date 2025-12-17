@@ -1,9 +1,20 @@
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+"use client";
 import React from "react";
 import HistoryTable from "../dashboardHome/HistoryTable";
 import Pagination from "@/components/Sheared/Pagination";
+import { FaSearch } from "react-icons/fa";
+import Select from "react-select";
+import { reactSelectStyles } from "@/style/selectStyles";
 
 const Transections = () => {
+
+  const filterOptions = [
+    { value: "Filter", label: "Filter" },
+    { value: "today", label: "Today" },
+    { value: "week", label: "This Week" },
+    { value: "month", label: "This Month" },
+  ];
+
   return (
     <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[20px] shadow-md w-full ">
       {/* Search */}
@@ -13,24 +24,102 @@ const Transections = () => {
             Transaction Log
           </h2>
         </div>
-        <div className="relative flex-1 max-w-sm">
-          <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
-            size={18}
+        <div className="relative flex gap-x-2.5">
+          <Select
+            options={filterOptions}
+            instanceId="currency-select"
+            placeholder="Select Currency"
+            styles={reactSelectStyles}
           />
-          <input
-            type="text"
-            placeholder="Search by title..."
-            className="w-full pl-10 pr-4 rounded-xl border border-gray-300 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
-          />
+          <div className="relative">
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2  text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search..."
+              className="pl-10  placeholder:font-roboto  rounded-xl  w-full placeholder:text-text placeholder:text-sm pr-3  py-3.5 border-black/10 border text-sm focus:ring-primary focus:border-primary"
+            />
+          </div>
         </div>
       </div>
       {/* tible */}
       <HistoryTable />
-{/* Pagination Section */}
-<Pagination />
+      {/* Pagination Section */}
+      <Pagination />
     </div>
   );
 };
 
 export default Transections;
+
+
+
+// "use client";
+
+// import React, { useState } from "react";
+// import HistoryTable from "../dashboardHome/HistoryTable";
+// import Pagination from "@/components/Sheared/Pagination";
+// import { FaSearch } from "react-icons/fa";
+// import Select from "react-select";
+// import { reactSelectStyles } from "@/style/selectStyles";
+
+// const Transections = () => {
+//   const [selectedFilter, setSelectedFilter] = useState(null);
+//   const [search, setSearch] = useState("");
+
+//   const filterOptions = [
+//     { value: "", label: "Filter" },
+//     { value: "today", label: "Today" },
+//     { value: "week", label: "This Week" },
+//     { value: "month", label: "This Month" },
+//   ];
+
+//   return (
+//     <div className="lg:p-6 py-3.5 md:p-4 p-2 bg-basic rounded-sm lg:rounded-[20px] shadow-md w-full">
+//       {/* Header */}
+//       <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+//         <h2 className="text-xl font-montserrat text-secondery font-bold">
+//           Transaction Log
+//         </h2>
+
+//         {/* Filter + Search */}
+//         <div className="flex gap-2.5 w-full sm:w-auto">
+//           {/* React Select */}
+//           <div className="min-w-[160px]">
+//             <Select
+//               options={filterOptions}
+//               value={selectedFilter}
+//               onChange={setSelectedFilter}
+//               placeholder="Filter"
+//               isSearchable={false}
+//               styles={reactSelectStyles}
+//               instanceId="transaction-filter"
+//             />
+//           </div>
+
+//           {/* Search Input */}
+//           <div className="relative w-full sm:w-[220px]">
+//             <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+//             <input
+//               type="text"
+//               value={search}
+//               onChange={(e) => setSearch(e.target.value)}
+//               placeholder="Search..."
+//               className="pl-10 pr-3 py-2 w-full rounded-lg border border-black/20 text-sm placeholder:text-text focus:ring-primary focus:border-primary"
+//             />
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Table */}
+//       <HistoryTable
+//         filter={selectedFilter?.value}
+//         search={search}
+//       />
+
+//       {/* Pagination */}
+//       <Pagination />
+//     </div>
+//   );
+// };
+
+// export default Transections;

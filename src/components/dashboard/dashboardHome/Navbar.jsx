@@ -14,7 +14,7 @@ import {
 } from "react-icons/fi";
 import profile from "@assets/profile.png";
 import ThemeToggleSwitch from "./ThemeToggleSwitch";
-import { AlignStartVertical } from "lucide-react";
+import { AlignStartVertical, KeyRound } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
@@ -57,7 +57,6 @@ const Navbar = ({ handleOpen }) => {
   const moneyTransfer = [
     { id: 1, title: "Send Money", icon: FiSend },
     { id: 2, title: "Add Funds", icon: FiPlusCircle },
-    { id: 3, title: "Withdraw", icon: FiMinusCircle },
   ];
 
   const notifications = [
@@ -288,6 +287,17 @@ const handelLogOut = () => {
                       <FiShield size={17} className="text-gray-600" />
                       <h3 className="text-sm font-semibold text-gray-700">
                         2FA Verification
+                      </h3>
+                    </button>
+                  </Link>
+                  <Link href={"/dashboard/updatePassword"}>
+                    <button
+                      onClick={() => setProfileOpen(false)}
+                      className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
+                    >
+                      <KeyRound size={17} className="text-gray-600" />
+                      <h3 className="text-sm font-semibold text-gray-700">
+                        Update Password
                       </h3>
                     </button>
                   </Link>

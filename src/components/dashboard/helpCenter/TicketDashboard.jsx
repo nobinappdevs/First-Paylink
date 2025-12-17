@@ -405,7 +405,7 @@ export default function TicketDashboard() {
     <div className="w-full">
       {/* ---------- Header ---------- */}
       <header className="mb-8">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-montserrat text-secondery">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-montserrat text-secondery/80">
           <span className="text-primary_light">Support</span> Dashboard
         </h1>
         <p className="text-sm sm:text-base text-text mt-1">
@@ -500,7 +500,7 @@ export default function TicketDashboard() {
                   <td className="px-3 sm:px-6 py-3 sm:py-4 text-right">
                     <Link href="/dashboard/helpCenter/conversation/20">
                       <button
-                        className="p-2 rounded-full bg-blue-100 hover:bg-blue-200 transition"
+                        className="p-2 rounded-full bg-primary_light/20 text-primary_light/80 cursor-pointer hover:bg-blue-200 transition"
                         title="View Details"
                       >
                         <MessagesSquare className="w-5 h-5 sm:w-6 sm:h-6" />

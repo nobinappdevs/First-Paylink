@@ -51,7 +51,7 @@ const AllMoneyLogs = () => {
   },
 ];
     return (
-    <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[20px] shadow-md w-full ">
+    <div className=" bg-basic rounded-sm lg:rounded-[20px] shadow-sm w-full ">
       {/* Search */}
       <div className="p-4 border-b border-slate-100 flex  justify-between items-center gap-3">
         <div className="">

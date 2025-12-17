@@ -5,6 +5,7 @@ import Button from "../../Sheared/Button";
 import BalanceCard from "./BalanceCard";
 import TransactionHistory from "./TransactionHistory";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const DashboardHomeLeft = () => {
   const [showBalance, setShowBalance] = useState(true);
@@ -30,20 +31,31 @@ const DashboardHomeLeft = () => {
           </button>
         </div>
         <div className="lg:flex  gap-3  hidden">
+          <Link href={'/dashboard/payments/create'}>
+
           <Button size="lg" rightIcon={<FaPlus />}>
-            Add Money
+           Create Link
           </Button>
+          </Link>
+                    <Link href={'/dashboard/withdraw'}>
+
           <Button size="lg" gradient rightIcon={<ArrowUpRight />}>
-            Send Money
+   Money Out
           </Button>
+                    </Link>
         </div>
         <div className="flex gap-x-4 justify-between lg:hidden">
+                    <Link href={'/dashboard/payments/create'}>
+
           <Button size="sm" rightIcon={<FaPlus />}>
-            Add Money
+          Create Link
           </Button>
+                    </Link>
+                    <Link href={'/dashboard/withdraw'}>
           <Button size="sm" gradient rightIcon={<ArrowUpRight />}>
-            Send Money
+        Money Out
           </Button>
+                    </Link>
         </div>
       </div>
       <BalanceCard />

@@ -1,14 +1,8 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
-import { Upload, Mail, LogOut, Eye, EyeOff } from "lucide-react";
+import { Upload, Mail, Trash2 } from "lucide-react";
 import Button from "@/components/Sheared/Button";
 
 const ProfilePage = () => {
-  const [showCurrent, setShowCurrent] = useState(false);
-  const [showNew, setShowNew] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
 
   return (
     <div className="max-w-6xl mx-auto px-4 font-roboto">
@@ -16,16 +10,15 @@ const ProfilePage = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-secondery/80 font-montserrat">User Profile</h1>
         <Button
-          rightIcon={<LogOut size={18} />}
+          rightIcon={<Trash2 size={20}  />}
           className="bg-red-600 hover:bg-red-700 cursor-pointer"
         >
           Delete Profile
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Section */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className=" space-y-6">
           <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
             {/* Cover */}
             <div className="relative h-48 bg-linear-to-r from-primary to-primary_light">
@@ -120,43 +113,9 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
-
-        {/* Right Section – Password */}
-        <div className="lg:col-span-1">
-          <div className="bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
-            <h2 className="text-xl font-bold text-text/90 mb-6">
-              Change Password
-            </h2>
-
-            {[
-              ["Current Password*", showCurrent, setShowCurrent],
-              ["New Password*", showNew, setShowNew],
-              ["Confirm Password*", showConfirm, setShowConfirm],
-            ].map(([label, show, setShow], i) => (
-              <div key={i} className="mb-5 relative">
-                <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
-                  {label}
-                </label>
-                <input
-                  type={show ? "text" : "password"}
-                  placeholder="Enter Password..."
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShow(!show)}
-                  className="absolute right-3 top-10 text-gray-400 hover:text-indigo-600 cursor-pointer"
-                >
-                  {show ? <EyeOff size={18} /> : <Eye size={18} />}
-                </button>
-              </div>
-            ))}
-            <Button className="w-full ">Change Password</Button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
 
 export default ProfilePage;
+

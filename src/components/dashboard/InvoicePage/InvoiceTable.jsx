@@ -108,7 +108,7 @@ export default function InvoiceTable({ invoices }) {
   });
 
   return (
-    <div className="bg-basic rounded-xl shadow-lg border border-text/10 overflow-hidden text-text font-roboto">
+    <div className="bg-basic rounded-xl shadow-sm border border-text/10 overflow-hidden text-text font-roboto">
       <div className="px-6 py-4 border-b border-text/10 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:max-w-sm">
           <Search

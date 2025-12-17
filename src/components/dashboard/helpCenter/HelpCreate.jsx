@@ -345,6 +345,7 @@ const HelpCreate = () => {
             <div className="flex items-center gap-4 pt-6 border-t border-gray-50">
               <Link href={"/dashboard/helpCenter"} className="flex-1">
                 <Button
+                gradient
                   size="lg"
                   className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                 >

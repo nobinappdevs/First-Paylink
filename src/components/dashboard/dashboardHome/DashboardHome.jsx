@@ -5,7 +5,7 @@ import TransactionHistory from "./TransactionHistory";
 
 const DashboardHome = () => {
   return (
-    <div className="2xl:pr-6 xl:p-8 p-4">
+    <div className="xl:p-8 p-4">
           <DashboardHomeLeft />
           <DashboardChart />
           <TransactionHistory />

@@ -22,7 +22,7 @@ export default function Button({
 
         /* Responsive Size */
         px-4 py-2 text-sm
-        md:px-6 md:py-2.5 md:text-base
+        md:px-6 md:py-3 md:text-base
 
         ${className}
       `}

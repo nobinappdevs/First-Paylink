@@ -425,7 +425,7 @@ export default function AdvancedMixedChart() {
   };
 
   return (
-    <div className="bg-white my-6 p-6 rounded-xl shadow-xl w-full">
+    <div className="bg-white my-6 p-6 rounded-xl shadow-sm w-full">
       <div className="overflow-x-auto scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="min-w-[700px]">
           <ApexChart
