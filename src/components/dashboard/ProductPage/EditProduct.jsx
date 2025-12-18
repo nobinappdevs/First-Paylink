@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const EditProduct = () => {
   return (
-    <div className="bg-white rounded-xl shadow-sm border font-roboto border-gray-100 p-8">
-      <h2 className="text-2xl font-bold text-secondery/80 font-montserrat mb-8">
+    <div className="bg-white rounded-xl shadow-sm border  border-gray-100 p-8">
+      <h2 className="text-2xl font-bold text-secondery/80  mb-8">
         Product Create
       </h2>
 

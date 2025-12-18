@@ -18,9 +18,9 @@ export default function DashboardHomeRight() {
       <div className="md:flex justify-between md:px-4 px-2 ">
         <div className="flex items-center gap-x-8 mb-4">
           <div>
-            <p className="text-text font-medium font-roboto leading-6 text-base ">
+            <h6 >
               Total Wallet Balance
-            </p>
+            </h6>
             <h2 className="text-2xl font-bold text-secondery leading-8">
               {showBalance ? balance : "******"}
             </h2>

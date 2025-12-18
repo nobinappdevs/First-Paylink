@@ -85,11 +85,11 @@ const BalanceCard = () => {
               <ArrowUpRight className="w-5 h-5" style={{ color: item.color }} />
             </div>
           </div>
-          <h6 className="mt-2.5 mb-1 text-sm font-roboto pb-1 md:text-base  md:py-2 md:text-text/80  md:font-bold text-text font-semibold">
+          <h6 className="mt-2.5 mb-1 text-sm  pb-1 md:text-base  md:py-2 md:text-text/80  md:font-bold text-text font-semibold">
             {item.title}
           </h6>
 
-          <h4 className=" font-montserrat text-secondery/80 md:text-xl text-base leading-6 font-bold">
+          <h4 className="  text-secondery/80 md:text-xl text-base leading-6 font-bold">
             {item.amount}
           </h4>
         </div>

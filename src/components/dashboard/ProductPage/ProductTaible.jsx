@@ -80,7 +80,7 @@ export default function ProductTaible() {
   };
 
   return (
-    <div className="bg-white font-roboto rounded-xl shadow-lg border border-slate-100 overflow-hidden text-slate-900">
+    <div className="bg-white  rounded-xl shadow-lg border border-slate-100 overflow-hidden text-slate-900">
       <div className="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
         <div className="relative w-full sm:max-w-sm">
           <Search
@@ -103,22 +103,22 @@ export default function ProductTaible() {
         <table className="w-full text-left text-sm table-auto">
           <thead className="bg-slate-50 border-b border-slate-100">
             <tr>
-              <th className="py-3.5 px-6 text-slate-600 font-montserrat text-xs font-semibold uppercase tracking-wider w-16 min-w-[60px]">
+              <th className="py-3.5 px-6 text-slate-600  text-xs font-semibold uppercase tracking-wider w-16 min-w-[60px]">
                 Image
               </th>
-              <th className="py-3.5 px-6 text-slate-600 font-montserrat text-xs font-semibold uppercase tracking-wider w-60 min-w-[250px]">
+              <th className="py-3.5 px-6 text-slate-600  text-xs font-semibold uppercase tracking-wider w-60 min-w-[250px]">
                 Product Name
               </th>
-              <th className="py-3.5 px-6 text-slate-600 font-montserrat text-xs font-semibold uppercase tracking-wider w-60 min-w-[300px]">
+              <th className="py-3.5 px-6 text-slate-600  text-xs font-semibold uppercase tracking-wider w-60 min-w-[300px]">
                 Description
               </th>
-              <th className="py-3.5 px-6 text-slate-600 font-montserrat text-xs font-semibold uppercase tracking-wider w-24 min-w-[100px]">
+              <th className="py-3.5 px-6 text-slate-600  text-xs font-semibold uppercase tracking-wider w-24 min-w-[100px]">
                 Price
               </th>
-              <th className="py-3.5 px-6 text-slate-600 font-montserrat text-xs font-semibold uppercase tracking-wider w-40 min-w-40 text-center">
+              <th className="py-3.5 px-6 text-slate-600  text-xs font-semibold uppercase tracking-wider w-40 min-w-40 text-center">
                 Status
               </th>
-              <th className="py-3.5 px-6 text-right text-slate-600 font-montserrat text-xs font-semibold uppercase tracking-wider w-20 min-w-20">
+              <th className="py-3.5 px-6 text-right text-slate-600  text-xs font-semibold uppercase tracking-wider w-20 min-w-20">
                 Actions
               </th>
             </tr>

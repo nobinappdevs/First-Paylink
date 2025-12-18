@@ -8,7 +8,7 @@ export default function Button({
     <button
       onClick={onClick}
       className={`
-        relative overflow-hidden group font-roboto
+        relative overflow-hidden group 
         flex items-center justify-center gap-2
         rounded-md text-white
         transition-all duration-300 ease-out cursor-pointer

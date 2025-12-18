@@ -235,7 +235,7 @@ const RegisterPage = () => {
   return (
     <main
       role="main"
-      className="min-h-screen flex items-center font-roboto justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
+      className="min-h-screen flex items-center  justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
     >
       <section
         aria-labelledby="registersecondery"
@@ -245,7 +245,7 @@ const RegisterPage = () => {
         <header className="text-center mb-8">
           <h2
             id="registersecondery"
-            className="text-2xl font-extrabold font-montserrat  text-secondery/90"
+            className="text-2xl font-extrabold  text-secondery/90"
           >
             Register for an Account Today
           </h2>

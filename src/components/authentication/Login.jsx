@@ -167,7 +167,7 @@ export default LoginPage;
 //   return (
 //     <main
 //       role="main"
-//       className="min-h-screen font-roboto flex items-center justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
+//       className="min-h-screen  flex items-center justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
 //     >
 //       <section
 //         aria-labelledby="loginsecondery"
@@ -177,7 +177,7 @@ export default LoginPage;
 //         <header className="text-center mb-8">
 //           <h2
 //             id="loginsecondery"
-//             className="text-2xl font-extrabold font-montserrat text-secondery/90"
+//             className="text-2xl font-extrabold text-secondery/90"
 //           >
 //             Log in and Stay Connected
 //           </h2>

@@ -72,7 +72,7 @@ const PaymentLinksModern = () => {
     <div className="">
       <div className="">
         {/* Header */}
-        <DahsboardHeader url={'/dashboard/payments/create'} />
+        <DahsboardHeader url={"/dashboard/payments/create"} title={"Payment Links"} subtitle={"Manage your payment links and track transactions."} buttonTitle={"Payment Link"} />
 
         {/* Main Card */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden">
@@ -96,22 +96,22 @@ const PaymentLinksModern = () => {
             <table className="min-w-[700px] w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50/50 border-b border-slate-100">
-                  <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
+                  <th className="py-4 px-6 text-xs  font-semibold text-text/80 uppercase tracking-wider">
                     Title
                   </th>
-                  <th className="py-4 px-6  text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
+                  <th className="py-4 px-6  text-xs  font-semibold text-text/80 uppercase tracking-wider">
                     Type
                   </th>
-                  <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
+                  <th className="py-4 px-6 text-xs  font-semibold text-text/80 uppercase tracking-wider">
                     Amount
                   </th>
-                  <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
+                  <th className="py-4 px-6 text-xs  font-semibold text-text/80 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider">
+                  <th className="py-4 px-6 text-xs  font-semibold text-text/80 uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="py-4 px-6 text-xs font-montserrat font-semibold text-text/80 uppercase tracking-wider text-right">
+                  <th className="py-4 px-6 text-xs  font-semibold text-text/80 uppercase tracking-wider text-right">
                     Actions
                   </th>
                 </tr>
@@ -125,20 +125,20 @@ const PaymentLinksModern = () => {
                   >
                     {/* Title */}
                     <td className="py-4 px-6 whitespace-nowrap">
-                      <span className="block font-roboto font-semibold text-text text-sm">
+                      <span className="block  font-semibold text-text text-sm">
                         {link.title}
                       </span>
                     </td>
 
                     {/* Type */}
                     <td className="py-4 px-6 whitespace-nowrap">
-                      <span className="inline-block  py-0.5 rounded font-roboto  bg-white text-slate-600 text-xs font-medium">
+                      <span className="inline-block  py-0.5 rounded   bg-white text-slate-600 text-xs font-medium">
                         {link.type}
                       </span>
                     </td>
 
                     {/* Amount */}
-                    <td className="py-4 px-6 font-roboto whitespace-nowrap">
+                    <td className="py-4 px-6  whitespace-nowrap">
                       <div className="flex items-center gap-1.5">
                         <span className="font-bold text-text">
                           {link.amount}
@@ -152,7 +152,7 @@ const PaymentLinksModern = () => {
                     </td>
 
                     {/* Status */}
-                    <td className="py-4 px-6 font-roboto whitespace-nowrap">
+                    <td className="py-4 px-6  whitespace-nowrap">
                       <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                         {link.status}
@@ -160,7 +160,7 @@ const PaymentLinksModern = () => {
                     </td>
 
                     {/* Created */}
-                    <td className="py-4 px-6 font-roboto whitespace-nowrap">
+                    <td className="py-4 px-6  whitespace-nowrap">
                       <div className="flex flex-col">
                         <span className="text-sm text-slate-600">
                           {link.createdAt}
@@ -201,9 +201,9 @@ const PaymentLinksModern = () => {
                             className="absolute right-0 mt-2 w-32 bg-white shadow-lg border border-slate-200 rounded-lg py-1 z-20"
                           >
                             <Link href={`/dashboard/payments/edit/${link.id}`}>
-                            <button className="flex items-center cursor-pointer gap-2 w-full text-left px-3 py-2 hover:bg-slate-50 text-sm text-slate-700">
-                              <Edit size={14} /> Edit
-                            </button>
+                              <button className="flex items-center cursor-pointer gap-2 w-full text-left px-3 py-2 hover:bg-slate-50 text-sm text-slate-700">
+                                <Edit size={14} /> Edit
+                              </button>
                             </Link>
                             <button className="flex items-center cursor-pointer gap-2 w-full text-left px-3 py-2 hover:bg-red-50 text-sm text-red-600">
                               <Trash size={14} /> Delete
@@ -219,7 +219,7 @@ const PaymentLinksModern = () => {
           </div>
 
           {/* Footer */}
-          <div className="bg-slate-50 font-roboto border-t border-slate-200 p-4 flex items-center justify-between text-xs text-text">
+          <div className="bg-slate-50  border-t border-slate-200 p-4 flex items-center justify-between text-xs text-text">
             <span>Showing 1 to 4 of 4 results</span>
             <div className="flex gap-2">
               <button className="px-3 py-1 bg-white border border-slate-200 rounded hover:bg-slate-100 disabled:opacity-50 cursor-pointer">

@@ -4,10 +4,10 @@ import Button from "@/components/ui/Button";
 
 const ProfilePage = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 font-roboto">
+    <div className="max-w-6xl mx-auto px-4 ">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <h1 className="text-2xl font-bold text-secondery/80 font-montserrat">
+        <h1 className="text-2xl font-bold text-secondery/80 ">
           User Profile
         </h1>
         <Button
@@ -43,7 +43,7 @@ const ProfilePage = () => {
 
             {/* Info */}
             <div className="absolute bottom-6 left-44">
-              <h2 className="text-xl font-bold text-white font-montserrat">
+              <h2 className="text-xl font-bold text-white ">
                 App Devs
               </h2>
               <div className="flex items-center text-indigo-100 text-sm mt-1">
@@ -60,7 +60,7 @@ const ProfilePage = () => {
               ["Last Name*", "Devs"],
             ].map(([label, value]) => (
               <div key={label}>
-                <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
+                <label className="block text-sm font-semibold text-text/80 mb-2 ">
                   {label}
                 </label>
                 <input
@@ -71,7 +71,7 @@ const ProfilePage = () => {
             ))}
 
             <div>
-              <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
+              <label className="block text-sm font-semibold text-text/80 mb-2 ">
                 Country
               </label>
               <select className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all bg-white">
@@ -80,7 +80,7 @@ const ProfilePage = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
+              <label className="block text-sm font-semibold text-text/80 mb-2 ">
                 Mobile
               </label>
               <input
@@ -90,7 +90,7 @@ const ProfilePage = () => {
             </div>
 
             <div className="md:col-span-2">
-              <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
+              <label className="block text-sm font-semibold text-text/80 mb-2 ">
                 Company Name
               </label>
               <input
@@ -101,7 +101,7 @@ const ProfilePage = () => {
 
             {["Address", "City", "State", "Zip Code"].map((field) => (
               <div key={field}>
-                <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
+                <label className="block text-sm font-semibold text-text/80 mb-2 ">
                   {field}
                 </label>
                 <input className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all" />

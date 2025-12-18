@@ -2,17 +2,14 @@ import React from "react";
 
 const SecuritySettings = () => {
   return (
-    <section
-      aria-labelledby="kyc-heading"
-      className=""
-    >
+    <section aria-labelledby="kyc-heading" className="">
       <div className="mx-auto max-w-6xl">
         {/* KYC Information Card */}
-        <div className="rounded-2xl border border-gray-100 font-roboto bg-white p-6 shadow-sm sm:p-8">
+        <div className="rounded-2xl border border-gray-100  bg-white p-6 shadow-sm sm:p-8">
           <header className="flex flex-wrap items-center gap-3">
             <h2
               id="kyc-heading"
-              className="text-lg font-bold font-montserrat text-slate-800 sm:text-xl"
+              className="text-lg font-bold  text-slate-800 sm:text-xl"
             >
               KYC Information
             </h2>

@@ -139,7 +139,7 @@
 //   return (
 //     <div className="">
 //       <header className="mb-8">
-//         <h1 className="text-4xl font-extrabold font-montserrat text-secondery">
+//         <h1 className="text-4xl font-extrabold  text-secondery">
 //           <span className="text-primary">Support</span> Dashboard
 //         </h1>
 //         <p className="text-text mt-1">
@@ -156,7 +156,7 @@
 
 //       {/* Table Header and Action */}
 //       <div className="flex justify-between items-center mb-6">
-//         <h2 className="text-2xl font-bold text-text font-montserrat">
+//         <h2 className="text-2xl font-bold text-text ">
 //           Recent Tickets ({tickets.length})
 //         </h2>
 //         <Link href={"/dashboard/helpCenter/create"}>
@@ -404,7 +404,7 @@ export default function TicketDashboard() {
     <div className="w-full">
       {/* ---------- Header ---------- */}
       <header className="mb-8">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-montserrat text-secondery/80">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondery/80">
           <span className="text-primary">Support</span> Dashboard
         </h1>
         <p className="text-sm sm:text-base text-text mt-1">
@@ -421,7 +421,7 @@ export default function TicketDashboard() {
 
       {/* ---------- Action Bar ---------- */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-text font-montserrat">
+        <h2 className="text-xl sm:text-2xl font-bold text-text">
           Recent Tickets ({tickets.length})
         </h2>
 

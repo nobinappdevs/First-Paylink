@@ -55,7 +55,7 @@ const AllMoneyLogs = () => {
       {/* Search */}
       <div className="p-4 border-b border-slate-100 flex  justify-between items-center gap-3">
         <div className="">
-          <h2 className="text-xl font-montserrat text-secondery font-bold">
+          <h2 className="text-xl  text-secondery font-bold">
             Transaction Log
           </h2>
         </div>

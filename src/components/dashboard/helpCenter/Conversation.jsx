@@ -6,11 +6,9 @@ const Conversation = () => {
   return (
     <div className="w-full">
       {/* Main Container */}
-      <div className="bg-white rounded-xl font-roboto shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row h-[85vh]">
-        
+      <div className="bg-white rounded-xl  shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row h-[85vh]">
         {/* Left Side: Message Area */}
         <div className="flex-1 flex flex-col border-r border-gray-100">
-          
           {/* Header Info */}
           <div className="p-4 md:p-5 border-b border-gray-50 flex items-center justify-between">
             <div className="flex items-center cursor-pointer gap-3">

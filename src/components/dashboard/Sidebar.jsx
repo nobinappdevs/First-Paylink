@@ -6,12 +6,13 @@ import logo from "@assets/logo.webp";
 
 import {
   LayoutGrid,
-  CreditCard,
-  SendHorizonal,
   Wallet,
-  ArrowDownToLine,
   Box,
+  ArrowUpRight,
+  Headset,
+  ArrowRightLeft,
 } from "lucide-react";
+import { FiCreditCard, FiLogOut, FiSend } from "react-icons/fi";
 
 const NavItem = ({ icon, title, link, active, onClick }) => {
   return (
@@ -37,7 +38,7 @@ const NavItem = ({ icon, title, link, active, onClick }) => {
         className={`font-semibold text-sm transition-colors duration-200 lg:text-base ${
           active
             ? "text-primary"
-            : "font-roboto font-semibold text-sm text-secondery/80 group-hover:text-primary"
+            : " font-semibold text-sm text-secondery/80 group-hover:text-primary"
         }`}
       >
         {title}
@@ -52,7 +53,7 @@ const Sidebar = ({ onLinkClick }) => {
     {
       id: 1,
       title: "Payments",
-      icon: <ArrowDownToLine size={20} />,
+      icon: <FiSend size={20} />,
       link: "/dashboard/payments",
     },
     {
@@ -70,7 +71,7 @@ const Sidebar = ({ onLinkClick }) => {
     {
       id: 4,
       title: "Money Out",
-      icon: <Box size={20} />,
+      icon: <ArrowUpRight size={20} />,
       link: "/dashboard/withdraw",
     },
   ];
@@ -79,20 +80,20 @@ const Sidebar = ({ onLinkClick }) => {
     {
       id: 2,
       title: "Transactions",
-      icon: <SendHorizonal size={20} />,
+      icon: <ArrowRightLeft size={20} />,
       link: "/dashboard/transactions",
     },
     {
       id: 5,
       title: "Help Center",
-      icon: <CreditCard size={20} />,
+      icon: <Headset size={20} />,
       link: "/dashboard/helpCenter",
     },
   ];
 
   return (
     <aside
-      className="font-roboto h-full flex flex-col pl-9 pt-5 lg:pt-6 lg:pl-12 overflow-y-auto  scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className=" h-full flex flex-col pl-9 pt-5 lg:pt-6 lg:pl-12 overflow-y-auto  scrollbar-hide [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       role="navigation"
       aria-label="Sidebar Navigation"
     >
@@ -120,9 +121,7 @@ const Sidebar = ({ onLinkClick }) => {
       </div>
 
       <div className="">
-        <h6 className="mb-4 pl-1lg:mb-5">
-          Money Transfer
-        </h6>
+        <h6 className="mb-4 pl-1lg:mb-5">Money Transfer</h6>
         <div className="flex flex-col gap-1.5 lg:gap-2">
           {moneyTransfer.map((item) => (
             <NavItem
@@ -136,9 +135,7 @@ const Sidebar = ({ onLinkClick }) => {
       </div>
 
       <div className="mt-5 lg:mt-6">
-        <h6  className="mb-4 pl-1lg:mb-5">
-          Wallet Action
-        </h6>
+        <h6 className="mb-4 pl-1lg:mb-5">Wallet Action</h6>
         <div className="flex flex-col gap-1.5 lg:gap-2">
           {walletAction.map((item) => (
             <NavItem

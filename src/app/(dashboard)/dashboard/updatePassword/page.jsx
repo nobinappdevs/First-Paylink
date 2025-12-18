@@ -19,7 +19,7 @@ const page = () => {
           ["Confirm Password*", showConfirm, setShowConfirm],
         ].map(([label, show, setShow], i) => (
           <div key={i} className="mb-5 relative">
-            <label className="block text-sm font-semibold text-text/80 mb-2 font-montserrat">
+            <label className="block text-sm font-semibold text-text/80 mb-2 ">
               {label}
             </label>
             <input

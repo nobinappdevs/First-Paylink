@@ -60,7 +60,7 @@ const invoices = [
   return (
     <div className="">
         {/* Header Section */}
-        <DahsboardHeader url={'/dashboard/invoice/create'} />
+        <DahsboardHeader url={'/dashboard/invoice/create'} title={'Invoices'} subtitle={'Manage your invoices and track payments.'} buttonTitle={'New Invoice'} />
         {/* Table Card */}
         <InvoiceTable invoices={invoices} />
     </div>

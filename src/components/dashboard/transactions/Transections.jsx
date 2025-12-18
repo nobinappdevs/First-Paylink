@@ -5,9 +5,9 @@ import Pagination from "@/components/Sheared/Pagination";
 import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
 import { reactSelectStyles } from "@/style/selectStyles";
+import InputField from "@/components/ui/InputField";
 
 const Transections = () => {
-
   const filterOptions = [
     { value: "Filter", label: "Filter" },
     { value: "today", label: "Today" },
@@ -20,9 +20,9 @@ const Transections = () => {
       {/* Search */}
       <div className="p-4 border-b border-slate-100 flex  justify-between items-center gap-3">
         <div className="">
-          <h2 className="text-xl font-montserrat text-secondery font-bold">
+          <h4 className="text-xl  text-secondery font-bold">
             Transaction Log
-          </h2>
+          </h4>
         </div>
         <div className="relative flex gap-x-2.5">
           <Select
@@ -36,7 +36,7 @@ const Transections = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="pl-10  placeholder:font-roboto  rounded-xl  w-full placeholder:text-text placeholder:text-sm pr-3  py-3.5 border-black/10 border text-sm focus:ring-primary focus:border-primary"
+              className="pl-10 w-full bg-white border border-[#e5e5e5] rounded-[5px] h-[45px] leading-[45px] px-[15px] py-2.5 text-[14px] font-medium text-[#425466] shadow-none outline-none focus:ring-0 focus:border-primary"
             />
           </div>
         </div>
@@ -50,8 +50,6 @@ const Transections = () => {
 };
 
 export default Transections;
-
-
 
 // "use client";
 
@@ -77,7 +75,7 @@ export default Transections;
 //     <div className="lg:p-6 py-3.5 md:p-4 p-2 bg-basic rounded-sm lg:rounded-[20px] shadow-md w-full">
 //       {/* Header */}
 //       <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-//         <h2 className="text-xl font-montserrat text-secondery font-bold">
+//         <h2 className="text-xl  text-secondery font-bold">
 //           Transaction Log
 //         </h2>
 

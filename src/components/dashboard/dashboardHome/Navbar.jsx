@@ -10,6 +10,7 @@ import {
   FiCheckSquare,
   FiShield,
   FiChevronDown,
+  FiBox,
 } from "react-icons/fi";
 import profile from "@assets/profile.png";
 import ThemeToggleSwitch from "./ThemeToggleSwitch";
@@ -54,8 +55,8 @@ const Navbar = ({ handleOpen }) => {
   };
 
   const moneyTransfer = [
-    { id: 1, title: "Send Money", icon: FiSend },
-    { id: 2, title: "Add Funds", icon: FiPlusCircle },
+    { id: 1, title: "Payments", icon: FiSend, link: "/dashboard/payments" },
+    { id: 2, title: "Products", icon: FiBox, link: "/dashboard/products" },
   ];
 
   const notifications = [
@@ -101,21 +102,17 @@ const Navbar = ({ handleOpen }) => {
 
   return (
     <nav className="sticky top-0 z-40 lg:z-50">
-      <div className="relative w-full pt-5 pb-2.5 px-4   bg-basic font-roboto flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.15)]">
+      <div className="relative w-full pt-5 pb-2.5 px-4   bg-basic  flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.15)]">
         <div className="xl:block hidden">
-          <h4>
-            Welcome Back
-          </h4>
-          <h6>
-            Tomas William
-          </h6>
+          <h4>Welcome Back</h4>
+          <h6>Tomas William</h6>
         </div>
         <div
           onClick={handleOpen}
           className="flex cursor-pointer xl:hidden items-center sm:gap-x-2 gap-x-1"
         >
           <AlignStartVertical className="size-5 md:size-6  text-text " />
-          <h3 className="font-montserrat md:text-xl text-base font-bold text-secondery/90 ">
+          <h3 className=" md:text-xl text-base font-bold text-secondery/90 ">
             Dahsboard
           </h3>
         </div>
@@ -248,28 +245,32 @@ const Navbar = ({ handleOpen }) => {
                     />
                     <div>
                       <h5 className="font-semibold">Tomas William</h5>
-                      <h6 className="text-sm text-gray-500">william@gmail.com</h6>
+                      <h6 className="text-sm text-gray-500">
+                        william@gmail.com
+                      </h6>
                     </div>
                   </button>
                 </Link>
                 <div className="border-b border-gray-300 pb-3 mb-4">
                   {moneyTransfer.map((item) => (
-                    <div
-                      key={item.id}
-                      className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
-                    >
-                      <item.icon size={17} className="text-gray-600" />
-                      <h6 className="text-sm font-semibold text-gray-700">
-                        {item.title}
-                      </h6>
-                    </div>
+                    <Link href={item.link} key={item.id}>
+                      <button
+                        onClick={() => setProfileOpen(false)}
+                        className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
+                      >
+                        <item.icon size={17} className="text-gray-600" />
+                        <h6 className="text-sm font-semibold text-gray-700">
+                          {item.title}
+                        </h6>
+                      </button>
+                    </Link>
                   ))}
                 </div>
                 <div className="border-b border-gray-300 pb-3 mb-4">
                   <Link href={"/dashboard/verificationkyc"}>
                     <button
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
+                      className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <FiCheckSquare size={17} className="text-gray-600" />
                       <h6 className="text-sm font-semibold text-gray-700">
@@ -280,7 +281,7 @@ const Navbar = ({ handleOpen }) => {
                   <Link href={"/dashboard/twofaverification"}>
                     <button
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
+                      className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <FiShield size={17} className="text-gray-600" />
                       <h6 className="text-sm font-semibold text-gray-700">
@@ -291,7 +292,7 @@ const Navbar = ({ handleOpen }) => {
                   <Link href={"/dashboard/updatePassword"}>
                     <button
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
+                      className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <KeyRound size={17} className="text-gray-600" />
                       <h6 className="text-sm font-semibold text-gray-700">

@@ -39,7 +39,7 @@ const SpecialSlider = () => {
 
               <div className="relative z-10">
                 <h2 className="lg:text-3xl text-xl md:w-3/4 font-bold">{banner.title}</h2>
-                <button className="mt-4 bg-white/20 cursor-pointer text-white text-sm px-6 py-1.5 rounded-md font-semibold font-montserrat">
+                <button className="mt-4 bg-white/20 cursor-pointer text-white text-sm px-6 py-1.5 rounded-md font-semibold ">
                   {banner.buttonText}
                 </button>
               </div>

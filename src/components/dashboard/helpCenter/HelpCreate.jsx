@@ -221,11 +221,11 @@ const HelpCreate = () => {
 
   return (
     <div className="w-full">
-      <div className="bg-white border border-gray-100 font-roboto shadow-xl shadow-gray-200/50 rounded-2xl overflow-hidden">
+      <div className="bg-white border border-gray-100  shadow-xl shadow-gray-200/50 rounded-2xl overflow-hidden">
         {/* Header Section - No , Solid White with Bottom Border */}
         <div className="px-8 py-8 border-b border-gray-100 bg-gray-50/30">
           <div className="flex items-center gap-3 mb-2">
-            <h2 className="text-3xl font-black text-secondery/80 font-montserrat tracking-tight">
+            <h2 className="text-3xl font-black text-secondery/80  tracking-tight">
               Create Support Ticket
             </h2>
           </div>

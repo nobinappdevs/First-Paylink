@@ -14,9 +14,9 @@ const DashboardHomeLeft = () => {
       <div className="md:flex justify-between items-start">
         <div className="flex md:justify-normal justify-between items-center gap-x-8 mb-6">
           <div>
-            <p>
+            <h6>
               Total Wallet Balance
-            </p>
+            </h6>
             <h4 >
               {showBalance ? balance : "******"}
             </h4>

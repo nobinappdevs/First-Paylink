@@ -89,14 +89,14 @@ const Preview = () => {
             <button
               key={g.id}
               onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
+              className={`md:p-4 p-2 border cursor-pointer rounded-md transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
             >
-              <Image src={g.image} alt={g.id} className="h-10 w-auto" />
+              <Image src={g.image} alt={g.id} className="md:h-10 h-6 w-auto" />
             </button>
           ))}
         </div>
@@ -106,14 +106,14 @@ const Preview = () => {
             <button
               key={g.id}
               onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
+              className={`md:p-4 p-2 border cursor-pointer rounded-md transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
             >
-              <Image src={g.image} alt={g.id} className="h-10 w-auto" />
+              <Image src={g.image} alt={g.id} className="md:h-10 h-6 w-auto" />
             </button>
           ))}
         </div>

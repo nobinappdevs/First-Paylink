@@ -1,15 +1,126 @@
+// 'use client';
+
+// import Image from "next/image";
+// import { useState } from "react";
+// import { Upload, X } from "lucide-react";
+
+// export default function ImageUploadField() {
+//   const [fileData, setFileData] = useState(null);
+//   const [progress, setProgress] = useState(0);
+
+//   const handleFileChange = (e) => {
+//     const file = e.target.files?.[0];
+//     if (!file) return;
+
+//     const preview = URL.createObjectURL(file);
+//     setFileData({ file, preview });
+//     setProgress(0);
+
+//     let value = 0;
+//     const interval = setInterval(() => {
+//       value += 10;
+//       setProgress(value);
+//       if (value >= 100) clearInterval(interval);
+//     }, 120);
+//   };
+
+//   const removeImage = () => {
+//     setFileData(null);
+//     setProgress(0);
+//   };
+
+//   return (
+//     <div>
+//               <label className="block text-sm font-medium text-slate-700 mb-2">
+//                     Image{" "}
+//                     <span className="text-red-500" aria-label="required">
+//                       *
+//                     </span>
+//                   </label>
+
+//       <div className="relative border-2 border-dashed border-slate-300 rounded-xl overflow-hidden hover:border-primary transition-colors focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-200">
+
+//         {/* Fixed Height Container */}
+//         <div className="relative h-[180px]">
+
+//           {/* Default Upload UI */}
+//           {!fileData && (
+//             <label className="absolute inset-0 flex flex-col items-center justify-center text-center cursor-pointer">
+//               <Upload className="w-8 h-8 text-primary mb-2" />
+//               <p className="text-sm text-slate-600">
+//                 Drop your file Or{" "}
+//                 <span className="text-primary  font-bold">click</span> to select
+//               </p>
+//               <input
+//                 type="file"
+//                 accept="image/*"
+//                 className="sr-only"
+//                 onChange={handleFileChange}
+//               />
+//             </label>
+//           )}
+
+//           {/* Image Preview (same height) */}
+//           {fileData && (
+//             <>
+//               <Image
+//                 src={fileData.preview}
+//                 alt="Preview"
+//                 fill
+//                 className="object-cover"
+//               />
+
+//               {/* Remove Button */}
+//               <button
+//                 onClick={removeImage}
+//                 className="absolute cursor-pointer top-2 right-2 z-10 bg-black/60 text-white w-7 h-7 rounded-full flex items-center justify-center hover:bg-black transition"
+//               >
+//                 <X size={14} />
+//               </button>
+//             </>
+//           )}
+//         </div>
+
+//         {/* File info + progress (below, height doesn't change image area) */}
+//         {fileData && (
+//           <div className="p-3 bg-white border-t">
+//             <p className="text-sm font-medium truncate">
+//               {fileData.file.name}
+//             </p>
+//             <p className="text-xs text-slate-500">
+//               {(fileData.file.size / 1024).toFixed(1)} KB
+//             </p>
+
+//             {progress < 100 && (
+//               <div className="mt-2 h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+//                 <div
+//                   className="h-full bg-emerald-500 transition-all duration-300"
+//                   style={{ width: `${progress}%` }}
+//                 />
+//               </div>
+//             )}
+//           </div>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
 'use client';
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 import { Upload, X } from "lucide-react";
 
 export default function ImageUploadField() {
   const [fileData, setFileData] = useState(null);
   const [progress, setProgress] = useState(0);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files?.[0];
+  const onDrop = useCallback((acceptedFiles) => {
+    const file = acceptedFiles?.[0];
     if (!file) return;
 
     const preview = URL.createObjectURL(file);
@@ -22,7 +133,17 @@ export default function ImageUploadField() {
       setProgress(value);
       if (value >= 100) clearInterval(interval);
     }, 120);
-  };
+  }, []);
+
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+  } = useDropzone({
+    onDrop,
+    accept: { "image/*": [] },
+    multiple: false,
+  });
 
   const removeImage = () => {
     setFileData(null);
@@ -31,36 +152,47 @@ export default function ImageUploadField() {
 
   return (
     <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Image{" "}
-                    <span className="text-red-500" aria-label="required">
-                      *
-                    </span>
-                  </label>
+      {/* Label */}
+      <label className="block text-sm font-medium text-slate-700 mb-2">
+        Image <span className="text-red-500">*</span>
+      </label>
 
-      <div className="relative border-2 border-dashed border-slate-300 rounded-xl overflow-hidden hover:border-primary transition-colors focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-200">
+      {/* Dropzone Wrapper */}
+      <div
+        {...getRootProps()}
+        className={`
+          relative border-2 border-dashed rounded-xl overflow-hidden cursor-pointer
+          transition-colors
+          ${isDragActive ? "border-primary bg-primary/5" : "border-slate-300"}
+          hover:border-primary
+          focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-200
+        `}
+      >
+        <input {...getInputProps()} />
 
-        {/* Fixed Height Container */}
+        {/* Fixed Height */}
         <div className="relative h-[180px]">
-
-          {/* Default Upload UI */}
+          {/* Empty State */}
           {!fileData && (
-            <label className="absolute inset-0 flex flex-col items-center justify-center text-center cursor-pointer">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <Upload className="w-8 h-8 text-primary mb-2" />
               <p className="text-sm text-slate-600">
-                Drop your file Or{" "}
-                <span className="text-primary  font-bold">click</span> to select
+                {isDragActive ? (
+                  <span className="font-semibold text-primary">
+                    Drop the image here
+                  </span>
+                ) : (
+                  <>
+                    Drop your file or{" "}
+                    <span className="text-primary font-bold">click</span> to
+                    select
+                  </>
+                )}
               </p>
-              <input
-                type="file"
-                accept="image/*"
-                className="sr-only"
-                onChange={handleFileChange}
-              />
-            </label>
+            </div>
           )}
 
-          {/* Image Preview (same height) */}
+          {/* Preview */}
           {fileData && (
             <>
               <Image
@@ -70,10 +202,15 @@ export default function ImageUploadField() {
                 className="object-cover"
               />
 
-              {/* Remove Button */}
               <button
-                onClick={removeImage}
-                className="absolute cursor-pointer top-2 right-2 z-10 bg-black/60 text-white w-7 h-7 rounded-full flex items-center justify-center hover:bg-black transition"
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeImage();
+                }}
+                className="absolute top-2 right-2 z-10 bg-black/60 text-white
+                w-7 h-7 rounded-full flex items-center justify-center
+                hover:bg-black transition"
               >
                 <X size={14} />
               </button>
@@ -81,7 +218,7 @@ export default function ImageUploadField() {
           )}
         </div>
 
-        {/* File info + progress (below, height doesn't change image area) */}
+        {/* Info + Progress */}
         {fileData && (
           <div className="p-3 bg-white border-t">
             <p className="text-sm font-medium truncate">

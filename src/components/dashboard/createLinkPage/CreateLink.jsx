@@ -28,7 +28,7 @@ export default function PaymentPage() {
     { value: "bdt", label: "BDT - Bangladeshi Taka" },
   ];
   return (
-    <div className=" px-4 pt-8 font-roboto">
+    <div className=" px-4 pt-8 ">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Panel - Form */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
@@ -73,7 +73,7 @@ export default function PaymentPage() {
           </div>
 
           {/* Payment Page Section */}
-          <div className="border-b-2 border-primary pb-2 mb-6">
+          <div className="border-b-2 border-primary/60 pb-2 mb-6">
             <h5>Payment Page</h5>
           </div>
 
@@ -181,11 +181,11 @@ export default function PaymentPage() {
               <div className="w-full grid grid-cols-2 gap-4 ">
                 {/* Title */}
                 <div className="col-span-2 ">
-                                               <InputField
-                  type="text"
-                   label='Title'
-                  placeholder='Collecting Payment Platform'
-                    />
+                  <InputField
+                    type="text"
+                    label="Title"
+                    placeholder="Collecting Payment Platform"
+                  />
                 </div>
 
                 {/* Currency */}
@@ -206,21 +206,21 @@ export default function PaymentPage() {
 
                 {/* Unit Price */}
                 <div>
-              <InputField
-                  type="number"
-                   label='Unit Price'
-                  placeholder='$0.00'
-                    />
+                  <InputField
+                    type="number"
+                    label="Unit Price"
+                    placeholder="$0.00"
+                  />
                 </div>
 
                 {/* Quantity */}
                 <div>
-                                               <InputField
-                  type="number"
-                   label='Quantity'
-                   defaultValue={1}
-                  placeholder='1'
-                    />
+                  <InputField
+                    type="number"
+                    label="Quantity"
+                    defaultValue={1}
+                    placeholder="1"
+                  />
                 </div>
 
                 {/* Button */}

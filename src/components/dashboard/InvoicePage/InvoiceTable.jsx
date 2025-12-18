@@ -108,7 +108,7 @@ export default function InvoiceTable({ invoices }) {
   });
 
   return (
-    <div className="bg-basic rounded-xl shadow-sm border border-text/10 overflow-hidden text-text font-roboto">
+    <div className="bg-basic rounded-xl shadow-sm border border-text/10 overflow-hidden text-text ">
       <div className="px-6 py-4 border-b border-text/10 flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:max-w-sm">
           <Search
@@ -131,7 +131,7 @@ export default function InvoiceTable({ invoices }) {
 
       <div className="overflow-x-auto w-full">
         <table className="w-full text-left text-sm table-auto">
-          <thead className="bg-basic border-b font-montserrat text-sm border-text/20">
+          <thead className="bg-basic border-b text-sm border-text/20">
             <tr>
               <th className="py-3.5 px-6 text-text/80  font-semibold uppercase tracking-wider w-40 min-w-[150px]">
                 Invoice
@@ -157,12 +157,28 @@ export default function InvoiceTable({ invoices }) {
             </tr>
           </thead>
 
-          <tbody className="divide-y font-roboto divide-text/10">
+          <tbody className="divide-y  divide-text/10">
             {invoices.map((inv) => (
               <tr
                 key={inv.id}
                 className="group hover:bg-text/5 transition-colors"
               >
+                                <td className="py-4 px-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 text-text/70 flex items-center justify-center text-xs font-bold ring-2 ring-primary/20">
+                      {getInitials(inv.customer)}
+                    </div>
+                    <div>
+                      <p className="font-medium text-text">{inv.customer}</p>
+                      <a
+                        href={`mailto:${inv.email}`}
+                        className="text-xs text-slate-500 hover:text-primary transition-colors"
+                      >
+                        {inv.email}
+                      </a>
+                    </div>
+                  </div>
+                </td>
                 <td className="py-4 px-6 font-medium">
                   <div className="flex items-center gap-2">
                     <FileText size={16} className="text-text/40" />
@@ -181,22 +197,7 @@ export default function InvoiceTable({ invoices }) {
                   </div>
                 </td>
 
-                <td className="py-4 px-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary/20 text-text/70 flex items-center justify-center text-xs font-bold ring-2 ring-primary/20">
-                      {getInitials(inv.customer)}
-                    </div>
-                    <div>
-                      <p className="font-medium text-text">{inv.customer}</p>
-                      <a
-                        href={`mailto:${inv.email}`}
-                        className="text-xs text-slate-500 hover:text-primary transition-colors"
-                      >
-                        {inv.email}
-                      </a>
-                    </div>
-                  </div>
-                </td>
+
 
                 <td className="py-4 px-6 font-bold text-text">{inv.amount}</td>
 
@@ -279,19 +280,19 @@ export default function InvoiceTable({ invoices }) {
                     <div
                       ref={(el) => (menuRefs.current[inv.id] = el)}
                       id={`menu-${inv.id}`}
-                      className="absolute right-6 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-xl z-30 origin-top-right animate-fade-in-up"
+                      className="absolute right-6 mt-2 w-48 overflow-hidden bg-white border border-slate-200 rounded-lg shadow-xl z-30 origin-top-right animate-fade-in-up"
                       role="menu"
                       aria-orientation="vertical"
                     >
                       <button
-                        className="w-full  cursor-pointer flex items-center gap-2 text-left px-4 py-2 text-sm text-text/70 hover:bg-text/50 hover:text-primary transition-colors rounded-t-lg"
+                        className="w-full  cursor-pointer flex items-center gap-2 text-left px-4 py-2 text-sm text-text/70 hover:bg-primary hover:text-white transition-colors rounded-t-lg"
                         role="menuitem"
                         onClick={() => pdfRef.current?.downloadPDF()}
                       >
                         <FileText size={16} /> Download PDF
                       </button>
                       <button
-                        className="w-full cursor-pointer flex items-center gap-2 text-left px-4 py-2 text-sm text-text/70 hover:bg-text/50 hover:text-primary transition-colors"
+                        className="w-full cursor-pointer flex items-center gap-2 text-left px-4 py-2 text-sm text-text/70 hover:bg-primary hover:text-white transition-colors"
                         role="menuitem"
                         onClick={() => {
                           setSelectedInvoice(mapInvoiceForView(inv));
@@ -304,7 +305,7 @@ export default function InvoiceTable({ invoices }) {
 
                       <Link href={"/dashboard/invoice/edit/12"}>
                         <button
-                          className="w-full cursor-pointer  flex items-center gap-2 text-left px-4 py-2 text-sm text-text/70 hover:bg-text/50 hover:text-primary transition-colors"
+                          className="w-full cursor-pointer  flex items-center gap-2 text-left px-4 py-2 text-sm text-text/70 hover:bg-primary hover:text-white transition-colors"
                           role="menuitem"
                         >
                           <Edit size={16} /> Edit
@@ -314,7 +315,7 @@ export default function InvoiceTable({ invoices }) {
                         <>
                           <div className="border-t border-slate-100 my-1"></div>
                           <button
-                            className="w-full justify-center flex  cursor-pointer items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
+                            className="w-full justify-center flex  cursor-pointer items-center gap-2 px-4 py-2 text-sm hover:bg-primary hover:text-white text-red-600 transition-colors rounded-b-lg"
                             role="menuitem"
                           >
                             Delete

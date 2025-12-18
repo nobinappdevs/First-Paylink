@@ -41,10 +41,10 @@ const Layouts = ({ children }) => {
       <div className="xl:col-span-10 col-span-12 relative">
         <Navbar handleOpen={handleOpen} />
         <div className="flex  flex-col mt-5 items-center justify-center lg:hidden">
-          <h4 className="font-bold leading-6 text-secondery font-montserrat text-xl sm:text-2xl">
+          <h4 className="font-bold leading-6 text-secondery text-xl sm:text-2xl">
             Welcome Back
           </h4>
-          <h6 className="text-text text-base font-medium leading-4 font-roboto pt-2">
+          <h6 className="text-text text-base font-medium leading-4  pt-2">
             Tomas William
           </h6>
         </div>

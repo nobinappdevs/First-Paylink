@@ -50,7 +50,7 @@ const moneyOutLogs = [
 
 export default function MoneyOutLog() {
   return (
-    <section className="overflow-hidden font-roboto  rounded-2xl  bg-white shadow-sm">
+    <section className="overflow-hidden   rounded-2xl  bg-white shadow-sm">
       <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white px-4 sm:px-6 py-4 sm:py-5 border-b border-gray-100">
         <div>
           <h2 className="text-base sm:text-lg font-bold text-secondery/80">

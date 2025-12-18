@@ -5,7 +5,7 @@ const MoneyOutLogTable = ({ moneyOutLogs }) => {
     <div className="relative w-full overflow-x-auto">
       <table className="min-w-[1200px] xl:w-full text-left text-sm rounded-xl">
         <thead>
-          <tr className="bg-gray-50/80 font-montserrat text-xs uppercase tracking-wider text-text">
+          <tr className="bg-gray-50/80 text-xs uppercase tracking-wider text-text">
             <th className="px-3 sm:px-6 py-3 sm:py-4 font-bold border-b border-gray-100">
               Transaction Details
             </th>

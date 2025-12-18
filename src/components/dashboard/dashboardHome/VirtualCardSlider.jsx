@@ -59,7 +59,7 @@ const VirtualCardSlider = () => {
   return (
     <div className="py-4 ">
       <div className="flex justify-between items-center mb-5 px-2 lg:px-5">
-        <h3 className="text-xl font-bold text-secondery font-montserrat">
+        <h3 className="text-xl font-bold text-secondery ">
           My Virtual Card
         </h3>
         <button className="text-teal-700 font-semibold cursor-pointer">
