@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
-import { CreditCard } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 import coingateLogo from "@assets/coingateLogo.webp";
@@ -16,6 +15,7 @@ import qrpayLogo from "@assets/qrpayLogo.webp";
 import razorpayLogo from "@assets/razorpayLogo.webp";
 import sslcommezLogo from "@assets/sslcommezLogo.webp";
 import stipeLogo from "@assets/stipeLogo.webp";
+import InputField from "@/components/ui/InputField";
 
 const Preview = () => {
   const [activeTab] = useState("fixed");
@@ -50,37 +50,32 @@ const Preview = () => {
     <div className="bg-white rounded-2xl shadow-lg p-8">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-secondery/80">Preview</h2>
+        <h4>Preview</h4>
       </div>
       {/* Company */}
       <div className="mb-6 pb-6 border-b-2 border-slate-100">
         <div className="flex items-center space-x-2 text-secondery/80">
           <div className="w-5 h-5 bg-secondery/80 rounded" />
-          <span className="font-semibold">ABC LTD</span>
+          <span className="font-semibold text-sm">Pay Link</span>
         </div>
       </div>
 
       {/* Amount */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-slate-700 mb-2">
-          Amount
-        </label>
-        <div className="flex items-center border-2 border-slate-200 rounded-xl px-4 py-3">
-          <span className="text-slate-500 mr-2">$</span>
-          <input
-            readOnly
-            value={activeTab === "fixed" ? formData.price : "0.00"}
-            className="flex-1 outline-none text-lg bg-transparent"
-          />
-        </div>
+        <InputField
+          type="number"
+          label="Amount"
+          placeholder={"$ 30.00"}
+          readOnly
+        />
       </div>
 
       {/* Message */}
       <div className="mb-6 bg-slate-50 rounded-xl p-4">
-        <p className="text-sm font-medium text-slate-700 mb-2">Message</p>
-        <p className="text-xs text-slate-500">
+        <h5 className="text-sm font-medium text-slate-700 mb-2">Message</h5>
+        <h6 className="text-xs text-slate-500">
           {formData.description || "No message provided"}
-        </p>
+        </h6>
       </div>
 
       {/* Payment Gateways */}
@@ -89,29 +84,29 @@ const Preview = () => {
           Pay With Payment Gateway
         </legend>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 md:gap-6">
           {paymentGateways.slice(0, 8).map((g) => (
             <button
               key={g.id}
               onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border-2 cursor-pointer rounded-xl transition-all flex items-center justify-center
+              className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
             >
-              <Image src={g.image} alt={g.id} className="h-[50px] w-auto" />
+              <Image src={g.image} alt={g.id} className="h-10 w-auto" />
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mt-3">
+        <div className="grid grid-cols-3 gap-4 mt-3">
           {paymentGateways.slice(8).map((g) => (
             <button
               key={g.id}
               onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border-2 cursor-pointer rounded-xl transition-all flex items-center justify-center
+              className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
@@ -126,34 +121,19 @@ const Preview = () => {
 
       {/* Card Section (static preview) */}
       <div className="mb-6">
-        <h3 className="text-sm font-bold text-slate-800 mb-4 text-center">
+        <h6 className="text-sm font-bold text-slate-800 mb-4 text-center">
           Or Pay with Debit & Credit Card
-        </h3>
+        </h6>
 
         <div className="space-y-4">
-          <input
-            readOnly
-            placeholder="Email"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl"
-          />
-          <input
-            readOnly
-            placeholder="Name On Card"
-            className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl"
-          />
-          <div className="relative">
-            <CreditCard className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-            <input
-              readOnly
-              placeholder="Card Number"
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 rounded-xl"
-            />
-          </div>
+          <InputField type="number" readOnly placeholder="Email" />
+          <InputField type="number" readOnly placeholder="Name On Card" />
+          <InputField type="number" readOnly placeholder="Card Number" />
         </div>
       </div>
 
       {/* Pay Button */}
-      <Button gradient className="w-full flex items-center py-3 justify-center">
+      <Button className="w-full flex items-center py-3 justify-center">
         Pay
       </Button>
     </div>

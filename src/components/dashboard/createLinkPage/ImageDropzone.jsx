@@ -38,7 +38,7 @@ export default function ImageUploadField() {
                     </span>
                   </label>
 
-      <div className="relative border-2 border-dashed border-slate-300 rounded-xl overflow-hidden hover:border-emerald-400 transition-colors focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-200">
+      <div className="relative border-2 border-dashed border-slate-300 rounded-xl overflow-hidden hover:border-primary transition-colors focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-200">
 
         {/* Fixed Height Container */}
         <div className="relative h-[180px]">
@@ -46,10 +46,10 @@ export default function ImageUploadField() {
           {/* Default Upload UI */}
           {!fileData && (
             <label className="absolute inset-0 flex flex-col items-center justify-center text-center cursor-pointer">
-              <Upload className="w-8 h-8 text-emerald-500 mb-2" />
+              <Upload className="w-8 h-8 text-primary mb-2" />
               <p className="text-sm text-slate-600">
                 Drop your file Or{" "}
-                <span className="text-emerald-600 font-medium">click</span> to select
+                <span className="text-primary  font-bold">click</span> to select
               </p>
               <input
                 type="file"

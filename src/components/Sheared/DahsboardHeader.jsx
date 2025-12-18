@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import { Plus, Filter } from "lucide-react";
-import Button from "./Button";
+import Button from "../ui/Button";
 import Link from "next/link";
 import Select from "react-select";
 import { reactSelectStyles } from "@/style/selectStyles";
@@ -17,12 +17,12 @@ const DahsboardHeader = ({ url }) => {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 mb-4 border-b border-b-text/10 ">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-secondery/80 font-montserrat">
+        <h4 className="text-2xl font-bold tracking-tight text-secondery/80 font-montserrat">
           Payment Links
-        </h1>
-        <p className="text-text/60 font-roboto text-sm mt-1">
+        </h4>
+        <h6 className="text-text/60 font-roboto text-sm mt-1">
           Manage your payment links and track transactions.
-        </p>
+        </h6>
       </div>
       <div className="flex gap-3">
         <div className="hidden sm:flex items-center">
@@ -37,7 +37,10 @@ const DahsboardHeader = ({ url }) => {
           </div>
         </div>
         <Link href={url}>
-          <Button className="cursor-pointer py-10" rightIcon={<Plus size={16} />}>
+          <Button
+            className="cursor-pointer py-10"
+            rightIcon={<Plus size={16} />}
+          >
             New Payment Link
           </Button>
         </Link>

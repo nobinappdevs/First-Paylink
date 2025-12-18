@@ -1,30 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-primary: #0EBE98;
-    --color-primary_light: #50C631;
-    --color-secondery: #012C20;
-    --color-basic: #FFFFFF;
-    --color-body: #F8F8F8;
-    --color-title: #012C20;
-    --color-text: #555555;
-    --color-border: #55555530;
-    --font-roboto: "Roboto", sans-serif; 
-    --font-montserrat: "Montserrat", sans-serif;
-
+  --color-primary: #5b39c9;
+  --color-secondery: #0a2540;
+  --color-basic: #ffffff;
+  --color-body: #f8f8f8;
+  --color-text: #555555;
+  --color-border: #55555530;
+  --font-roboto: "Roboto", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
 }
 
+body {
+  @apply font-roboto text-base text-secondery leading-relaxed antialiased;
+}
+
+p {
+  @apply text-[14px] sm:text-[15px] md:text-[16px]
+    leading-[1.7] text-secondery/80;
+}
+
+h1 {
+  @apply font-montserrat leading-normal  font-bold text-[28px] sm:text-[34px] lg:text-[40px] xl:text-[45px] text-secondery;
+}
+
+h2 {
+  @apply font-montserrat leading-normal  font-semibold text-[24px] md:text-[26px] lg:text-[32px] text-secondery;
+}
+
+h3 {
+  @apply font-montserrat leading-normal  text-[20px] md:text-[22px] lg:text-[26px] font-semibold text-secondery ;
+}
+
+h4 {
+  @apply font-montserrat leading-normal   font-semibold text-[18px] md:text-[20px] lg:text-[22px] text-secondery ;
+}
+
+h5 {
+  @apply font-montserrat font-medium text-[16px] md:text-[18px] text-secondery ;
+}
+
+h6 {
+  @apply font-roboto  leading-normal font-medium  md:text-[14px] text-[12px] text-text;
+}
+
+.text-small {
+  @apply text-[12px] leading-normal  sm:text-[13px] text-secondery/70 ;
+}
 
 @keyframes slideDown {
-  0% { opacity:0; transform:translateY(-10px); }
-  100% { opacity:1; transform:translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-slideDown {
-  animation:slideDown .3s ease forwards;
+  animation: slideDown 0.3s ease forwards;
 }
-
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

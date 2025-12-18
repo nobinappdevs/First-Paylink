@@ -1,6 +1,5 @@
 export default function Button({
   children,
-  gradient = false,
   rightIcon,
   onClick,
   className = "",
@@ -11,18 +10,17 @@ export default function Button({
       className={`
         relative overflow-hidden group font-roboto
         flex items-center justify-center gap-2
-        rounded-xl text-white
+        rounded-md text-white
         transition-all duration-300 ease-out cursor-pointer
 
-        ${gradient
-          ? "bg-linear-to-r from-primary to-primary_light shadow-md shadow-primary/20"
-          : "bg-[#012C20] shadow-sm hover:shadow-lg hover:shadow-black/20"}
+        bg-secondery shadow-sm
+        hover:shadow-sm hover:shadow-black/20
 
         hover:-translate-y-0.5 active:scale-95
 
         /* Responsive Size */
         px-4 py-2 text-sm
-        md:px-6 md:py-3 md:text-base
+        md:px-6 md:py-[9.5px] md:text-base
 
         ${className}
       `}

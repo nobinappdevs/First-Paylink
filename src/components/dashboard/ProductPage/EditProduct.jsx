@@ -1,10 +1,12 @@
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 
 const EditProduct = () => {
   return (
     <div className="bg-white rounded-xl shadow-sm border font-roboto border-gray-100 p-8">
-      <h2 className="text-2xl font-bold text-secondery/80 font-montserrat mb-8">Product Create</h2>
+      <h2 className="text-2xl font-bold text-secondery/80 font-montserrat mb-8">
+        Product Create
+      </h2>
 
       <form className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -90,8 +92,10 @@ const EditProduct = () => {
         </div>
 
         {/* Submit Button */}
-        <Link href={'/dashboard/products'}>
-        <Button gradient className="w-full flex justify-center" size="lg">Submit</Button>
+        <Link href={"/dashboard/products"}>
+          <Button className="w-full flex justify-center" size="lg">
+            Submit
+          </Button>
         </Link>
       </form>
     </div>

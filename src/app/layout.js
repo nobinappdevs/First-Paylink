@@ -1,3 +1,4 @@
+import { DarkModeProvider } from "@/context/DarkModeProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -8,7 +9,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`bg-body antialiased`}>{children}</body>
+      <body className={`bg-body antialiased`}>
+        <DarkModeProvider>
+        {children}
+        </DarkModeProvider>
+        </body>
     </html>
   );
 }

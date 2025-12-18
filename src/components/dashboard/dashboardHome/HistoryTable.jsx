@@ -38,16 +38,16 @@ const HistoryTable = () => {
       <table className=" w-full text-left">
         <thead>
           <tr className="bg-body lg:rounded-3xl">
-            <th className="p-3 text-title font-semibold text-base whitespace-nowrap">
+            <th className="p-3 text-secondery/90 font-semibold text-base whitespace-nowrap">
               Description
             </th>
-            <th className="p-3 text-title font-semibold text-base whitespace-nowrap">
+            <th className="p-3 text-secondery/90 font-semibold text-base whitespace-nowrap">
               Trx ID
             </th>
-            <th className="p-3 text-title font-semibold text-base whitespace-nowrap">
+            <th className="p-3 text-secondery/90 font-semibold text-base whitespace-nowrap">
               Amount
             </th>
-            <th className="p-3 text-title font-semibold text-right text-base whitespace-nowrap">
+            <th className="p-3 text-secondery/90 font-semibold text-right text-base whitespace-nowrap">
               Status
             </th>
           </tr>
@@ -68,8 +68,8 @@ const HistoryTable = () => {
                 </div>
 
                 <div>
-                  <h3 className="font-medium text-base">{item.description}</h3>
-                  <h4 className="text-xs font-medium text-text">{item.data}</h4>
+                  <h5 className="font-medium text-base">{item.description}</h5>
+                  <h6 className="text-small">{item.data}</h6>
                 </div>
               </td>
               <td className="p-3 text-text font-medium whitespace-nowrap">
@@ -77,9 +77,7 @@ const HistoryTable = () => {
               </td>
               <td
                 className={`p-3 font-semibold whitespace-nowrap ${
-                  item.amount.startsWith("+")
-                    ? "text-primary_light"
-                    : "text-red-600"
+                  item.amount.startsWith("+") ? "text-primary" : "text-red-600"
                 }`}
               >
                 {item.amount}

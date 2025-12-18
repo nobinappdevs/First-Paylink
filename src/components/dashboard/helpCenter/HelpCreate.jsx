@@ -48,7 +48,7 @@
 //       <div className="">
 //         <div className="bg-white shadow-2xl rounded-2xl overflow-hidden">
 //           {/* Header Section */}
-//           <div className="bg-linear-to-r from-primary to-primary_light px-8 py-6">
+//           <div className="bg-linear-to-r from-primary to-primary px-8 py-6">
 //             <h2 className="text-3xl font-bold text-white mb-2">
 //               Create Support Ticket
 //             </h2>
@@ -156,7 +156,7 @@
 //               <div className="flex gap-4 pt-4">
 //                 <Link href={"/dashboard/helpCenter"}>
 //                   <Button
-//                     gradient
+//
 //                     size="lg"
 //                     className="flex justify-center w-full"
 //                     rightIcon={<Send className="h-5 w-5" />}
@@ -184,11 +184,10 @@
 
 // export default HelpCreate;
 
-
 "use client";
 import React, { useState } from "react";
 import { CloudUpload, Send, RotateCcw, X, Info } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 
 const HelpCreate = () => {
@@ -223,7 +222,7 @@ const HelpCreate = () => {
   return (
     <div className="w-full">
       <div className="bg-white border border-gray-100 font-roboto shadow-xl shadow-gray-200/50 rounded-2xl overflow-hidden">
-        {/* Header Section - No Gradient, Solid White with Bottom Border */}
+        {/* Header Section - No , Solid White with Bottom Border */}
         <div className="px-8 py-8 border-b border-gray-100 bg-gray-50/30">
           <div className="flex items-center gap-3 mb-2">
             <h2 className="text-3xl font-black text-secondery/80 font-montserrat tracking-tight">
@@ -231,8 +230,9 @@ const HelpCreate = () => {
             </h2>
           </div>
           <p className="text-gray-500 text-sm max-w-2xl leading-relaxed">
-            We&apos;re here to help! Submit your query and our dedicated team will get
-            back to you shortly. Detailed reports help us assist you faster.
+            We&apos;re here to help! Submit your query and our dedicated team
+            will get back to you shortly. Detailed reports help us assist you
+            faster.
           </p>
         </div>
 
@@ -280,14 +280,17 @@ const HelpCreate = () => {
             {/* Attachments Area */}
             <div>
               <label className="block text-sm font-bold text-gray-800 mb-2">
-                Attachments <span className="text-gray-400 font-normal ml-1">(Optional)</span>
+                Attachments{" "}
+                <span className="text-gray-400 font-normal ml-1">
+                  (Optional)
+                </span>
               </label>
 
               <div
                 className={`border-2 border-dashed rounded-2xl p-10 text-center transition-all duration-300 relative ${
-                  file 
-                  ? "border-primary bg-primary/5" 
-                  : "border-gray-200 hover:border-primary hover:bg-gray-50"
+                  file
+                    ? "border-primary bg-primary/5"
+                    : "border-gray-200 hover:border-primary hover:bg-gray-50"
                 }`}
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
@@ -299,7 +302,7 @@ const HelpCreate = () => {
                   onChange={handleFileChange}
                   className="hidden"
                 />
-                
+
                 {file ? (
                   <div className="flex flex-col items-center">
                     <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-xl border border-primary/20 shadow-sm">
@@ -331,7 +334,8 @@ const HelpCreate = () => {
                       <CloudUpload size={28} />
                     </div>
                     <p className="text-gray-600 font-medium">
-                      Drag & drop your files or <span className="text-primary font-bold">browse</span>
+                      Drag & drop your files or{" "}
+                      <span className="text-primary font-bold">browse</span>
                     </p>
                     <p className="text-xs text-gray-400 mt-2">
                       Supports: PNG, JPG, PDF (Max 10MB)
@@ -345,7 +349,6 @@ const HelpCreate = () => {
             <div className="flex items-center gap-4 pt-6 border-t border-gray-50">
               <Link href={"/dashboard/helpCenter"} className="flex-1">
                 <Button
-                gradient
                   size="lg"
                   className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
                 >
@@ -353,7 +356,7 @@ const HelpCreate = () => {
                   Submit Ticket
                 </Button>
               </Link>
-              
+
               <button
                 type="button"
                 onClick={handleReset}
@@ -368,12 +371,15 @@ const HelpCreate = () => {
           {/* Bottom Alert/Tip */}
           <div className="mt-10 flex gap-4 p-5 bg-blue-50/50 rounded-2xl border border-blue-100/50">
             <div className="h-10 w-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-500 shrink-0">
-               <Info size={20} />
+              <Info size={20} />
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
-              <span className="font-bold text-gray-900 block mb-0.5">Quick Tip:</span> 
-              Providing detailed information and relevant screenshots helps our support team 
-              analyze and resolve your ticket up to <span className="text-blue-600 font-bold">50% faster</span>.
+              <span className="font-bold text-gray-900 block mb-0.5">
+                Quick Tip:
+              </span>
+              Providing detailed information and relevant screenshots helps our
+              support team analyze and resolve your ticket up to{" "}
+              <span className="text-blue-600 font-bold">50% faster</span>.
             </p>
           </div>
         </div>

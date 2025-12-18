@@ -7,7 +7,6 @@ import {
   FiLogOut,
   FiSend,
   FiPlusCircle,
-  FiMinusCircle,
   FiCheckSquare,
   FiShield,
   FiChevronDown,
@@ -79,38 +78,37 @@ const Navbar = ({ handleOpen }) => {
       type: "info",
     },
   ];
-const handelLogOut = () => {
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You will be logged out from your account.",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, log out",
-    cancelButtonText: "Cancel",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-        title: "Logged out!",
-        text: "You have been successfully logged out.",
-        icon: "success",
-      });
-    }
-  });
-};
-
+  const handelLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out from your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Logged out!",
+          text: "You have been successfully logged out.",
+          icon: "success",
+        });
+      }
+    });
+  };
 
   return (
     <nav className="sticky top-0 z-40 lg:z-50">
-      <div className="relative w-full pt-5 pb-4 px-4   bg-basic font-roboto flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.15)]">
+      <div className="relative w-full pt-5 pb-2.5 px-4   bg-basic font-roboto flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.15)]">
         <div className="xl:block hidden">
-          <h2 className="font-bold leading-6 text-title font-montserrat text-xl sm:text-2xl">
+          <h4>
             Welcome Back
-          </h2>
-          <h3 className="text-text text-base font-medium leading-4 font-roboto pt-2">
+          </h4>
+          <h6>
             Tomas William
-          </h3>
+          </h6>
         </div>
         <div
           onClick={handleOpen}
@@ -169,9 +167,9 @@ const handelLogOut = () => {
                 className={`absolute -right-10 mt-3 w-80 max-h-96 overflow-y-auto bg-white border border-gray-100 shadow-2xl rounded-xl p-4 z-50`}
               >
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h5 className="text-lg font-semibold text-gray-900">
                     Notifications
-                  </h3>
+                  </h5>
                   <span className="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full">
                     {notifications.length || 0}
                   </span>
@@ -192,7 +190,7 @@ const handelLogOut = () => {
                           {notif.text}
                         </p>
 
-                        <p
+                        <h6
                           className={`inline-block mt-2 text-xs px-2 py-1 rounded-full
               ${
                 notif.type === "success"
@@ -203,7 +201,7 @@ const handelLogOut = () => {
               }`}
                         >
                           {notif.time}
-                        </p>
+                        </h6>
                       </div>
                     ))
                   )}
@@ -249,8 +247,8 @@ const handelLogOut = () => {
                       className="rounded-full"
                     />
                     <div>
-                      <h3 className="font-semibold">Tomas William</h3>
-                      <p className="text-sm text-gray-500">william@gmail.com</p>
+                      <h5 className="font-semibold">Tomas William</h5>
+                      <h6 className="text-sm text-gray-500">william@gmail.com</h6>
                     </div>
                   </button>
                 </Link>
@@ -261,9 +259,9 @@ const handelLogOut = () => {
                       className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <item.icon size={17} className="text-gray-600" />
-                      <h3 className="text-sm font-semibold text-gray-700">
+                      <h6 className="text-sm font-semibold text-gray-700">
                         {item.title}
-                      </h3>
+                      </h6>
                     </div>
                   ))}
                 </div>
@@ -274,9 +272,9 @@ const handelLogOut = () => {
                       className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <FiCheckSquare size={17} className="text-gray-600" />
-                      <h3 className="text-sm font-semibold text-gray-700">
+                      <h6 className="text-sm font-semibold text-gray-700">
                         KYC Verification
-                      </h3>
+                      </h6>
                     </button>
                   </Link>
                   <Link href={"/dashboard/twofaverification"}>
@@ -285,9 +283,9 @@ const handelLogOut = () => {
                       className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <FiShield size={17} className="text-gray-600" />
-                      <h3 className="text-sm font-semibold text-gray-700">
+                      <h6 className="text-sm font-semibold text-gray-700">
                         2FA Verification
-                      </h3>
+                      </h6>
                     </button>
                   </Link>
                   <Link href={"/dashboard/updatePassword"}>
@@ -296,9 +294,9 @@ const handelLogOut = () => {
                       className="flex items-center gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
                     >
                       <KeyRound size={17} className="text-gray-600" />
-                      <h3 className="text-sm font-semibold text-gray-700">
+                      <h6 className="text-sm font-semibold text-gray-700">
                         Update Password
-                      </h3>
+                      </h6>
                     </button>
                   </Link>
                 </div>
@@ -307,7 +305,7 @@ const handelLogOut = () => {
                   className="flex items-center cursor-pointer gap-4 py-2 px-2 hover:bg-red-50 text-red-600 rounded  w-full justify-center"
                 >
                   <FiLogOut size={18} />
-                  <h3 className="text-sm font-semibold">Logout</h3>
+                  <h6 className="text-sm font-semibold">Logout</h6>
                 </button>
               </div>
             )}

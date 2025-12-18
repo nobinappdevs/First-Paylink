@@ -1,5 +1,5 @@
 import { InvoiceView } from "@/components/dashboard/InvoicePage/InvoiceView";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 import React from "react";
 
@@ -40,15 +40,15 @@ const page = async ({ params }) => {
   return (
     <div className="">
       <InvoiceView data={invoiceData} />
-     {/* ================= Actions ================= */}
-       <div className="mb-8 flex gap-4 justify-center">
-        <Link href={'/dashboard/invoice'}>
-        <Button gradient size="lg"> Save as Draft</Button>
+      {/* ================= Actions ================= */}
+      <div className="mb-8 flex gap-4 justify-center">
+        <Link href={"/dashboard/invoice"}>
+          <Button size="lg"> Save as Draft</Button>
         </Link>
-        <Link href={'/dashboard/invoice/share/20'}>
-        <Button gradient size="lg"> Publish Invoice</Button>
+        <Link href={"/dashboard/invoice/share/20"}>
+          <Button size="lg"> Publish Invoice</Button>
         </Link>
-       </div>
+      </div>
     </div>
   );
 };

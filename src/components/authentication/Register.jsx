@@ -24,13 +24,13 @@
 //       className="min-h-screen flex items-center justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
 //     >
 //       <section
-//         aria-labelledby="register-title"
+//         aria-labelledby="registersecondery"
 //         className="md:w-5/12 w-full  bg-white rounded-2xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50"
 //       >
 //         {/* Header */}
 //         <header className="text-center mb-8">
 //           <h1
-//             id="register-title"
+//             id="registersecondery"
 //             className="text-3xl font-extrabold text-gray-900"
 //           >
 //             Create Account
@@ -222,14 +222,12 @@
 
 // export default RegistrationPage;
 
+"use client";
 
-
-'use client';
-
-import React, { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, User, Building2, Globe } from 'lucide-react';
-import Button from '@/components/Sheared/Button';
-import Link from 'next/link';
+import React, { useState } from "react";
+import { Eye, EyeOff, Mail, Lock, User, Building2, Globe } from "lucide-react";
+import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -240,13 +238,13 @@ const RegisterPage = () => {
       className="min-h-screen flex items-center font-roboto justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
     >
       <section
-        aria-labelledby="register-title"
+        aria-labelledby="registersecondery"
         className="w-full md:w-5/12 bg-white rounded-2xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50"
       >
         {/* Header */}
         <header className="text-center mb-8">
           <h2
-            id="register-title"
+            id="registersecondery"
             className="text-2xl font-extrabold font-montserrat  text-secondery/90"
           >
             Register for an Account Today
@@ -389,13 +387,13 @@ const RegisterPage = () => {
               />
               <input
                 id="password"
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl shadow-md focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
               />
               <button
                 type="button"
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? "Hide password" : "Show password"}
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600 p-1 rounded-full"
               >
@@ -411,7 +409,7 @@ const RegisterPage = () => {
               className="mt-1 rounded border-gray-300 text-primary-600 focus-visible:ring-primary-500"
             />
             <span>
-              I have agreed with{' '}
+              I have agreed with{" "}
               <span className="text-primary-600 font-medium">
                 Terms Of Use & Privacy Policy
               </span>
@@ -420,7 +418,6 @@ const RegisterPage = () => {
 
           {/* Submit */}
           <Button
-          gradient
             type="button"
             className="w-full flex justify-center py-3 text-lg font-semibold rounded-xl shadow-lg shadow-primary-500/30"
           >
@@ -430,7 +427,7 @@ const RegisterPage = () => {
 
         {/* Switch */}
         <p className="text-center text-sm text-gray-600 mt-8">
-          Already Have An Account?{' '}
+          Already Have An Account?{" "}
           <Link
             href="/login"
             className="text-primary-600 font-semibold hover:underline"

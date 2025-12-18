@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Copy, Smartphone, Apple, ShieldCheck, Info } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 
 const TwoFactorSetup = () => {
   const address = "D4HPXRZFBVAXOAGS";
@@ -61,7 +61,7 @@ const TwoFactorSetup = () => {
 
         {/* Action */}
         <div className="mt-6">
-          <Button className="w-full justify-center" gradient>
+          <Button className="w-full justify-center">
             Enable Two-Factor Authentication
           </Button>
         </div>

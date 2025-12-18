@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import { CreditCard } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Image from "next/image";
 
 import coingateLogo from "@assets/coingateLogo.webp";
@@ -158,7 +158,7 @@ const LinkPreview = () => {
       </div>
 
       {/* Pay Button */}
-      <Button gradient className="w-full flex items-center py-3 justify-center">
+      <Button className="w-full flex items-center py-3 justify-center">
         Pay
       </Button>
     </div>

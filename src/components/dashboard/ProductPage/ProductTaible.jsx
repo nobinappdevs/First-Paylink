@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Search, MoreVertical, Trash2, Edit, Plus, Link2 } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -95,9 +95,7 @@ export default function ProductTaible() {
           />
         </div>
         <Link href={"/dashboard/products/create"}>
-          <Button gradient rightIcon={<Plus size={18} />}>
-            Add New Product
-          </Button>
+          <Button rightIcon={<Plus size={18} />}>Add New Product</Button>
         </Link>
       </div>
 

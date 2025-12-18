@@ -140,7 +140,7 @@
 //     <div className="">
 //       <header className="mb-8">
 //         <h1 className="text-4xl font-extrabold font-montserrat text-secondery">
-//           <span className="text-primary_light">Support</span> Dashboard
+//           <span className="text-primary">Support</span> Dashboard
 //         </h1>
 //         <p className="text-text mt-1">
 //           Real-time overview of all customer support requests and status.
@@ -160,7 +160,7 @@
 //           Recent Tickets ({tickets.length})
 //         </h2>
 //         <Link href={"/dashboard/helpCenter/create"}>
-//           <Button gradient rightIcon={<Plus />}>
+//           <Button  rightIcon={<Plus />}>
 //             Create New Ticket
 //           </Button>
 //         </Link>
@@ -205,7 +205,7 @@
 //                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
 //                   <a
 //                     href={`mailto:${ticket.email}`}
-//                     className=" font-extrabold text-primary_light/80 hover:text-primary_light  "
+//                     className=" font-extrabold text-primary/80 hover:text-primary  "
 //                   >
 //                     {ticket.email}
 //                   </a>
@@ -256,17 +256,9 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
 "use client";
 
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import { MessagesSquare, Plus } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -374,7 +366,9 @@ const getMetricData = (tickets) => {
 
 /* ------------------ METRIC CARD ------------------ */
 const MetricCard = ({ title, value, icon, color, bg }) => (
-  <div className={`p-4 sm:p-6 rounded-xl border border-gray-200 shadow-sm ${bg}`}>
+  <div
+    className={`p-4 sm:p-6 rounded-xl border border-gray-200 shadow-sm ${bg}`}
+  >
     <div className="flex items-center justify-between">
       <div>
         <p className="text-sm font-medium text-gray-500">{title}</p>
@@ -389,7 +383,12 @@ const MetricCard = ({ title, value, icon, color, bg }) => (
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={icon} />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d={icon}
+          />
         </svg>
       </div>
     </div>
@@ -406,7 +405,7 @@ export default function TicketDashboard() {
       {/* ---------- Header ---------- */}
       <header className="mb-8">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-montserrat text-secondery/80">
-          <span className="text-primary_light">Support</span> Dashboard
+          <span className="text-primary">Support</span> Dashboard
         </h1>
         <p className="text-sm sm:text-base text-text mt-1">
           Real-time overview of all customer support requests and status.
@@ -426,10 +425,11 @@ export default function TicketDashboard() {
           Recent Tickets ({tickets.length})
         </h2>
 
-        <Link href="/dashboard/helpCenter/create" className="self-start sm:self-auto">
-          <Button gradient rightIcon={<Plus />}>
-            Create New Ticket
-          </Button>
+        <Link
+          href="/dashboard/helpCenter/create"
+          className="self-start sm:self-auto"
+        >
+          <Button rightIcon={<Plus />}>Create New Ticket</Button>
         </Link>
       </div>
 
@@ -474,7 +474,7 @@ export default function TicketDashboard() {
                   <td className="hidden md:table-cell px-6 py-4 text-sm">
                     <a
                       href={`mailto:${ticket.email}`}
-                      className="font-semibold text-primary_light hover:underline"
+                      className="font-semibold text-primary hover:underline"
                     >
                       {ticket.email}
                     </a>
@@ -488,7 +488,9 @@ export default function TicketDashboard() {
                     <span
                       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${status.wrapper}`}
                     >
-                      <span className={`w-1.5 h-1.5 rounded-full ${status.dot}`} />
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${status.dot}`}
+                      />
                       {ticket.status}
                     </span>
                   </td>
@@ -500,7 +502,7 @@ export default function TicketDashboard() {
                   <td className="px-3 sm:px-6 py-3 sm:py-4 text-right">
                     <Link href="/dashboard/helpCenter/conversation/20">
                       <button
-                        className="p-2 rounded-full bg-primary_light/20 text-primary_light/80 cursor-pointer hover:bg-blue-200 transition"
+                        className="p-2 rounded-full bg-primary/20 text-primary/80 cursor-pointer hover:bg-blue-200 transition"
                         title="View Details"
                       >
                         <MessagesSquare className="w-5 h-5 sm:w-6 sm:h-6" />

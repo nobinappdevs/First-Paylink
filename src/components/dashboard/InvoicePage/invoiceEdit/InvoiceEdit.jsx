@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { Plus, X, Building2, Package } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { InvoiceView } from "../InvoiceView";
 
@@ -272,7 +272,6 @@ export default function InvoiceEdit() {
                 <div className="pt-6">
                   <Link href={"/dashboard/invoice/preview/20"}>
                     <Button
-                      gradient
                       size="lg"
                       className="w-full flex justify-center shadow-lg hover:shadow-xl transition-all"
                     >

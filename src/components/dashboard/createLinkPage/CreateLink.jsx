@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { Upload } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 import Preview from "./Preview";
 import Link from "next/link";
 import Select from "react-select";
 import { reactSelectStyles } from "@/style/selectStyles";
-import ImageDropzone from "./ImageDropzone";
+import InputField from "@/components/ui/InputField";
+import ImageUploadField from "./ImageDropzone";
 
 export default function PaymentPage() {
   const [activeTab, setActiveTab] = useState("fixed");
@@ -29,13 +29,10 @@ export default function PaymentPage() {
   ];
   return (
     <div className=" px-4 pt-8 font-roboto">
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Panel - Form */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <h1 className="text-2xl  font-montserrat font-bold text-slate-800 mb-6">
-            Select Type
-          </h1>
+          <h4 className=" mb-6">Select Type</h4>
 
           {/* Tab Navigation */}
           <div
@@ -52,7 +49,7 @@ export default function PaymentPage() {
               onKeyDown={(e) => handleKeyDown(e, "fixed")}
               className={`flex-1 py-3 px-4 lg:px-2 lg:text-base md:text text-xs rounded-lg cursor-pointer  font-bold transition-all ${
                 activeTab === "fixed"
-                  ? "bg-white text-emerald-600 shadow-md"
+                  ? "bg-white text-primary shadow-md"
                   : "text-slate-600 hover:text-slate-800"
               }`}
             >
@@ -67,7 +64,7 @@ export default function PaymentPage() {
               onKeyDown={(e) => handleKeyDown(e, "custom")}
               className={`flex-1 py-3 px-4 md:text lg:text-base  text-xs cursor-pointer rounded-lg font-semibold transition-all ${
                 activeTab === "custom"
-                  ? "bg-white text-emerald-600 shadow-md"
+                  ? "bg-white text-primary shadow-md"
                   : "text-slate-600 hover:text-slate-800"
               }`}
             >
@@ -76,10 +73,8 @@ export default function PaymentPage() {
           </div>
 
           {/* Payment Page Section */}
-          <div className="border-b-2 border-emerald-500 pb-2 mb-6">
-            <h2 className="text-lg font-semibold text-emerald-600">
-              Payment Page
-            </h2>
+          <div className="border-b-2 border-primary pb-2 mb-6">
+            <h5>Payment Page</h5>
           </div>
 
           {/* Tab Content */}
@@ -92,17 +87,10 @@ export default function PaymentPage() {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Title{" "}
-                    <span className="text-red-500" aria-label="required">
-                      *
-                    </span>
-                  </label>
-                  <input
+                  <InputField
                     type="text"
-                    aria-required="true"
+                    label="Title"
                     placeholder="Name of cause or service"
-                    className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                   />
                 </div>
                 <div>
@@ -123,17 +111,14 @@ export default function PaymentPage() {
               </div>
               {/* Title and Image */}
               <div className="">
-      <ImageDropzone />
+                <ImageUploadField />
               </div>
               {/* Description */}
               <div className="my-6 ">
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Description <span className="text-slate-400">(Optional)</span>
-                </label>
-                <textarea
-                  rows="4"
-                  placeholder="Give customers more detail about what they are paying for."
-                  className="w-full px-4 py-3 border-2 border-slate-200 rounded-xl focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all resize-none"
+                <InputField
+                  type="textarea"
+                  label="Description"
+                  placeholder="Give customers more detail about what they are paying for"
                 />
               </div>
 
@@ -145,7 +130,7 @@ export default function PaymentPage() {
                     type="checkbox"
                     checked={showLimits}
                     onChange={() => setShowLimits(!showLimits)}
-                    className="w-4 h-4 text-emerald-600 rounded"
+                    className="w-4 h-4 accent-primary cursor-pointer rounded"
                   />
                   <span className="text-sm font-medium text-slate-700">
                     Set payment limits
@@ -165,38 +150,23 @@ export default function PaymentPage() {
                     `}
               >
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Minimum Amount
-                  </label>
-                  <div className="flex items-center border-2 border-slate-200 rounded-lg px-3 py-2">
-                    <span className="text-slate-500 mr-2">$</span>
-                    <input
-                      type="number"
-                      placeholder="0.3"
-                      className="flex-1 outline-none"
-                    />
-                  </div>
+                  <InputField
+                    type="number"
+                    label="Minimum Amount"
+                    placeholder="$0.3"
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Maximum Amount
-                  </label>
-                  <div className="flex items-center border-2 border-slate-200 rounded-lg px-3 py-2">
-                    <span className="text-slate-500 mr-2">$</span>
-                    <input
-                      type="number"
-                      placeholder="10,000"
-                      className="flex-1 outline-none"
-                    />
-                  </div>
+                  <InputField
+                    type="number"
+                    label=" Maximum Amount"
+                    placeholder="$10,000"
+                  />
                 </div>
               </div>
               <Link href={"/dashboard/payments/share/2"}>
-                <Button
-                  gradient
-                  className="w-full flex items-center py-3 justify-center"
-                >
+                <Button className="w-full flex items-center py-3 justify-center">
                   Create New Link
                 </Button>
               </Link>
@@ -211,14 +181,11 @@ export default function PaymentPage() {
               <div className="w-full grid grid-cols-2 gap-4 ">
                 {/* Title */}
                 <div className="col-span-2 ">
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Title <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Collecting Payment Platform"
-                    className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:border-emerald-500 focus:outline-none"
-                  />
+                                               <InputField
+                  type="text"
+                   label='Title'
+                  placeholder='Collecting Payment Platform'
+                    />
                 </div>
 
                 {/* Currency */}
@@ -239,37 +206,26 @@ export default function PaymentPage() {
 
                 {/* Unit Price */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Unit Price *
-                  </label>
-                  <div className="flex items-center border-2 border-slate-200 rounded-lg px-3 py-2">
-                    <span className="text-slate-500 mr-2">$</span>
-                    <input
-                      type="number"
-                      placeholder="0.00"
-                      className="flex-1 outline-none"
+              <InputField
+                  type="number"
+                   label='Unit Price'
+                  placeholder='$0.00'
                     />
-                  </div>
                 </div>
 
                 {/* Quantity */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Quantity *
-                  </label>
-                  <input
-                    type="number"
-                    defaultValue={1}
-                    className="w-full px-3 py-2 border-2 border-slate-200 rounded-lg focus:border-emerald-500 focus:outline-none"
-                  />
+                                               <InputField
+                  type="number"
+                   label='Quantity'
+                   defaultValue={1}
+                  placeholder='1'
+                    />
                 </div>
 
                 {/* Button */}
                 <Link href="/dashboard/payments/share/2" className="col-span-2">
-                  <Button
-                    gradient
-                    className="w-full flex  items-center py-3 justify-center"
-                  >
+                  <Button className="w-full flex  mt-3 items-center py-3 justify-center">
                     Create New Link
                   </Button>
                 </Link>

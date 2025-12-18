@@ -9,7 +9,7 @@ import {
   Receipt,
   ReceiptCent,
 } from "lucide-react";
-import Button from "@/components/Sheared/Button";
+import Button from "@/components/ui/Button";
 
 export default function MoneyOut() {
   const [formData, setFormData] = useState({
@@ -295,7 +295,7 @@ export default function MoneyOut() {
 function PreviewItem({ icon, label, value, highlight, final }) {
   const base = "flex items-center justify-between p-3 md:p-4 rounded-xl";
   const styles = final
-    ? "bg-gradient-to-r from-emerald-50 to-teal-50 border-2 border-emerald-200"
+    ? "bg--to-r from-emerald-50 to-teal-50 border-2 border-emerald-200"
     : highlight
     ? "bg-slate-100 border border-slate-300"
     : "bg-slate-50 border border-slate-200";

@@ -13,7 +13,7 @@ import {
   Box,
 } from "lucide-react";
 
-const NavItem = ({ icon, title, link, active, onClick  }) => {
+const NavItem = ({ icon, title, link, active, onClick }) => {
   return (
     <Link
       href={link}
@@ -22,26 +22,22 @@ const NavItem = ({ icon, title, link, active, onClick  }) => {
       className={`group flex mb-2 items-center gap-3 w-full transition-all duration-200 lg:py-1
         ${
           active
-            ? "text-primary_light border-l-3 pl-[35px] -ml-[35px] lg:pl-12 lg:-ml-12 "
+            ? "text-primary border-l-3 pl-[35px] -ml-[35px] lg:pl-12 lg:-ml-12 "
             : "pl-1"
         }
         ${!active && ""} `}
     >
       <span
         className={`text-lg transition-colors duration-200 
-          ${
-            active
-              ? "text-primary_light"
-              : "text-text/60 group-hover:text-primary_light"
-          }`}
+          ${active ? "text-primary" : "text-text/60 group-hover:text-primary"}`}
       >
         {icon}
       </span>
       <span
         className={`font-semibold text-sm transition-colors duration-200 lg:text-base ${
           active
-            ? "text-primary_light"
-            : "font-roboto font-semibold text-sm text-secondery/80 group-hover:text-primary_light"
+            ? "text-primary"
+            : "font-roboto font-semibold text-sm text-secondery/80 group-hover:text-primary"
         }`}
       >
         {title}
@@ -124,23 +120,33 @@ const Sidebar = ({ onLinkClick }) => {
       </div>
 
       <div className="">
-        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60 lg:text-base lg:mb-5">
+        <h6 className="mb-4 pl-1lg:mb-5">
           Money Transfer
-        </h3>
+        </h6>
         <div className="flex flex-col gap-1.5 lg:gap-2">
           {moneyTransfer.map((item) => (
-            <NavItem key={item.id} {...item} active={pathname === item.link} onClick={onLinkClick} />
+            <NavItem
+              key={item.id}
+              {...item}
+              active={pathname === item.link}
+              onClick={onLinkClick}
+            />
           ))}
         </div>
       </div>
 
       <div className="mt-5 lg:mt-6">
-        <h3 className="font-semibold text-sm mb-4 pl-1 text-text/60 lg:text-base lg:mb-5">
+        <h6  className="mb-4 pl-1lg:mb-5">
           Wallet Action
-        </h3>
+        </h6>
         <div className="flex flex-col gap-1.5 lg:gap-2">
           {walletAction.map((item) => (
-            <NavItem key={item.id} {...item} active={pathname === item.link} onClick={onLinkClick} />
+            <NavItem
+              key={item.id}
+              {...item}
+              active={pathname === item.link}
+              onClick={onLinkClick}
+            />
           ))}
         </div>
       </div>
