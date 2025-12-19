@@ -167,13 +167,10 @@
 
 // export default LinkPreview;
 
-
 "use client";
-
 import React, { useState } from "react";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
-
 import coingateLogo from "@assets/coingateLogo.webp";
 import flutterLogo from "@assets/flutterLogo.webp";
 import pagaditoLogo from "@assets/pagaditoLogo.webp";
@@ -187,6 +184,8 @@ import sslcommezLogo from "@assets/sslcommezLogo.webp";
 import stipeLogo from "@assets/stipeLogo.webp";
 import InputField from "@/components/ui/InputField";
 import siteLogo from "@assets/logo.webp";
+import product from "@assets/product.webp";
+
 
 const LinkPreview = () => {
   const [activeTab] = useState("fixed");
@@ -218,84 +217,94 @@ const LinkPreview = () => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
-      {/* Header */}
+    <>
       <div className="flex items-center justify-between mb-6">
-        <h4>Preview</h4>
+        <h4 className="font-bold!">Preview</h4>
       </div>
-      {/* Company */}
-      <div className="mb-6 pb-6 border-b-2 border-slate-100">
-        <Image src={siteLogo} alt="Company Logo" className="h-6 w-auto" />
-      </div>
+      <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="mb-6 border-slate-100">
+          <Image src={siteLogo} alt="Company Logo" className="h-6 w-auto" />
+        </div>
 
-      {/* Amount */}
-      <div className="mb-6">
-        <InputField
-          type="number"
-          label="Amount"
-          placeholder={"$ 30.00"}
-          readOnly
-        />
-      </div>
-      {/* Payment Gateways */}
-      <fieldset className="mb-6">
-        <legend className="text-sm font-bold text-slate-800 mb-4">
-          Pay With Payment Gateway
-        </legend>
+        <div className="mb-6">
+          <h6 className="font-bold! mb-3">Lenovo IdeaPad 1 15AMN7 Ryzen 5 7520U 15.6&quot; FHD Laptop (1)</h6>
+          <h6 className="text-[12px]!">AMD Ryzen 5 7520U (4C / 8T, 2.8 / 4.3GHz, 2MB L2 / 4MB L3)</h6>
+        </div>
 
-        <div className="grid grid-cols-2 gap-3 md:gap-6">
-          {paymentGateways.slice(0, 8).map((g) => (
-            <button
-              key={g.id}
-              onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
+        {/* Amount */}
+        <div className="md:mb-8 mb-4">
+          <InputField
+            type="number"
+            label="Amount"
+            placeholder={"$ 30.00"}
+            readOnly
+          />
+        </div>
+
+                <div className="md:mb-6 mb-4 h-[150px] w-[150px] mx-auto">
+          <Image src={product} alt="Company Logo" className="" />
+        </div>
+
+        {/* Payment Gateways */}
+        <fieldset className="mb-6">
+          <legend className="text-sm font-bold text-slate-800 mb-4">
+            Pay With Payment Gateway
+          </legend>
+
+          <div className="grid grid-cols-2 gap-3 md:gap-6">
+            {paymentGateways.slice(0, 8).map((g) => (
+              <button
+                key={g.id}
+                onClick={() => setSelectedGateway(g.id)}
+                className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
-            >
-              <Image src={g.image} alt={g.id} className="h-10 w-auto" />
-            </button>
-          ))}
-        </div>
+              >
+                <Image src={g.image} alt={g.id} className="h-10 w-auto" />
+              </button>
+            ))}
+          </div>
 
-        <div className="grid grid-cols-3 gap-4 mt-3">
-          {paymentGateways.slice(8).map((g) => (
-            <button
-              key={g.id}
-              onClick={() => setSelectedGateway(g.id)}
-              className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
+          <div className="grid grid-cols-3 gap-4 mt-3">
+            {paymentGateways.slice(8).map((g) => (
+              <button
+                key={g.id}
+                onClick={() => setSelectedGateway(g.id)}
+                className={`p-4 border cursor-pointer rounded-xl transition-all flex items-center justify-center
                 ${
                   selectedGateway === g.id
                     ? "border-emerald-500 bg-emerald-50"
                     : "border-slate-200 hover:border-emerald-300"
                 }`}
-            >
-              <Image src={g.image} alt={g.id} className="h-10 w-auto" />
-            </button>
-          ))}
-        </div>
-      </fieldset>
+              >
+                <Image src={g.image} alt={g.id} className="h-10 w-auto" />
+              </button>
+            ))}
+          </div>
+        </fieldset>
 
-      {/* Card Section (static LinkPreview) */}
-      <div className="mb-6">
-        <h6 className="text-sm font-bold text-slate-800 mb-4 text-center">
-          Or Pay with Debit & Credit Card
-        </h6>
+        {/* Card Section (static LinkPreview) */}
+        <div className="mb-6">
+          <h6 className="text-sm font-bold text-slate-800 mb-4 text-center">
+            Or Pay with Debit & Credit Card
+          </h6>
 
-        <div className="space-y-4">
-          <InputField type="number" readOnly placeholder="Email" />
-          <InputField type="number" readOnly placeholder="Name On Card" />
-          <InputField type="number" readOnly placeholder="Card Number" />
+          <div className="space-y-4">
+            <InputField type="number" readOnly placeholder="Email" />
+            <InputField type="number" readOnly placeholder="Name On Card" />
+            <InputField type="number" readOnly placeholder="Card Number" />
+          </div>
         </div>
+
+        {/* Pay Button */}
+        <Button className="w-full flex items-center py-3 justify-center">
+          Pay
+        </Button>
       </div>
-
-      {/* Pay Button */}
-      <Button className="w-full flex items-center py-3 justify-center">
-        Pay
-      </Button>
-    </div>
+    </>
   );
 };
 

@@ -203,7 +203,9 @@
 
 "use client";
 
+import Image from "next/image";
 import React from "react";
+import logo from '@assets/logo.webp'
 
 // === MOCK DATA: ইমেজের ডেটা অনুযায়ী স্ট্যাটিক ডেটা ব্যবহার করা হয়েছে ===
 const invoiceData = {
@@ -211,8 +213,8 @@ const invoiceData = {
   sender: {
     name: "xyz",
     logoColor: "#7367f0", // ইমেজের বেগুনি কালারের HEX কোড
-    addressLine1: "fdsf",
-    addressLine2: "dfg",
+    addressLine1: "abc",
+    addressLine2: "New York, 10001, USA",
     phone: "+1 (123) 456 7891, +44 (876) 543 2198",
   },
   // ইনভয়েসের মেটা তথ্য
@@ -296,33 +298,14 @@ export const InvoiceView = () => {
       // মেইন কার্ডের ডিজাইন: কোনো শ্যাডো নেই, হালকা বর্ডার
       className="rounded-xl bg-white text-text border border-border overflow-hidden max-w-4xl mx-auto"
     >
-      <div className="p-2">
+      <div className="p-6">
         {/* -------------------- Top Header Section -------------------- */}
         <header className="mb-10 flex flex-col sm:flex-row justify-between pb-6 border-b border-border">
           {/* Left Side: Logo and Sender Info */}
           <div className="mb-6 sm:mb-0 w-full sm:w-1/2">
             <div className="flex items-center mb-4">
               {/* Logo/Icon Area */}
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center mr-2"
-                style={{ backgroundColor: highlightColor }}
-              >
-                {/* ইমেজের মতো লোগো শেপ */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="white"
-                  className="w-4 h-4"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-2h2v2zm0-4H9v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm-2-6c-1.66 0-3 1.34-3 3h2c0-.55.45-1 1-1s1 .45 1 1c0 1.5-3 1.25-3 5h2c0-2.25 3-2.5 3-5 0-1.66-1.34-3-3-3z" />
-                </svg>
-              </div>
-              <h1
-                className="text-2xl font-semibold"
-                style={{ color: highlightColor }}
-              >
-                {data.sender.name}
-              </h1>
+              <Image alt="Logo" src={logo} className="w-auto h-6" />
             </div>
             <address className="not-italic text-sm text-text space-y-1">
               <p>{data.sender.addressLine1}</p>
@@ -355,9 +338,9 @@ export const InvoiceView = () => {
         <section className="mb-10 flex flex-col sm:flex-row justify-between text-sm">
           {/* Left Side: Invoice To (Recipient) */}
           <div className="mb-6 sm:mb-0 w-full sm:w-1/2 pr-4">
-            <h3 className="uppercase tracking-wider font-semibold mb-3 text-text">
+            <h4 className="uppercase tracking-wider font-semibold mb-3 text-text">
               Invoice To:
-            </h3>
+            </h4>
             <address className="not-italic text-text space-y-1">
               <p className="font-semisemifont-semibold text-text">
                 {data.recipient.name}
@@ -371,9 +354,9 @@ export const InvoiceView = () => {
 
           {/* Right Side: Bill To (Payment Info) */}
           <div className="w-full sm:w-1/2 pl-32">
-            <h3 className="uppercase tracking-wider font-semibold mb-3 text-text">
+            <h4 className="uppercase tracking-wider font-semibold mb-3 text-text">
               Bill To:
-            </h3>
+            </h4>
             <dl className="text-text space-y-1">
               <div className="flex justify-between">
                 <dt className="font-medium">Total Due:</dt>

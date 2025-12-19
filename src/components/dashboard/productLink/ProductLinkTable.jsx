@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { MoreVertical, Copy, Trash2, Plus, Edit } from "lucide-react";
 import Swal from "sweetalert2";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 const MOCK_PRODUCTS = [
   { id: 1, price: "2,000.00 BDT", quantity: 1, status: "Active" },
@@ -59,12 +60,9 @@ export default function ProductLinkTable() {
   return (
     <>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-xl font-bold text-[#0a1d37]">Product Link</h1>
+        <h4>Product Link</h4>
         <Link href={"/dashboard/product-link/create/2"}>
-          <button className="flex items-center gap-2 bg-[#0a1d37] text-white px-5 py-2.5 rounded-lg hover:bg-slate-800 transition-all cursor-pointer font-semibold shadow-sm">
-            <Plus size={18} />
-            Create Link
-          </button>
+        <Button rightIcon={<Plus size={18} />}>Create Link</Button>
         </Link>
       </div>
       <div className="w-full overflow-x-auto">

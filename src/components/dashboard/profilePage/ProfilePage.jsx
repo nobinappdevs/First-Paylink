@@ -1,18 +1,19 @@
 import Image from "next/image";
 import { Upload, Mail, Trash2 } from "lucide-react";
 import Button from "@/components/ui/Button";
+import InputField from "@/components/ui/InputField";
 
 const ProfilePage = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 ">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <h1 className="text-2xl font-bold text-secondery/80 ">
+        <h4 className="text-2xl font-bold text-secondery/80 ">
           User Profile
-        </h1>
+        </h4>
         <Button
           rightIcon={<Trash2 size={20} />}
-          className="bg-red-600 hover:bg-red-700 cursor-pointer"
+          className="bg-red-600!"
         >
           Delete Profile
         </Button>
@@ -43,9 +44,9 @@ const ProfilePage = () => {
 
             {/* Info */}
             <div className="absolute bottom-6 left-44">
-              <h2 className="text-xl font-bold text-white ">
+              <h4 className="text-xl font-bold text-white! ">
                 App Devs
-              </h2>
+              </h4>
               <div className="flex items-center text-indigo-100 text-sm mt-1">
                 <Mail size={14} className="mr-2" />
                 user@appdevs.net
@@ -54,7 +55,7 @@ const ProfilePage = () => {
           </div>
 
           {/* Form */}
-          <div className="pt-20 p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* <div className="pt-20 p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               ["First Name*", "App"],
               ["Last Name*", "Devs"],
@@ -107,7 +108,62 @@ const ProfilePage = () => {
                 <input className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-text/80 focus:border-transparent transition-all" />
               </div>
             ))}
-          </div>
+          </div> */}
+
+<div className="pt-20 p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+  {/* First & Last Name */}
+  {[
+    { label: "First Name*", defaultValue: "App", name: "firstName" },
+    { label: "Last Name*", defaultValue: "Devs", name: "lastName" },
+  ].map((item) => (
+    <InputField
+      key={item.name}
+      label={item.label}
+      name={item.name}
+      defaultValue={item.defaultValue}
+      required
+    />
+  ))}
+
+  {/* Country */}
+  <div className="flex flex-col gap-1 w-full">
+    <label className="block text-sm font-medium text-text/80 mb-1">
+      Country <span className="text-red-500">*</span>
+    </label>
+    <select
+      className="w-full bg-white border border-[#e5e5e5] rounded-[5px] h-[45px] px-[15px] text-[14px] font-medium text-[#425466] outline-none focus:border-primary"
+    >
+      <option>Bangladesh</option>
+    </select>
+  </div>
+
+  {/* Mobile */}
+  <InputField
+    label="Mobile"
+    name="mobile"
+    placeholder="Enter Number..."
+    type="text"
+  />
+
+  {/* Company Name (Full Width) */}
+  <div className="md:col-span-2">
+    <InputField
+      label="Company Name"
+      name="company"
+      defaultValue="ABC LTD"
+    />
+  </div>
+
+  {/* Address Fields */}
+  {["Address", "City", "State", "Zip Code"].map((field) => (
+    <InputField
+      key={field}
+      label={field}
+      name={field.toLowerCase().replace(" ", "_")}
+    />
+  ))}
+</div>
+
 
           <div className="p-8 pt-0">
             <Button className="w-full"> Update Profile</Button>

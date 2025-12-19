@@ -4,6 +4,7 @@ import { X, Download } from "lucide-react";
 import { useRef } from "react";
 import { InvoiceView } from "./InvoiceView";
 import InvoiceWithPDF from "./InvoiceWithPDF";
+import Button from "@/components/ui/Button";
 
 export default function InvoiceModal({ open, onClose, invoice }) {
   const pdfRef = useRef(null);
@@ -20,32 +21,31 @@ export default function InvoiceModal({ open, onClose, invoice }) {
         onClick={(e) => e.stopPropagation()} // ✅ prevent close on inside click
       >
         {/* ================= Header ================= */}
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-white px-6 py-4">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-text/20 bg-white px-6 py-4">
           <div>
-            <h2 className="text-lg font-semibold text-slate-800">
+            <h4 className="text-lg font-semibold text-slate-800">
               Invoice Preview
-            </h2>
-            <p className="text-xs text-slate-500">
+            </h4>
+            <h6 className="text-xs text-slate-500">
               {invoice.invoiceNumber}
-            </p>
+            </h6>
           </div>
 
           <div className="flex items-center gap-2">
             {/* 🔥 Download Button */}
-            <button
+            <Button
               onClick={() => pdfRef.current?.downloadPDF()}
-              className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow hover:bg-indigo-700 transition"
             >
               <Download size={16} />
               Download PDF
-            </button>
+            </Button>
 
             {/* Close */}
             <button
               onClick={onClose}
-              className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition"
+              className="rounded-lg p-2 border-red-500 border text-red-500 cursor-pointer hover:bg-slate-100  transition"
             >
-              <X size={20} />
+              <X size={26} />
             </button>
           </div>
         </div>

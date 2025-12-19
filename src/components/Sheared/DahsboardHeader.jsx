@@ -87,7 +87,7 @@ const DashboardHeader = ({ url, title, subtitle, buttonTitle }) => {
       {/* Right: Actions */}
       <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
         {/* Filter */}
-        <div className="w-full sm:w-[110px]">
+        <div className="w-auto">
           <Select
             options={filterOptions}
             instanceId="filter-select"

@@ -1,63 +1,55 @@
+'use client';
+import InputField from "@/components/ui/InputField";
 import LinkPreview from "./LinkPreview";
+import Button from "@/components/ui/Button";
+import Select from "react-select";
+import { reactSelectStyles } from "@/style/selectStyles";
 
 export default function ProductLinkCreate() {
+  const pricingTypeOptions = [
+  { value: 'fixed_price', label: 'Fixed Price' },
+  { value: 'variable_price', label: 'Variable Price' },
+  { value: 'subscription', label: 'Subscription' },
+];
+
   return (
-    <div className="flex flex-col  lg:flex-row gap-6">
+    <div className="flex flex-col  lg:flex-row gap-4">
       {/* ===== Left Side ===== */}
       <div className="w-full lg:w-1/2 xl:p-8 p-4 bg-white h-auto">
         <div className="rounded-2xl space-y-6">
           {/* Select */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Select Type
-            </label>
-            <select className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white shadow-sm shadow-gray-200/60 focus:ring-2 focus:ring-slate-800 focus:shadow-md focus:outline-none cursor-pointer transition-all">
-              <option>Fixed Price</option>
-              <option>Variable Price</option>
-              <option>Subscription</option>
-            </select>
-          </div>
+            <div>
+              <label className="block text-sm font-medium text-text/80 mb-2">
+                Currency{" "}
+                <span className="text-red-500" aria-label="required">
+                  *
+                </span>
+              </label>
+              <Select
+                options={pricingTypeOptions}
+                instanceId="currency-select"
+                placeholder="Select Currency"
+                styles={reactSelectStyles}
+                isSearchable
+              />
+            </div>
 
           {/* Input 1 */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Price
-            </label>
-            <input
-              type="text"
-              placeholder="Enter price"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200  shadow-sm shadow-gray-200/60 focus:ring-2 focus:ring-slate-800 focus:shadow-md focus:outline-none transition-all"
-            />
+            <InputField type="text" placeholder="Enter price" label={'Price'} />
           </div>
 
           {/* Input 2 */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Quantity
-            </label>
-            <input
-              type="text"
-              placeholder="Enter quantity"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200  shadow-sm shadow-gray-200/60 focus:ring-2 focus:ring-slate-800 focus:shadow-md focus:outline-none transition-all"
-            />
+            <InputField type="number" placeholder="Enter quantity" label={'Quantity'} />
           </div>
-
           {/* Input 3 */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Description
-            </label>
-            <input
-              type="text"
-              placeholder="Optional description"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200  shadow-sm shadow-gray-200/60 focus:ring-2 focus:ring-slate-800 focus:shadow-md focus:outline-none transition-all"
-            />
+            <InputField type="textarea" placeholder="Enter description" label={'Description'} />
           </div>
 
           {/* Submit Button */}
-          <button className="w-full bg-slate-900 hover:bg-slate-800 text-white  py-3 rounded-xl font-bold shadow-lg shadow-slate-900/30 transition-all cursor-pointer active:scale-[0.98]">
-            Submit
-          </button>
+          <Button className="w-full">Submit</Button>
         </div>
       </div>
 
