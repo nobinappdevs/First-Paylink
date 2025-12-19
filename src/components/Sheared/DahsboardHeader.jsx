@@ -70,14 +70,12 @@ const DashboardHeader = ({ url, title, subtitle, buttonTitle }) => {
 
   return (
     <div
-      className="flex flex-col gap-4 pb-4 mb-6 border-b border-b-text/10
-                    sm:flex-row sm:items-center sm:justify-between"
+      className="flex flex-col gap-4 pb-4 mb-6 border-b border-b-text/10 sm:flex-row sm:items-center sm:justify-between"
     >
       {/* Left: Title */}
       <div className="space-y-1">
         <h4
-          className="text-xl sm:text-2xl font-bold tracking-tight
-                       text-secondery/80 "
+          className="text-xl sm:text-2xl font-bold tracking-tight text-secondery/80 "
         >
          {title}
         </h4>
@@ -89,7 +87,7 @@ const DashboardHeader = ({ url, title, subtitle, buttonTitle }) => {
       {/* Right: Actions */}
       <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
         {/* Filter */}
-        <div className="w-full sm:w-[180px]">
+        <div className="w-full sm:w-[110px]">
           <Select
             options={filterOptions}
             instanceId="filter-select"
@@ -102,7 +100,7 @@ const DashboardHeader = ({ url, title, subtitle, buttonTitle }) => {
         {/* Button */}
         <Link href={url} className="w-full sm:w-auto">
           <Button
-            className="w-full sm:px-2! lg:px-6! h-[42px]"
+            className="w-full sm:px-2! lg:px-6!"
             rightIcon={<Plus size={16} />}
           >
             {buttonTitle}

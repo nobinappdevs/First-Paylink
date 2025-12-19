@@ -34,7 +34,7 @@ const Transections = () => {
             />
           </div>
 
-          <InputField icon={Search} placeholder="Search products..." />
+          <InputField icon={Search} type="text" placeholder="Search products..." />
         </div>
       </div>
       {/* tible */}

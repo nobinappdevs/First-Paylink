@@ -1,3 +1,4 @@
+'use client';
 import { Search } from "lucide-react";
 import React from "react";
 import MoneyOutLogTable from "./MoneyOutLogTable";
@@ -58,7 +59,9 @@ const AllMoneyLogs = () => {
         <div className="">
           <h4 className="text-xl  text-secondery font-bold">Transaction Log</h4>
         </div>
-        <InputField icon={Search} placeholder="Search products..." name={Search} />
+        <div className="">
+        <InputField icon={Search} type="text" placeholder="Search products..." name={'search'} />
+        </div>
       </div>
       {/* tible */}
       <MoneyOutLogTable moneyOutLogs={moneyOutLogs} />
