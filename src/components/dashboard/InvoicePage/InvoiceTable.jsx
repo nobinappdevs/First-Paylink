@@ -12,6 +12,7 @@ import {
 import InvoiceWithPDF from "./InvoiceWithPDF";
 import Link from "next/link";
 import InvoiceModal from "./InvoiceModal";
+import InputField from "@/components/ui/InputField";
 
 export default function InvoiceTable({ invoices }) {
   const [copiedId, setCopiedId] = useState(null);
@@ -110,18 +111,7 @@ export default function InvoiceTable({ invoices }) {
   return (
     <div className="bg-basic rounded-xl shadow-sm border border-text/10 overflow-hidden text-text ">
       <div className="px-6 py-4 border-b border-text/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="relative w-full sm:max-w-sm">
-          <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
-            size={18}
-          />
-          <input
-            type="text"
-            placeholder="Search invoice ID or client..."
-            className="w-full pl-10 pr-4 py-2 text-sm border border-text/30 rounded-lg focus:ring-text focus:border-text transition-all placeholder:text-text/40"
-            aria-label="Search invoices"
-          />
-        </div>
+ <InputField icon={Search} placeholder="Search products..." name={Search} />
         <p className="text-sm text-text/80 whitespace-nowrap">
           Showing{" "}
           <span className="font-semibold text-text">{invoices.length}</span>{" "}

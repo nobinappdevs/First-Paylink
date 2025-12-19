@@ -102,7 +102,7 @@ const Navbar = ({ handleOpen }) => {
 
   return (
     <nav className="sticky top-0 z-40 lg:z-50">
-      <div className="relative w-full pt-5 pb-2.5 px-4   bg-basic  flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.15)]">
+      <div className="relative w-full py-2.5 px-4   bg-basic  flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.08)]">
         <div className="xl:block hidden">
           <h4>Welcome Back</h4>
           <h6>Tomas William</h6>

@@ -97,7 +97,7 @@ const Sidebar = ({ onLinkClick }) => {
       role="navigation"
       aria-label="Sidebar Navigation"
     >
-      <div className="pb-[27.5px] mb-6 cursor-pointer pl-9 -ml-9 lg:-ml-12 lg:pl-12 shadow-[0_4px_6px_-4px_rgba(0,0,0,0.08)]">
+      <div className="pb-[18px] mb-6 cursor-pointer pl-9 -ml-9 lg:-ml-12 lg:pl-[54px] shadow-[0_4px_6px_-4px_rgba(0,0,0,0.08)]">
         <Link href="/" aria-label="Go to homepage">
           <Image
             src={logo}
@@ -105,7 +105,7 @@ const Sidebar = ({ onLinkClick }) => {
             loading="eager"
             width={150}
             height={60}
-            className="w-40 h-8"
+            className="w-auto h-8 "
           />
         </Link>
       </div>

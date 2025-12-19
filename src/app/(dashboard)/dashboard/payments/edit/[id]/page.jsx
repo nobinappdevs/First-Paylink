@@ -5,7 +5,7 @@ import React from 'react';
 const page = async ({params}) => {
     const {id}   = await params;
     return (
-        <div  className="xl:p-8 p-4" >  
+        <div  className="xl:p-8 p-4 pb-0!" >  
             <EditPayment />    
         </div>
     );

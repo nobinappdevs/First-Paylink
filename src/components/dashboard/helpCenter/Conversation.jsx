@@ -16,10 +16,10 @@ const Conversation = () => {
                 <User size={18} className="text-gray-500" />
               </div>
               <div>
-                <h3 className="font-bold text-sm">App Devs</h3>
-                <p className="text-xs text-orange-500 font-medium">
+                <h4 className="font-bold text-sm">App Devs</h4>
+                <h6 className="text-xs text-orange-500 font-medium">
                   Ticket ID: #trvXqZTRH9
-                </p>
+                </h6>
               </div>
             </div>
             <div className="flex items-center gap-2 text-xs font-semibold text-orange-500">
@@ -30,22 +30,22 @@ const Conversation = () => {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 bg-[#fcfcfc]">
-            <h4 className="font-bold text-lg mb-4">Messages</h4>
+            <h5 className="font-bold text-lg mb-4">Messages</h5>
 
             {/* Sender Message */}
             <div className="flex items-end gap-3 max-w-[85%]">
               <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
                 <User size={14} className="text-gray-500" />
               </div>
-              <div className="bg-secondery/90 text-white px-5 py-2 rounded-2xl rounded-bl-none shadow-md">
-                <p className="text-sm">Hi</p>
+              <div className="bg-primary  px-5 py-2 rounded-2xl rounded-bl-none shadow-md">
+                <h6 className="text-sm text-white! ">Hi</h6>
               </div>
             </div>
 
             {/* Self Message */}
             <div className="flex items-end gap-3 justify-end ml-auto max-w-[85%] text-right">
-              <div className="bg-secondery/90 text-white px-5 py-2 rounded-2xl rounded-br-none shadow-md">
-                <p className="text-sm">Hello</p>
+              <div className="bg-primary  px-5 py-2 rounded-2xl rounded-br-none shadow-md">
+                <h6 className="text-sm text-white! ">Hello</h6>
               </div>
               <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
                 <User size={14} className="text-gray-500" />
@@ -76,20 +76,20 @@ const Conversation = () => {
               <span className="text-sm font-bold">Pending</span>
             </div>
 
-            <h4 className="font-bold text-md mb-4 border-b pb-2">
+            <h5 className="font-bold text-md mb-4 border-b pb-2">
               Support Details
-            </h4>
+            </h5>
 
             <div className="space-y-4 text-sm">
               <div className="flex justify-between gap-2">
                 <span className="text-gray-500 font-medium">Subject :</span>
-                <span className="font-semibold uppercase text-right">cxv</span>
+                <span className="font-semibold uppercase text-right">Talking</span>
               </div>
 
               <div className="space-y-1">
                 <span className="text-gray-500 font-medium">Description :</span>
                 <p className="text-gray-700 bg-gray-50 p-2 rounded border border-dashed border-gray-200">
-                  XCVXCXV
+                  Hello, I am facing an issue with integrating the payment
                 </p>
               </div>
 
@@ -108,12 +108,6 @@ const Conversation = () => {
                 </div>
               </div>
             </div>
-          </section>
-
-          <section className="pt-6 border-t border-gray-100 opacity-60">
-            <h4 className="font-bold text-md mb-4 border-b pb-2 text-gray-400">
-              Previous Log
-            </h4>
           </section>
         </div>
       </div>

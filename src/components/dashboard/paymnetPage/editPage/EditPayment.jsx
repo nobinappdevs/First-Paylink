@@ -395,7 +395,7 @@ export default function PaymentPage() {
     { value: "bdt", label: "BDT - Bangladeshi Taka" },
   ];
   return (
-    <div className=" px-4 pt-8 ">
+    <div className=" ">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Panel - Form */}
         <div className="bg-white rounded-2xl shadow-lg p-8">

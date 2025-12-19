@@ -2,10 +2,10 @@
 import React from "react";
 import HistoryTable from "../dashboardHome/HistoryTable";
 import Pagination from "@/components/Sheared/Pagination";
-import { FaSearch } from "react-icons/fa";
 import Select from "react-select";
 import { reactSelectStyles } from "@/style/selectStyles";
 import InputField from "@/components/ui/InputField";
+import { Search } from "lucide-react";
 
 const Transections = () => {
   const filterOptions = [
@@ -16,29 +16,25 @@ const Transections = () => {
   ];
 
   return (
-    <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[20px] shadow-md w-full ">
+    <div className="bg-basic rounded-xl shadow-md w-full ">
       {/* Search */}
-      <div className="p-4 border-b border-slate-100 flex  justify-between items-center gap-3">
+      <div className="p-4 border-b border-slate-100 md:flex  justify-between items-center gap-3">
         <div className="">
-          <h4 className="text-xl  text-secondery font-bold">
+          <h4 className="text-xl md:mb-0 mb-4 text-secondery font-bold">
             Transaction Log
           </h4>
         </div>
-        <div className="relative flex gap-x-2.5">
-          <Select
-            options={filterOptions}
-            instanceId="currency-select"
-            placeholder="Select Currency"
-            styles={reactSelectStyles}
-          />
-          <div className="relative">
-            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2  text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="pl-10 w-full bg-white border border-[#e5e5e5] rounded-[5px] h-[45px] leading-[45px] px-[15px] py-2.5 text-[14px] font-medium text-[#425466] shadow-none outline-none focus:ring-0 focus:border-primary"
+        <div className="relative flex md:flex-row flex-col gap-2.5">
+          <div className="min-w-[180px]">
+            <Select
+              options={filterOptions}
+              instanceId="currency-select"
+              placeholder="Filter"
+              styles={reactSelectStyles}
             />
           </div>
+
+          <InputField icon={Search} placeholder="Search products..." />
         </div>
       </div>
       {/* tible */}

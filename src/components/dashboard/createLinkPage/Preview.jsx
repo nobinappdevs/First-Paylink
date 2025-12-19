@@ -15,6 +15,7 @@ import qrpayLogo from "@assets/qrpayLogo.webp";
 import razorpayLogo from "@assets/razorpayLogo.webp";
 import sslcommezLogo from "@assets/sslcommezLogo.webp";
 import stipeLogo from "@assets/stipeLogo.webp";
+import siteLogo from "@assets/logo.webp";
 import InputField from "@/components/ui/InputField";
 
 const Preview = () => {
@@ -54,10 +55,7 @@ const Preview = () => {
       </div>
       {/* Company */}
       <div className="mb-6 pb-6 border-b-2 border-slate-100">
-        <div className="flex items-center space-x-2 text-secondery/80">
-          <div className="w-5 h-5 bg-secondery/80 rounded" />
-          <span className="font-semibold text-sm">Pay Link</span>
-        </div>
+        <Image src={siteLogo} alt="Company Logo" className="h-6 w-auto" />
       </div>
 
       {/* Amount */}
@@ -69,15 +67,6 @@ const Preview = () => {
           readOnly
         />
       </div>
-
-      {/* Message */}
-      <div className="mb-6 bg-slate-50 rounded-xl p-4">
-        <h5 className="text-sm font-medium text-slate-700 mb-2">Message</h5>
-        <h6 className="text-xs text-slate-500">
-          {formData.description || "No message provided"}
-        </h6>
-      </div>
-
       {/* Payment Gateways */}
       <fieldset className="mb-6">
         <legend className="text-sm font-bold text-slate-800 mb-4">

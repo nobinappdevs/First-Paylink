@@ -12,6 +12,7 @@ const InputField = ({
   defaultValue,
   required = false,
   readOnly = false,
+  icon: Icon,
   className = "",
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +20,7 @@ const InputField = ({
   return (
     <div className="flex flex-col gap-1  w-full">
       {label && (
-        <label className="block text-sm font-medium text-slate-700 mb-1">
+        <label className="block text-sm font-medium text-text/80 mb-1">
           {label}{" "}
           <span className="text-red-500" aria-label="required">
             *
@@ -68,20 +69,34 @@ const InputField = ({
           )}
         </div>
       )}
-
-      {/* ===== DEFAULT INPUT ===== */}
+      {/* ===== DEFAULT INPUT (WITH ICON SUPPORT) ===== */}
       {type !== "textarea" && type !== "password" && (
-        <input
-          type={type}
-          name={name}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          defaultValue={defaultValue}
-          required={required}
-          readOnly={readOnly}
-          className={`w-full bg-white border border-[#e5e5e5] rounded-[5px] h-[45px] leading-[45px] px-[15px] py-2.5 text-[14px] font-medium text-[#425466] shadow-none outline-none focus:ring-0 focus:border-primary ${className}`}
-        />
+        <div className={`relative ${Icon ? "flex-1 max-w-sm" : ""}`}>
+          {Icon && (
+            <Icon
+              size={18}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+            />
+          )}
+
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            defaultValue={defaultValue}
+            required={required}
+            readOnly={readOnly}
+            className={`
+              w-full bg-white border border-[#e5e5e5] rounded-[5px]
+              h-[45px] text-[14px] font-medium text-[#425466]
+              outline-none focus:border-primary
+              ${Icon ? "pl-10 pr-4" : "px-[15px]"}
+              ${className}
+            `}
+          />
+        </div>
       )}
     </div>
   );

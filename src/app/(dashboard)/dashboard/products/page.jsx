@@ -6,12 +6,12 @@ const page = () => {
     <div className="xl:p-8 p-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 mb-4 border-b border-b-text/10 ">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-secondery">
+          <h4 className="text-2xl font-bold tracking-tight text-secondery">
             Products
-          </h1>
-          <p className="text-text  text-sm mt-1">
+          </h4>
+          <h6 className="text-text  text-sm mt-1">
             Manage your payment links and track transactions.
-          </p>
+          </h6>
         </div>
       </div>
       <ProductTaible />

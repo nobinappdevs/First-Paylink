@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import InputField from "@/components/ui/InputField";
 
 const MOCK_PRODUCTS = [
   {
@@ -83,16 +84,7 @@ export default function ProductTaible() {
     <div className="bg-white  rounded-xl shadow-lg border border-slate-100 overflow-hidden text-slate-900">
       <div className="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
         <div className="relative w-full sm:max-w-sm">
-          <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
-            size={18}
-          />
-          <input
-            type="text"
-            placeholder="Search products..."
-            className="w-full pl-10 pr-4 py-2 text-sm border border-slate-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition-all placeholder:text-slate-400"
-            aria-label="Search products"
-          />
+          <InputField icon={Search} placeholder="Search products..." name={Search} />
         </div>
         <Link href={"/dashboard/products/create"}>
           <Button rightIcon={<Plus size={18} />}>Add New Product</Button>
@@ -204,7 +196,7 @@ export default function ProductTaible() {
                   <div className="flex items-center justify-end gap-1">
                     <button
                       onClick={() => handleClick(product)}
-                      className="p-2 text-slate-400 cursor-pointer hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-all"
+                      className="p-2 text-slate-400 cursor-pointer hover:text-white hover:bg-primary rounded-md transition-all"
                       title="Copy Product Link"
                     >
                       <Link2 size={16} />
@@ -239,14 +231,14 @@ export default function ProductTaible() {
                     >
                       <Link href={`/dashboard/products/edit/${product.id}`}>
                         <button
-                          className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:bg-indigo-50/50 hover:text-indigo-600 transition-colors rounded-t-lg"
+                          className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-slate-700 hover:text-white hover:bg-primary transition-colors rounded-t-lg"
                           role="menuitem"
                         >
                           <Edit size={16} /> Edit
                         </button>
                       </Link>
                       <button
-                        className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50/50 hover:text-red-700 transition-colors rounded-b-lg"
+                        className="w-full flex items-center cursor-pointer gap-2 text-left px-4 py-2 text-sm text-red-600 hover:text-white hover:bg-primary transition-colors rounded-b-lg"
                         role="menuitem"
                       >
                         <Trash2 size={16} /> Delete

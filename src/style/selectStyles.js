@@ -1,41 +1,3 @@
-// // src/styles/reactSelectStyles.js
-// export const reactSelectStyles = {
-//   control: (base, state) => ({
-//     ...base,
-//     padding: "6px",
-//     borderRadius: "12px",
-//     border: state.isFocused
-//       ? "2px solid #00000018"
-//       : "2px solid #00000018",
-//     boxShadow: state.isFocused
-//       ? "0 0 0 2px rgba(16,185,129,0.2)"
-//       : "none",
-//     cursor: "pointer",
-//     minHeight: "48px",
-//   }),
-
-//   option: (base, state) => ({
-//     ...base,
-//     backgroundColor: state.isFocused ? "#ecfdf5" : "#fff",
-//     color: "#334155",
-//     cursor: "pointer",
-//   }),
-
-//   placeholder: (base) => ({
-//     ...base,
-//     color: "#94a3b8",
-//   }),
-
-//   singleValue: (base) => ({
-//     ...base,
-//     color: "#334155",
-//   }),
-// };
-
-
-
-// src/styles/reactSelectStyles.js
-
 export const reactSelectStyles = {
   control: (base, state) => ({
     ...base,
@@ -52,10 +14,7 @@ export const reactSelectStyles = {
     fontWeight: 500,
     color: "#425466",
     outline: "none",
-
-    // focus state
     borderColor: state.isFocused ? "#5b39c9" : "#e5e5e5",
-
     "&:hover": {
       borderColor: "#5b39c9",
     },
@@ -63,7 +22,7 @@ export const reactSelectStyles = {
 
   valueContainer: (base) => ({
     ...base,
-    padding: "0", // react-select default padding remove
+    padding: "0", 
     height: "45px",
     display: "flex",
     alignItems: "center",

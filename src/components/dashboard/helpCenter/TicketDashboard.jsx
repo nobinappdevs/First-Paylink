@@ -404,12 +404,12 @@ export default function TicketDashboard() {
     <div className="w-full">
       {/* ---------- Header ---------- */}
       <header className="mb-8">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondery/80">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-secondery/80">
           <span className="text-primary">Support</span> Dashboard
-        </h1>
-        <p className="text-sm sm:text-base text-text mt-1">
+        </h3>
+        <h6 className="text-sm sm:text-base text-text mt-1">
           Real-time overview of all customer support requests and status.
-        </p>
+        </h6>
       </header>
 
       {/* ---------- Metrics ---------- */}
@@ -421,9 +421,9 @@ export default function TicketDashboard() {
 
       {/* ---------- Action Bar ---------- */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-text">
+        <h4 className="text-xl sm:text-2xl font-bold text-text">
           Recent Tickets ({tickets.length})
-        </h2>
+        </h4>
 
         <Link
           href="/dashboard/helpCenter/create"
@@ -502,7 +502,7 @@ export default function TicketDashboard() {
                   <td className="px-3 sm:px-6 py-3 sm:py-4 text-right">
                     <Link href="/dashboard/helpCenter/conversation/20">
                       <button
-                        className="p-2 rounded-full bg-primary/20 text-primary/80 cursor-pointer hover:bg-blue-200 transition"
+                        className="p-2 rounded-full bg-primary/20 text-primary/60 cursor-pointer hover:bg-blue-200 transition"
                         title="View Details"
                       >
                         <MessagesSquare className="w-5 h-5 sm:w-6 sm:h-6" />
