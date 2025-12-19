@@ -24,7 +24,7 @@ const Layouts = ({ children }) => {
   return (
     <div className="grid grid-cols-12 min-h-screen ">
       {/* Desktop Sidebar */}
-      <div className="xl:col-span-2 relative hidden xl:block bg-basic shadow-sm z-50 lg:z-40">
+      <div className="xl:col-span-2 relative hidden xl:block bg-basic shadow-[4px_0_6px_-4px_rgba(0,0,0,0.03)] z-50 lg:z-40">
         <div className="sticky top-0 h-screen">
           <Sidebar onLinkClick={() => setOpen(false)} />
         </div>

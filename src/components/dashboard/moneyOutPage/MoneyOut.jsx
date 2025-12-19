@@ -373,7 +373,7 @@ export default function MoneyOut() {
     <div className="mb-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8">
         {/* Left */}
-        <div className="bg-white rounded-xl shadow-sm p-4 md:p-8">
+        <div className="bg-white rounded-xl  border border-text/10 p-4 md:p-8">
           <h4 className="mb-6 md:mb-8">Money Out Request</h4>
 
           {/* Rate */}
@@ -429,7 +429,7 @@ export default function MoneyOut() {
         </div>
 
         {/* Right */}
-        <div className="bg-white rounded-xl shadow-sm p-4 md:p-8 lg:sticky lg:top-12">
+        <div className="bg-white rounded-xl border border-text/10 p-4 md:p-8 lg:sticky lg:top-12">
           <h4 className="text-xl md:text-3xl font-bold mb-6">
             Transaction Preview
           </h4>

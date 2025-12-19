@@ -109,7 +109,7 @@ export default function InvoiceTable({ invoices }) {
   });
 
   return (
-    <div className="bg-basic rounded-xl shadow-sm border border-text/10 overflow-hidden text-text ">
+    <div className="bg-basic rounded-xl  border border-text/15 overflow-hidden text-text ">
       <div className="px-6 py-4 border-b border-text/10 flex flex-col sm:flex-row items-center justify-between gap-3">
  <InputField icon={Search} placeholder="Search products..." name={Search} />
         <p className="text-sm text-text/80 whitespace-nowrap">

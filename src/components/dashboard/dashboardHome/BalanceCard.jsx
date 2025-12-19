@@ -66,7 +66,7 @@ const BalanceCard = () => {
       {balanceData.map((item) => (
         <div
           key={item.id}
-          className="px-4 pt-4 pb-5 rounded-2xl bg-basic shadow-sm"
+          className="px-4 pt-4 pb-5 rounded-2xl bg-basic "
         >
           <div className="flex items-center justify-between">
             <div

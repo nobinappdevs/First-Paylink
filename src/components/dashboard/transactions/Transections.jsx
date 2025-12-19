@@ -16,7 +16,7 @@ const Transections = () => {
   ];
 
   return (
-    <div className="bg-basic rounded-xl shadow-md w-full ">
+    <div className="bg-basic rounded-xl border border-text/15 w-full ">
       {/* Search */}
       <div className="p-4 border-b border-slate-100 md:flex  justify-between items-center gap-3">
         <div className="">

@@ -367,7 +367,7 @@ const getMetricData = (tickets) => {
 /* ------------------ METRIC CARD ------------------ */
 const MetricCard = ({ title, value, icon, color, bg }) => (
   <div
-    className={`p-4 sm:p-6 rounded-xl border border-gray-200 shadow-sm ${bg}`}
+    className={`p-4 sm:p-6 rounded-xl  border border-text/10 ${bg}`}
   >
     <div className="flex items-center justify-between">
       <div>
@@ -434,7 +434,7 @@ export default function TicketDashboard() {
       </div>
 
       {/* ---------- Table ---------- */}
-      <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+      <div className="overflow-x-auto rounded-xl  border border-text/15">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>

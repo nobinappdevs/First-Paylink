@@ -76,7 +76,7 @@ const PaymentLinksModern = () => {
         <DahsboardHeader url={"/dashboard/payments/create"} title={"Payment Links"} subtitle={"Manage your payment links and track transactions."} buttonTitle={"Payment Link"} />
 
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden">
+        <div className="bg-white rounded-2xl  border border-text/15  overflow-hidden">
           {/* Search */}
           <div className="p-4 border-b border-slate-100 flex items-center gap-3">
          <InputField icon={Search} placeholder="Search products..." name={Search} />

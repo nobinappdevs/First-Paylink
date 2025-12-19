@@ -81,7 +81,7 @@ export default function ProductTaible() {
   };
 
   return (
-    <div className="bg-white  rounded-xl shadow-lg border border-slate-100 overflow-hidden text-slate-900">
+    <div className="bg-white  rounded-xl  border border-text/15 overflow-hidden text-slate-900">
       <div className="px-6 py-4 border-b border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
         <div className="relative w-full sm:max-w-sm">
           <InputField icon={Search} placeholder="Search products..." name={Search} />
@@ -181,8 +181,8 @@ export default function ProductTaible() {
                       className={`text-sm font-semibold  tracking-wide transition-colors duration-300
         ${
           product.status === "Active"
-            ? "text-green-600 drop-shadow-[0_1px_1px_rgba(0,0,0,0.15)]"
-            : "text-red-500 drop-shadow-[0_1px_1px_rgba(0,0,0,0.15)]"
+            ? "text-green-600 "
+            : "text-red-500 "
         }
       `}
                     >
