@@ -223,36 +223,37 @@
 // export default RegistrationPage;
 
 "use client";
-
-import React, { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, User, Building2, Globe } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import InputField from "../ui/InputField";
+import Select from "react-select";
+import { reactSelectStyles } from "@/style/selectStyles";
 
 const RegisterPage = () => {
-  const [showPassword, setShowPassword] = useState(false);
+
+  const country = [
+    { label: "Bangladesh", value: "Bangladesh" },
+    { label: "India", value: "India" },
+    { label: "United States", value: "United States" },
+    { label: "United Kingdom", value: "United Kingdom" },
+  ];
 
   return (
     <main
       role="main"
-      className="min-h-screen flex items-center  justify-center p-4 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50"
+      className="min-h-screen flex items-center  justify-center p-4"
     >
       <section
         aria-labelledby="registersecondery"
-        className="w-full md:w-5/12 bg-white rounded-2xl p-8 border border-gray-100 shadow-xl shadow-gray-200/50"
+        className="w-full md:w-5/12 bg-white rounded-xl p-8 border border-text/10"
       >
         {/* Header */}
         <header className="text-center mb-8">
-          <h2
-            id="registersecondery"
-            className="text-2xl font-extrabold  text-secondery/90"
-          >
-            Register for an Account Today
-          </h2>
-          <p className="text-gray-500 mt-2 text-sm">
+          <h4>Register for an Account Today</h4>
+          <h6 className="text-gray-500 mt-2 text-sm">
             Become a part of our community by registering for an account today.
             Enjoy a range of benefits and features tailored to meet your needs.
-          </p>
+          </h6>
         </header>
 
         {/* Form */}
@@ -260,153 +261,67 @@ const RegisterPage = () => {
           {/* First & Last Name */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label
-                htmlFor="firstName"
-                className="block text-sm font-semibold text-gray-700 mb-1"
-              >
-                First Name <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <User
-                  aria-hidden
-                  className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-                />
-                <input
-                  id="firstName"
-                  type="text"
-                  placeholder="First Name"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-md focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
-                />
-              </div>
+              <InputField
+                label={"First Name"}
+                placeholder={"First Name"}
+                type="text"
+              />
             </div>
-
             <div>
-              <label
-                htmlFor="lastName"
-                className="block text-sm font-semibold text-gray-700 mb-1"
-              >
-                Last Name <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <User
-                  aria-hidden
-                  className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-                />
-                <input
-                  id="lastName"
-                  type="text"
-                  placeholder="Last Name"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-md focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
-                />
-              </div>
+              <InputField
+                label={"Last Name"}
+                placeholder={"Last Name"}
+                type="text"
+              />
             </div>
           </div>
 
           {/* Email */}
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold text-gray-700 mb-1"
-            >
-              Email Address <span className="text-red-500">*</span>
-            </label>
-            <div className="relative">
-              <Mail
-                aria-hidden
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-              />
-              <input
-                id="email"
-                type="email"
-                placeholder="Email Address"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-md focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
-              />
-            </div>
+            <InputField
+              label={"Email Address"}
+              placeholder={"Email Address"}
+              type="email"
+            />
           </div>
 
           {/* Country */}
           <div>
-            <label
-              htmlFor="country"
-              className="block text-sm font-semibold text-gray-700 mb-1"
-            >
-              Country <span className="text-red-500">*</span>
+            <label className="text-sm font-medium text-slate-700 mb-1 block">
+              Payment Gateway *
             </label>
-            <div className="relative">
-              <Globe
-                aria-hidden
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-              />
-              <select
-                id="country"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-md bg-white focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
-              >
-                <option value="">Select Country</option>
-                <option>Bangladesh</option>
-                <option>India</option>
-                <option>United States</option>
-                <option>United Kingdom</option>
-              </select>
-            </div>
+            <Select
+              options={country}
+              instanceId="gateway-select"
+              placeholder="Select Gateway"
+              styles={reactSelectStyles}
+              isSearchable
+            />
           </div>
 
           {/* Company */}
           <div>
-            <label
-              htmlFor="company"
-              className="block text-sm font-semibold text-gray-700 mb-1"
-            >
-              Company Name <span className="text-red-500">*</span>
-            </label>
-            <div className="relative">
-              <Building2
-                aria-hidden
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-              />
-              <input
-                id="company"
-                type="text"
-                placeholder="Company Name"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl shadow-md focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
-              />
-            </div>
+            <InputField
+              label={"Company Name"}
+              placeholder={"Company Name"}
+              type="text"
+            />
           </div>
 
           {/* Password */}
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-semibold text-gray-700 mb-1"
-            >
-              Password <span className="text-red-500">*</span>
-            </label>
-            <div className="relative">
-              <Lock
-                aria-hidden
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
-              />
-              <input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl shadow-md focus-visible:ring-2 focus-visible:ring-primary-500/50 focus-visible:border-primary-500 focus-visible:outline-none transition"
-              />
-              <button
-                type="button"
-                aria-label={showPassword ? "Hide password" : "Show password"}
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary-600 p-1 rounded-full"
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
+            <InputField
+              label={"Password"}
+              placeholder={"Password"}
+              type="password"
+            />
           </div>
 
           {/* Terms */}
-          <label className="flex items-start gap-2 text-sm text-gray-600">
+          <label className="flex cursor-pointer items-start gap-2 text-sm text-gray-600">
             <input
               type="checkbox"
-              className="mt-1 rounded border-gray-300 text-primary-600 focus-visible:ring-primary-500"
+              className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded"
             />
             <span>
               I have agreed with{" "}
@@ -417,16 +332,13 @@ const RegisterPage = () => {
           </label>
 
           {/* Submit */}
-          <Button
-            type="button"
-            className="w-full flex justify-center py-3 text-lg font-semibold rounded-xl shadow-lg shadow-primary-500/30"
-          >
+          <Button type="button" className="w-full">
             Register Now
           </Button>
         </form>
 
         {/* Switch */}
-        <p className="text-center text-sm text-gray-600 mt-8">
+        <h6 className="text-center  mt-8">
           Already Have An Account?{" "}
           <Link
             href="/login"
@@ -434,7 +346,7 @@ const RegisterPage = () => {
           >
             Login Now
           </Link>
-        </p>
+        </h6>
       </section>
     </main>
   );
