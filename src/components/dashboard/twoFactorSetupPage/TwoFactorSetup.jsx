@@ -12,7 +12,7 @@ const TwoFactorSetup = () => {
   return (
     <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-6">
       {/* LEFT – QR & SECRET */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8 flex flex-col">
+      <div className="bg-white rounded-2xl border border-text/10  p-6 sm:p-8 flex flex-col">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 rounded-lg bg-indigo-100 text-indigo-600">
@@ -69,7 +69,7 @@ const TwoFactorSetup = () => {
       </div>
 
       {/* RIGHT – APP INFO */}
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
+      <div className="bg-white rounded-2xl border border-text/10   p-6 sm:p-8">
         <h4 className=" mb-4">
           Google <span className="text-primary">Authenticator</span>
         </h4>

@@ -23,14 +23,14 @@ const ProfilePage = () => {
     <div className="max-w-6xl mx-auto px-4 ">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <h4 className="text-2xl font-bold text-secondery/80 ">User Profile</h4>
+        <h4>User Profile</h4>
         <Button rightIcon={<Trash2 size={20} />} className="bg-red-600!">
           Delete Profile
         </Button>
       </div>
 
       <div className="space-y-6">
-        <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+        <div className="bg-white rounded-2xl  overflow-hidden border border-text/10">
           {/* Cover */}
           <div className="relative h-48 bg-linear-to-r from-primary to-primary">
             {/* Avatar */}
