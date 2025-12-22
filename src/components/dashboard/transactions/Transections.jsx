@@ -17,15 +17,16 @@ const Transections = () => {
 
   return (
     <div className="bg-basic rounded-xl border border-text/15 w-full ">
-      {/* Search */}
-      <div className="p-4 border-b border-slate-100 md:flex  justify-between items-center gap-3">
-        <div className="">
+      <div className="p-4 border-b border-slate-100 md:flex justify-between items-center gap-3">
+        <div>
           <h4 className="text-xl md:mb-0 mb-4 text-secondery font-bold">
             Transaction Log
           </h4>
         </div>
-        <div className="relative flex md:flex-row flex-col gap-2.5">
-          <div className="min-w-[180px]">
+
+        <div className="relative flex flex-col md:flex-row gap-2.5 w-full md:w-auto">
+          {/* Select (auto width) */}
+          <div className="w-full md:w-auto min-w-40">
             <Select
               options={filterOptions}
               instanceId="currency-select"
@@ -34,9 +35,17 @@ const Transections = () => {
             />
           </div>
 
-          <InputField icon={Search} type="text" placeholder="Search products..." />
+          {/* Input Field */}
+          <div className="w-full md:w-[260px]">
+            <InputField
+              icon={Search}
+              type="text"
+              placeholder="Search products..."
+            />
+          </div>
         </div>
       </div>
+
       {/* tible */}
       <HistoryTable />
       {/* Pagination Section */}

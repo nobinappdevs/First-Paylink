@@ -88,10 +88,7 @@ const InputField = ({
             defaultValue={defaultValue}
             required={required}
             readOnly={readOnly}
-            className={`
-              w-full bg-white border border-[#e5e5e5] rounded-[5px]
-              h-[45px] text-[14px] font-medium text-[#425466]
-              outline-none focus:border-primary
+            className={`w-full bg-white border border-[#e5e5e5] rounded-[5px] h-[45px] text-[14px] font-medium text-[#425466] outline-none focus:border-primary
               ${Icon ? "pl-10 pr-4" : "px-[15px]"}
               ${className}
             `}

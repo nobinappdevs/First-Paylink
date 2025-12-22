@@ -6,7 +6,7 @@ import Link from "next/link";
 const TransactionHistory = () => {
   return (
     <>
-      <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[18px] w-full mt-8">
+      <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[14px] w-full mt-8">
         <div className="md:flex justify-between items-center mb-4">
           <h4 className="text-xl md:text-left text-center text-secondery lg:pb-0 pb-2  font-bold">
             Transaction History

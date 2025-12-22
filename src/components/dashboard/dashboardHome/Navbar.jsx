@@ -267,7 +267,7 @@ const Navbar = ({ handleOpen }) => {
                   ))}
                 </div>
                 <div className="border-b border-gray-300 pb-3 mb-4">
-                  <Link href={"/dashboard/verificationkyc"}>
+                  <Link href={"/dashboard/kyc"}>
                     <button
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
@@ -278,7 +278,7 @@ const Navbar = ({ handleOpen }) => {
                       </h6>
                     </button>
                   </Link>
-                  <Link href={"/dashboard/twofaverification"}>
+                  <Link href={"/dashboard/2fa"}>
                     <button
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"
