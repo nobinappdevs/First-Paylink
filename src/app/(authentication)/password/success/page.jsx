@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const page = () => {
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
-      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 shadow-sm text-center">
+    <main className="min-h-screen flex items-center justify-center p-4 ">
+      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10  text-center">
 
         <h4 className="text-2xl font-bold text-emerald-600">
           Password Updated

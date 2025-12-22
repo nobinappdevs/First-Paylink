@@ -16,8 +16,8 @@ const page = () => {
     router.push('/password/success');
   }
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
-      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 shadow-sm">
+    <main className="min-h-screen flex items-center justify-center p-4 ">
+      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 ">
 
         <div className="flex justify-center mb-8">
           <Link href="/">

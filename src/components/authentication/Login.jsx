@@ -125,11 +125,11 @@ const LoginPage = () => {
   return (
     <main
       role="main"
-      className="min-h-screen flex items-center justify-center p-4 bg-slate-50"
+      className="min-h-screen flex items-center justify-center p-4 "
     >
       <section
         aria-labelledby="login-title"
-        className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 shadow-sm"
+        className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10"
       >
         {/* Logo */}
         <div className="flex justify-center mb-8">

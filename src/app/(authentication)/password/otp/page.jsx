@@ -15,8 +15,8 @@ const page = () => {
         router.push('/password/reset');
       }
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
-      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 shadow-sm">
+    <main className="min-h-screen flex items-center justify-center p-4 ">
+      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 ">
 
         {/* Logo */}
         <div className="flex justify-center mb-8">
@@ -39,7 +39,7 @@ const page = () => {
               key={i}
               type="text"
               maxLength={1}
-              className="w-12 h-12 text-center border rounded-lg text-lg focus:border-primary outline-none"
+              className="w-12 h-12 text-center border border-text/30 rounded-lg text-lg focus:border-primary outline-none"
             />
           ))}
         </div>
