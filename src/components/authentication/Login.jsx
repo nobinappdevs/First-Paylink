@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import Button from "../ui/Button";
 import InputField from "../ui/InputField";
 import logo from "@assets/logo.webp";
+import { loginAPI } from "@/services/apiClient";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -24,10 +25,11 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_base_url}/${process.env.NEXT_PUBLIC_version}/user/login`,
-        { email, password }
-      );
+      const payload = {
+        email,
+        password,
+      };
+      const res = await loginAPI(payload);
 
       const token = res?.data?.data?.token;
       const user = res?.data?.data?.user;

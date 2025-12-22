@@ -16,7 +16,6 @@ export const AuthProvider = ({ children }) => {
     const localToken = localStorage.getItem("authToken");
     const sessionToken = sessionStorage.getItem("authToken");
     const authToken = localToken || sessionToken;
-    console.log(authToken);
 
     setToken(authToken);
 

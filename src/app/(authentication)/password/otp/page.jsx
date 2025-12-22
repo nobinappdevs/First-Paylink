@@ -205,7 +205,6 @@
 //     }
 
 //     // 👉 API call will go here
-//     console.log("OTP:", otp);
 
 //     router.push("/password/reset");
 //   };
@@ -329,14 +328,12 @@ const Page = () => {
       return;
     }
 
-    console.log("OTP:", otp);
 
     startTimer(); // ⏱️ start after submit
     router.push("/password/reset");
   };
 
   const handleResendOtp = () => {
-    console.log("Resend OTP");
 
     startTimer(); // ⏱️ start after resend click
 

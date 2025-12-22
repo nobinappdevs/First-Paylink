@@ -6,7 +6,6 @@ import {
   FiGlobe,
   FiLogOut,
   FiSend,
-  FiPlusCircle,
   FiCheckSquare,
   FiShield,
   FiChevronDown,
@@ -17,6 +16,7 @@ import ThemeToggleSwitch from "./ThemeToggleSwitch";
 import { AlignStartVertical, KeyRound } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import { logOutAPI } from "@/services/apiClient";
 
 const Navbar = ({ handleOpen }) => {
   const [profileOpen, setProfileOpen] = useState(false);
@@ -89,13 +89,26 @@ const Navbar = ({ handleOpen }) => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, log out",
       cancelButtonText: "Cancel",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Logged out!",
-          text: "You have been successfully logged out.",
-          icon: "success",
-        });
+        try {
+          await logOutAPI();
+
+          localStorage.removeItem("authToken");
+          sessionStorage.removeItem("authToken");
+          localStorage.removeItem("user");
+          sessionStorage.removeItem("user");
+
+          Swal.fire("Logged Out", "Successfully logged out", "success");
+
+          window.location.href = "/login";
+        } catch (error) {
+          Swal.fire({
+            title: "Logged out!",
+            text: "You have been successfully logged out.",
+            icon: "success",
+          });
+        }
       }
     });
   };
