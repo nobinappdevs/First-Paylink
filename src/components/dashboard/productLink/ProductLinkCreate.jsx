@@ -16,7 +16,7 @@ export default function ProductLinkCreate() {
     <div className="flex flex-col  lg:flex-row gap-4">
       {/* ===== Left Side ===== */}
       <div className="w-full lg:w-1/2 xl:p-8 p-4 bg-white h-auto">
-        <div className="rounded-2xl space-y-6">
+        <div className="rounded-2xl pt-0 lg:pt-12 space-y-6">
           {/* Select */}
             <div>
               <label className="block text-sm font-medium text-text/80 mb-2">

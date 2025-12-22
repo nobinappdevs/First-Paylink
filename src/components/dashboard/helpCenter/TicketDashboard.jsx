@@ -434,7 +434,7 @@ export default function TicketDashboard() {
       </div>
 
       {/* ---------- Table ---------- */}
-      <div className="overflow-x-auto rounded-xl  border border-text/15">
+      <div className="overflow-x-auto rounded-xl  border border-text/10">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>
@@ -467,11 +467,7 @@ export default function TicketDashboard() {
                   key={ticket.id}
                   className="hover:bg-blue-50/50 transition-colors duration-150"
                 >
-                  <td className="px-3 sm:px-6 py-3 sm:py-4 text-sm font-medium">
-                    {ticket.id}
-                  </td>
-
-                  <td className="hidden md:table-cell px-6 py-4 text-sm">
+                                    <td className="hidden md:table-cell px-6 py-4 text-sm">
                     <a
                       href={`mailto:${ticket.email}`}
                       className="font-semibold text-primary hover:underline"
@@ -479,6 +475,11 @@ export default function TicketDashboard() {
                       {ticket.email}
                     </a>
                   </td>
+                  <td className="px-3 sm:px-6 py-3 sm:py-4 text-sm font-medium">
+                    {ticket.id}
+                  </td>
+
+
 
                   <td className="px-3 sm:px-6 py-3 sm:py-4 max-w-xs truncate text-sm font-medium text-gray-900">
                     {ticket.subject}
@@ -502,10 +503,10 @@ export default function TicketDashboard() {
                   <td className="px-3 sm:px-6 py-3 sm:py-4 text-right">
                     <Link href="/dashboard/helpCenter/conversation/20">
                       <button
-                        className="p-2 rounded-full bg-primary/20 text-primary/60 cursor-pointer hover:bg-blue-200 transition"
+                        className="p-2 rounded-full bg-primary/10 text-primary/60 cursor-pointer hover:bg-blue-200 transition"
                         title="View Details"
                       >
-                        <MessagesSquare className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <MessagesSquare className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                     </Link>
                   </td>
