@@ -12,7 +12,7 @@ import {
   Headset,
   ArrowRightLeft,
 } from "lucide-react";
-import { FiCreditCard, FiLogOut, FiSend } from "react-icons/fi";
+import {  FiSend } from "react-icons/fi";
 
 const NavItem = ({ icon, title, link, active, onClick }) => {
   return (

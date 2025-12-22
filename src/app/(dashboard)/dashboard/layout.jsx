@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "@/components/dashboard/Sidebar";
 import Navbar from "@/components/dashboard/dashboardHome/Navbar";
+import logo from "@assets/logo.webp";
 
 const Layouts = ({ children }) => {
   const [open, setOpen] = useState(false);
