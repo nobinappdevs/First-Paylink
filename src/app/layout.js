@@ -1,6 +1,7 @@
 import { DarkModeProvider } from "@/context/DarkModeProvider";
 import "./globals.css";
 import { Roboto, Montserrat } from "next/font/google";
+import { AuthProvider } from "@/context/AuthProvider";
 
 export const bodyFont = Roboto({
   subsets: ["latin"],
@@ -35,7 +36,9 @@ export default function RootLayout({ children }) {
           </style>
         </head>
         <body className={`${bodyFont.className} bg-body  antialiased`}>
+           <AuthProvider>
           {children}
+           </AuthProvider>
         </body>
       </DarkModeProvider>
     </html>
