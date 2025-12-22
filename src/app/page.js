@@ -9,9 +9,16 @@ export default function Home() {
 
         <Link 
           href="/dashboard"
-          className="px-6 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
+          className="px-6 py-2 rounded-lg block bg-blue-600 text-white font-medium  transition"
         >
           Go to Dashboard
+        </Link>
+        <br />
+        <Link 
+          href="/login"
+          className="px-6 py-2 block rounded-lg bg-primary text-white font-medium  transition"
+        >
+          Login Page
         </Link>
       </div>
     </div>
