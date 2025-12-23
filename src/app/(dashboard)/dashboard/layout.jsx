@@ -21,6 +21,9 @@ const Layouts = ({ children }) => {
         setLoading(true);
         const response = await getUserProfileAPI(); // API call
         setUserProfile(response?.data?.data);
+            if (response?.data?.data?.user?.email_verified === 0) {
+              return router.push("/email-verify");
+    }
       } catch (error) {
         console.error("Failed to fetch user profile:", error);
       } finally {
@@ -29,15 +32,7 @@ const Layouts = ({ children }) => {
     };
 
     fetchUserProfile();
-  }, []);
-
-
-    // ================= REDIRECT IF EMAIL NOT VERIFIED =================
-  useEffect(() => {
-    if (userProfile && userProfile.user?.email_verified === 0) {
-      router.push("/email_verify");
-    }
-  }, [userProfile, router]);
+  }, [ router]);
 
 
   useEffect(() => {
@@ -58,7 +53,12 @@ const Layouts = ({ children }) => {
     return <SkeletonLoader layout="layout" />; 
   }
 
-
+  // if (userProfile === null) {
+  //    return null;
+  // }
+  if (userProfile) {
+    return 'helllo.......'
+  }
 
   return (
     <div className="grid grid-cols-12 min-h-screen ">
