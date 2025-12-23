@@ -10,7 +10,7 @@
 // import { verifyOtpAPI } from "@/services/apiClient";
 
 // const page = () => {
-  
+
 //   const router = useRouter();
 //   const searchParams = useSearchParams();
 //   const token = searchParams.get("token");
@@ -58,7 +58,7 @@
 //     try {
 //       setLoading(true);
 //       const res = await verifyOtpAPI({ otp, token });
-      
+
 //       if (res.data.message.success?.[0]) {
 //         router.push(`/password/reset?token=${token}`);
 //       } else {
@@ -132,9 +132,7 @@
 
 // export default page;
 
-
-
-'use client';
+"use client";
 
 import Button from "@/components/ui/Button";
 import Link from "next/link";
@@ -144,6 +142,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { verifyOtpAPI } from "@/services/apiClient";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 const OTPPage = () => {
   const router = useRouter();
@@ -181,9 +180,12 @@ const OTPPage = () => {
     e.preventDefault();
     const paste = e.clipboardData.getData("text").replace(/[^0-9]/g, "");
     if (!paste) return;
-    paste.split("").slice(0, 6).forEach((num, i) => {
-      if (inputRefs.current[i]) inputRefs.current[i].value = num;
-    });
+    paste
+      .split("")
+      .slice(0, 6)
+      .forEach((num, i) => {
+        if (inputRefs.current[i]) inputRefs.current[i].value = num;
+      });
     const nextIndex = paste.length >= 6 ? 5 : paste.length;
     inputRefs.current[nextIndex]?.focus();
   };
@@ -208,19 +210,19 @@ const OTPPage = () => {
       } else {
         setError("Invalid OTP, please try again.");
       }
-    }  catch (error) {
-          const messages = error?.response?.data?.message?.error;
-    
-          if (Array.isArray(messages)) {
-            messages.forEach((msg) => {
-              toast.error(msg, { position: "top-right" });
-            });
-          } else if (messages) {
-            toast.error(messages, { position: "top-right" });
-          } else {
-            toast.error("Something went wrong", { position: "top-right" });
-          }
-        } finally {
+    } catch (error) {
+      const messages = error?.response?.data?.message?.error;
+
+      if (Array.isArray(messages)) {
+        messages.forEach((msg) => {
+          toast.error(msg, { position: "top-right" });
+        });
+      } else if (messages) {
+        toast.error(messages, { position: "top-right" });
+      } else {
+        toast.error("Something went wrong", { position: "top-right" });
+      }
+    } finally {
       setLoading(false);
     }
   };
@@ -266,9 +268,14 @@ const OTPPage = () => {
           className="w-full mt-8 py-3"
           disabled={loading}
         >
-          {loading ? "Verifying..." : "Verify OTP"}
+          {loading ? (
+            <>
+              <Loader2 className="size-6 animate-spin" />
+            </>
+          ) : (
+            "Verify OTP"
+          )}
         </Button>
-
       </section>
     </main>
   );

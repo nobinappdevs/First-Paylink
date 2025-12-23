@@ -2,11 +2,43 @@
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "@/components/dashboard/Sidebar";
 import Navbar from "@/components/dashboard/dashboardHome/Navbar";
-import logo from "@assets/logo.webp";
+import SkeletonLoader from "@/components/Sheared/Skeleton";
+import { getUserProfileAPI } from "@/services/apiClient";
+import { useRouter } from "next/navigation";
 
 const Layouts = ({ children }) => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   const sidebarRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [userProfile, setUserProfile] = useState(null);
+  console.log(userProfile?.user?.email_verified);
+
+
+    useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        setLoading(true);
+        const response = await getUserProfileAPI(); // API call
+        setUserProfile(response?.data?.data);
+      } catch (error) {
+        console.error("Failed to fetch user profile:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+
+    // ================= REDIRECT IF EMAIL NOT VERIFIED =================
+  useEffect(() => {
+    if (userProfile && userProfile.user?.email_verified === 0) {
+      router.push("/email_verify");
+    }
+  }, [userProfile, router]);
+
 
   useEffect(() => {
     function handler(e) {
@@ -21,6 +53,12 @@ const Layouts = ({ children }) => {
   const handleOpen = () => {
     setOpen(!open);
   };
+
+    if (loading) {
+    return <SkeletonLoader layout="layout" />; 
+  }
+
+
 
   return (
     <div className="grid grid-cols-12 min-h-screen ">

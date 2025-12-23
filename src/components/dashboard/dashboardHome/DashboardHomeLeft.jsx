@@ -7,7 +7,6 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const DashboardHomeLeft = ({dashboardData}) => {
-  console.log(dashboardData);
   const [showBalance, setShowBalance] = useState(true);
   const balance = "1,997.80 BDT";
   return (

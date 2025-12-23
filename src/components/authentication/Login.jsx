@@ -10,6 +10,7 @@ import InputField from "../ui/InputField";
 import logo from "@assets/logo.webp";
 import { loginAPI } from "@/services/apiClient";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -123,9 +124,18 @@ const LoginPage = () => {
               Forgot password?
             </Link>
           </div>
-
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Signing in..." : "Sign In"}
+          <Button
+            type="submit"
+            className="w-full flex items-center justify-center gap-2"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Loader2 className="size-6 animate-spin" />
+              </>
+            ) : (
+              "Sign In"
+            )}
           </Button>
         </form>
 

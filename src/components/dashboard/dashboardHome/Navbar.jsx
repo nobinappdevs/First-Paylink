@@ -318,10 +318,10 @@ const Navbar = ({ handleOpen }) => {
                 </div>
                 <button
                   onClick={handelLogOut}
-                  className="flex items-center cursor-pointer gap-4 py-2 px-2 hover:bg-red-50 text-red-600 rounded  w-full justify-center"
+                  className="flex items-center cursor-pointer gap-4 py-2 px-2 bg-red-600 hover:bg-red-500 text-white rounded  w-full justify-center"
                 >
                   <FiLogOut size={18} />
-                  <h6 className="text-sm font-semibold">Logout</h6>
+                  <h6 className="text-sm font-semibold text-white!">Logout</h6>
                 </button>
               </div>
             )}

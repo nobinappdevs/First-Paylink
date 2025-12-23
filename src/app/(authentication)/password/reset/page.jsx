@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Button from "@/components/ui/Button";
 import InputField from "@/components/ui/InputField";
@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { resetPasswordAPI } from "@/services/apiClient";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 const ResetPasswordPage = () => {
   const router = useRouter();
@@ -19,7 +20,12 @@ const ResetPasswordPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const password = watch("password");
 
   useEffect(() => {
@@ -45,11 +51,15 @@ const ResetPasswordPage = () => {
       console.log(res?.data);
       if (res?.data) {
         router.push("/password/success");
-        toast.success("Password reset successfully.", { position: "top-right" });
+        toast.success("Password reset successfully.", {
+          position: "top-right",
+        });
       } else {
-        toast.error("Failed to reset password. Please try again.", { position: "top-right" });
+        toast.error("Failed to reset password. Please try again.", {
+          position: "top-right",
+        });
       }
-    }  catch (error) {
+    } catch (error) {
       const messages = error?.response?.data?.message?.error;
 
       if (Array.isArray(messages)) {
@@ -69,7 +79,6 @@ const ResetPasswordPage = () => {
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
       <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10">
-        
         <div className="flex justify-center mb-8">
           <Link href="/">
             <Image src={logo} alt="Logo" width={150} height={42} />
@@ -90,7 +99,13 @@ const ResetPasswordPage = () => {
             label="New Password"
             type="password"
             placeholder="••••••••"
-            {...register("password", { required: "Password is required", minLength: { value: 6, message: "Password must be at least 6 characters" } })}
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Password must be at least 6 characters",
+              },
+            })}
             error={errors?.password?.message}
           />
 
@@ -98,12 +113,20 @@ const ResetPasswordPage = () => {
             label="Confirm Password"
             type="password"
             placeholder="••••••••"
-            {...register("confirm_password", { required: "Confirm Password is required" })}
+            {...register("confirm_password", {
+              required: "Confirm Password is required",
+            })}
             error={errors?.confirm_password?.message}
           />
 
           <Button type="submit" className="w-full py-3" disabled={loading}>
-            {loading ? "Updating..." : "Update Password"}
+            {loading ? (
+              <>
+                <Loader2 className="size-6 animate-spin" />
+              </>
+            ) : (
+              "Update Password"
+            )}
           </Button>
         </form>
       </section>

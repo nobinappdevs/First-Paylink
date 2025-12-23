@@ -251,6 +251,7 @@ import { registerAPI } from "@/services/apiClient";
 import countryList from "react-select-country-list";
 import { useMemo } from "react";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 const RegisterPage = () => {
   const router = useRouter();
@@ -469,7 +470,13 @@ const RegisterPage = () => {
 
           {/* Submit */}
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Signing up..." : "Register Now"}
+            {loading ? (
+              <>
+                <Loader2 className="size-6 animate-spin" />
+              </>
+            ) : (
+              "Sign In"
+            )}
           </Button>
         </form>
 

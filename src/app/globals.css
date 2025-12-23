@@ -10,6 +10,12 @@
   --color-border: #55555530;
 }
 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+
 body {
   @apply  text-base text-secondery leading-relaxed antialiased;
 }

@@ -2,8 +2,12 @@ import React from "react";
 import HistoryTable from "./HistoryTable";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import SkeletonLoader from "@/components/Sheared/Skeleton";
 
-const TransactionHistory = ({dashboardData}) => {
+const TransactionHistory = ({dashboardData, loading}) => {
+  if (loading) {
+    return  <SkeletonLoader />;
+  }
   return (
     <>
       <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[14px] w-full mt-8">

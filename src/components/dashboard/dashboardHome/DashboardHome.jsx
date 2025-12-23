@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 const DashboardHome = () => {
   const [dashboardData, setDashboardData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDashboardData = async ()=>{
@@ -15,6 +16,8 @@ const DashboardHome = () => {
         setDashboardData(res.data.data);
       } catch (error) {
           console.error(error.message);
+      } finally {
+        setLoading(false);
       }
     }
     fetchDashboardData();
@@ -25,7 +28,7 @@ const DashboardHome = () => {
     <div className="xl:p-8 p-4">
           <DashboardHomeLeft dashboardData={dashboardData} />
           <DashboardChart dashboardData={dashboardData} />
-          <TransactionHistory dashboardData={dashboardData} />
+          <TransactionHistory loading={loading} dashboardData={dashboardData} />
     </div>
   );
 };

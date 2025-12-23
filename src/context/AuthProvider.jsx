@@ -3,6 +3,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import SkeletonLoader from "@/components/Sheared/Skeleton";
 
 const AuthContext = createContext(null);
 
@@ -38,14 +39,7 @@ export const AuthProvider = ({ children }) => {
   }, [pathname, router]);
   if (!isReady) {
     return (
-      <div className="fixed inset-0 z-9999 flex items-center justify-center bg-white">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-          <p className="text-sm text-gray-500">
-            Authenticating...
-          </p>
-        </div>
-      </div>
+      <SkeletonLoader layout="layout" />
     );
   }
 

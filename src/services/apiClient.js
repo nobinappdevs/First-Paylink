@@ -45,6 +45,19 @@ export const logOutAPI = () => {
 
 
 // User Authentication APIs ------------------------------ end here
+// user profile apis ------------------------------ start here
+export const getUserProfileAPI = () => {
+    const jwrToken = getToken();
+    if (jwrToken) {
+        
+        return apiInstance.get('/user/profile',{
+            headers:{Authorization: `Bearer ${jwrToken}`}
+        });
+    } else {
+        throw new Error('No token found. Please log in.');
+    }   };
+// user profile apis ------------------------------ end here
+
 
 export const dashboardDataAPI = () => {
     const jwrToken = getToken();

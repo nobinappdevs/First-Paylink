@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { forgotPasswordAPI } from "@/services/apiClient";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 const page = () => {
   const router = useRouter();
@@ -98,7 +99,13 @@ const page = () => {
             className="w-full py-3"
             disabled={loading}
           >
-            {loading ? "Sending OTP..." : "Send OTP"}
+                        {loading ? (
+              <>
+                <Loader2 className="size-6 animate-spin" />
+              </>
+            ) : (
+              "Send OTP"
+            )}
           </Button>
         </form>
 
