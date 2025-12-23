@@ -1,22 +1,149 @@
+// "use client";
+// import React, { useEffect, useState } from "react";
+// import HistoryTable from "../dashboardHome/HistoryTable";
+// import Pagination from "@/components/Sheared/Pagination";
+// import Select from "react-select";
+// import { reactSelectStyles } from "@/style/selectStyles";
+// import InputField from "@/components/ui/InputField";
+// import { Search } from "lucide-react";
+// import { transactionHistoryAPI } from "@/services/apiClient";
+
+// const Transections = () => {
+//   const filterOptions = [
+//     { value: "Filter", label: "Filter" },
+//     { value: "today", label: "Today" },
+//     { value: "week", label: "This Week" },
+//     { value: "month", label: "This Month" },
+//   ];
+
+//     const [transaction, setTransaction] = useState(null);
+//     console.log(transaction);
+  
+//     useEffect(() => {
+//       const fetchDashboardData = async ()=>{
+//         try {
+//           const res = await transactionHistoryAPI();
+//           setTransaction(res.data.data);
+//         } catch (error) {
+//             console.error(error.message);
+//         }
+//       }
+//       fetchDashboardData();
+//     }, [])
+    
+
+//   return (
+//     <div className="bg-basic rounded-xl border border-text/15 w-full ">
+//       <div className="p-4 border-b border-slate-100 md:flex justify-between items-center gap-3">
+//         <div>
+//           <h4 className="text-xl md:mb-0 mb-4 text-secondery font-bold">
+//             Transaction Log
+//           </h4>
+//         </div>
+
+//         <div className="relative flex flex-col md:flex-row gap-2.5 w-full md:w-auto">
+//           {/* Select (auto width) */}
+//           <div className="w-full md:w-auto min-w-40">
+//             <Select
+//               options={filterOptions}
+//               instanceId="currency-select"
+//               placeholder="Filter"
+//               styles={reactSelectStyles}
+//             />
+//           </div>
+
+//           {/* Input Field */}
+//           <div className="w-full md:w-[260px]">
+//             <InputField
+//               icon={Search}
+//               type="text"
+//               placeholder="Search products..."
+//             />
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* tible */}
+//       <HistoryTable />
+//       {/* Pagination Section */}
+//       <Pagination />
+//     </div>
+//   );
+// };
+
+// export default Transections;
+
+
+
+
+
 "use client";
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import HistoryTable from "../dashboardHome/HistoryTable";
 import Pagination from "@/components/Sheared/Pagination";
 import Select from "react-select";
 import { reactSelectStyles } from "@/style/selectStyles";
 import InputField from "@/components/ui/InputField";
 import { Search } from "lucide-react";
+import { transactionHistoryAPI } from "@/services/apiClient";
 
 const Transections = () => {
-  const filterOptions = [
-    { value: "Filter", label: "Filter" },
-    { value: "today", label: "Today" },
-    { value: "week", label: "This Week" },
-    { value: "month", label: "This Month" },
-  ];
+  const [transactions, setTransactions] = useState([]);
+  const [allTransactions, setAllTransactions] = useState({});
+  const [filterOptions, setFilterOptions] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    const fetchTransactionHistory = async () => {
+      try {
+        const res = await transactionHistoryAPI();
+        const data = res.data.data;
+        setAllTransactions(data.transactions);
+
+        const flatTransactions = Object.values(data.transactions).flat();
+        setTransactions(flatTransactions);
+        const dynamicOptions = [
+          { value: "all", label: "All Transactions" },
+          ...Object.keys(data.transaction_types).map((key) => ({
+            value: key,
+            label: data.transaction_types[key],
+          })),
+        ];
+
+        setFilterOptions(dynamicOptions);
+        setSelectedFilter(dynamicOptions[0]);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    fetchTransactionHistory();
+  }, []);
+
+  useEffect(() => {
+    let filteredData = [];
+
+    if (!selectedFilter || selectedFilter.value === "all") {
+      filteredData = Object.values(allTransactions).flat();
+    } else {
+      filteredData = allTransactions[selectedFilter.value] || [];
+    }
+
+    if (searchText) {
+      filteredData = filteredData.filter((item) =>
+        item.trx?.toLowerCase().includes(searchText.toLowerCase())
+      );
+    }
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTransactions(filteredData);
+  }, [selectedFilter, searchText, allTransactions]);
 
   return (
-    <div className="bg-basic rounded-xl border border-text/15 w-full ">
+    <div className="bg-basic rounded-xl border border-text/15 w-full">
+      {/* Header */}
       <div className="p-4 border-b border-slate-100 md:flex justify-between items-center gap-3">
         <div>
           <h4 className="text-xl md:mb-0 mb-4 text-secondery font-bold">
@@ -25,30 +152,35 @@ const Transections = () => {
         </div>
 
         <div className="relative flex flex-col md:flex-row gap-2.5 w-full md:w-auto">
-          {/* Select (auto width) */}
+          {/* Dynamic Filter */}
           <div className="w-full md:w-auto min-w-40">
             <Select
               options={filterOptions}
-              instanceId="currency-select"
+              value={selectedFilter}
+              onChange={setSelectedFilter}
+              instanceId="transaction-filter"
               placeholder="Filter"
               styles={reactSelectStyles}
             />
           </div>
 
-          {/* Input Field */}
+          {/* Search */}
           <div className="w-full md:w-[260px]">
             <InputField
               icon={Search}
               type="text"
-              placeholder="Search products..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder="Search by Trx ID..."
             />
           </div>
         </div>
       </div>
 
-      {/* tible */}
-      <HistoryTable />
-      {/* Pagination Section */}
+      {/* Table */}
+      <HistoryTable dashboardData={{ transactions }} />
+
+      {/* Pagination */}
       <Pagination />
     </div>
   );
@@ -56,73 +188,5 @@ const Transections = () => {
 
 export default Transections;
 
-// "use client";
 
-// import React, { useState } from "react";
-// import HistoryTable from "../dashboardHome/HistoryTable";
-// import Pagination from "@/components/Sheared/Pagination";
-// import { FaSearch } from "react-icons/fa";
-// import Select from "react-select";
-// import { reactSelectStyles } from "@/style/selectStyles";
 
-// const Transections = () => {
-//   const [selectedFilter, setSelectedFilter] = useState(null);
-//   const [search, setSearch] = useState("");
-
-//   const filterOptions = [
-//     { value: "", label: "Filter" },
-//     { value: "today", label: "Today" },
-//     { value: "week", label: "This Week" },
-//     { value: "month", label: "This Month" },
-//   ];
-
-//   return (
-//     <div className="lg:p-6 py-3.5 md:p-4 p-2 bg-basic rounded-sm lg:rounded-[20px] shadow-md w-full">
-//       {/* Header */}
-//       <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-//         <h2 className="text-xl  text-secondery font-bold">
-//           Transaction Log
-//         </h2>
-
-//         {/* Filter + Search */}
-//         <div className="flex gap-2.5 w-full sm:w-auto">
-//           {/* React Select */}
-//           <div className="min-w-[160px]">
-//             <Select
-//               options={filterOptions}
-//               value={selectedFilter}
-//               onChange={setSelectedFilter}
-//               placeholder="Filter"
-//               isSearchable={false}
-//               styles={reactSelectStyles}
-//               instanceId="transaction-filter"
-//             />
-//           </div>
-
-//           {/* Search Input */}
-//           <div className="relative w-full sm:w-[220px]">
-//             <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-//             <input
-//               type="text"
-//               value={search}
-//               onChange={(e) => setSearch(e.target.value)}
-//               placeholder="Search..."
-//               className="pl-10 pr-3 py-2 w-full rounded-lg border border-black/20 text-sm placeholder:text-text focus:ring-primary focus:border-primary"
-//             />
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Table */}
-//       <HistoryTable
-//         filter={selectedFilter?.value}
-//         search={search}
-//       />
-
-//       {/* Pagination */}
-//       <Pagination />
-//     </div>
-//   );
-// };
-
-// export default Transections;

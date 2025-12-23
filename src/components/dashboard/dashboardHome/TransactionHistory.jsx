@@ -3,7 +3,7 @@ import HistoryTable from "./HistoryTable";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 
-const TransactionHistory = () => {
+const TransactionHistory = ({dashboardData}) => {
   return (
     <>
       <div className="lg:p-6 py-3.5 md:p-4 p-1 bg-basic rounded-sm lg:rounded-[14px] w-full mt-8">
@@ -22,7 +22,7 @@ const TransactionHistory = () => {
             </div>
           </div>
         </div>
-        <HistoryTable />
+        <HistoryTable dashboardData={dashboardData} />
       </div>
     </>
   );

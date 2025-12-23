@@ -478,13 +478,13 @@ const RegisterPage = () => {
           </div>
 
           {/* Policy */}
-          <label className="flex items-start gap-2 text-sm text-gray-600">
+          <label className="flex items-start cursor-pointer gap-2 text-sm text-gray-600">
             <input
               type="checkbox"
               {...register("policy", {
                 required: "You must accept the policy",
               })}
-              className="mt-1 w-4 h-4 accent-primary"
+              className="mt-1 w-4 h-4 cursor-pointer accent-primary"
             />
             <span>
               I agree with{" "}

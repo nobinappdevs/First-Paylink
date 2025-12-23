@@ -122,9 +122,10 @@ const LoginPage = () => {
           />
 
           <div className="flex justify-between text-sm">
-            <label className="flex items-center gap-2">
+            <label className="flex cursor-pointer items-center gap-2">
               <input
                 type="checkbox"
+                className="accent-primary"
                 checked={remember}
                 onChange={(e) => setRemember(e.target.checked)}
               />

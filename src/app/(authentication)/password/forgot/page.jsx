@@ -1,22 +1,58 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
+
+import React, { useState } from "react";
 import Button from "@/components/ui/Button";
 import InputField from "@/components/ui/InputField";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@assets/logo.webp";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { forgotPasswordAPI } from "@/services/apiClient";
 
 const page = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
-  const handleForgotPassword = (e) => {
-    // Handle forgot password logic here
-    e.preventDefault();
-    router.push('/password/otp');
-  }
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    setApiError("");
+    setLoading(true);
+  
+
+    try {
+      const res = await forgotPasswordAPI( data.email );
+      const successMessage = res?.data?.message?.success?.[0];
+      const token = res?.data?.data?.user?.token;
+
+      if (successMessage === "Verification otp code sended to your email." && token) {
+        router.push(`/password/otp?token=${token}`);
+      } else {
+        setApiError("Failed to send OTP. Please try again.");
+      }
+    } catch (error) {
+      const msg =
+        error?.response?.data?.message?.error?.[0] ||
+        error?.response?.data?.message?.error ||
+        error?.response?.data?.message?.success?.[0] ||
+        error.message ||
+        "Something went wrong";
+      setApiError(msg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <main className="min-h-screen flex items-center justify-center p-4 ">
-      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10 ">
+    <main className="min-h-screen flex items-center justify-center p-4">
+      <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10">
         
         {/* Logo */}
         <div className="flex justify-center mb-8">
@@ -32,15 +68,31 @@ const page = () => {
           Enter your email address to receive an OTP.
         </p>
 
-        <form className="space-y-6 mt-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-8">
           <InputField
             label="Email Address"
             type="email"
             placeholder="you@example.com"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email address",
+              },
+            })}
+            error={errors?.email?.message}
           />
 
-          <Button onClick={handleForgotPassword} className="w-full py-3">
-            Send OTP
+          {apiError && (
+            <p className="text-red-600 text-sm">{apiError}</p>
+          )}
+
+          <Button
+            type="submit"
+            className="w-full py-3"
+            disabled={loading}
+          >
+            {loading ? "Sending OTP..." : "Send OTP"}
           </Button>
         </form>
 
