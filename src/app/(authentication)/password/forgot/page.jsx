@@ -10,6 +10,8 @@ import logo from "@assets/logo.webp";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { forgotPasswordAPI } from "@/services/apiClient";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const page = () => {
   const router = useRouter();
@@ -29,22 +31,26 @@ const page = () => {
 
     try {
       const res = await forgotPasswordAPI( data.email );
-      const successMessage = res?.data?.message?.success?.[0];
       const token = res?.data?.data?.user?.token;
 
-      if (successMessage === "Verification otp code sended to your email." && token) {
+      if (res?.data?.data && token) {
         router.push(`/password/otp?token=${token}`);
+        toast.success("OTP sent to your email.", { position: "top-right" });
       } else {
-        setApiError("Failed to send OTP. Please try again.");
+        toast.error("Failed to send OTP. Please try again.", { position: "top-right" });
       }
-    } catch (error) {
-      const msg =
-        error?.response?.data?.message?.error?.[0] ||
-        error?.response?.data?.message?.error ||
-        error?.response?.data?.message?.success?.[0] ||
-        error.message ||
-        "Something went wrong";
-      setApiError(msg);
+    }  catch (error) {
+      const messages = error?.response?.data?.message?.error;
+
+      if (Array.isArray(messages)) {
+        messages.forEach((msg) => {
+          toast.error(msg, { position: "top-right" });
+        });
+      } else if (messages) {
+        toast.error(messages, { position: "top-right" });
+      } else {
+        toast.error("Something went wrong", { position: "top-right" });
+      }
     } finally {
       setLoading(false);
     }

@@ -2,6 +2,7 @@ import { DarkModeProvider } from "@/context/DarkModeProvider";
 import "./globals.css";
 import { Roboto, Montserrat } from "next/font/google";
 import { AuthProvider } from "@/context/AuthProvider";
+import { ToastContainer } from "react-toastify";
 
 export const bodyFont = Roboto({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
         <body className={`${bodyFont.className} bg-body  antialiased`}>
            <AuthProvider>
           {children}
+           <ToastContainer />
            </AuthProvider>
         </body>
       </DarkModeProvider>

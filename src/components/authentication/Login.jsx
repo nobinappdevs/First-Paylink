@@ -1,46 +1,40 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import axios from "axios";
-import Swal from "sweetalert2";
-
+import { useForm } from "react-hook-form";
 import Button from "../ui/Button";
 import InputField from "../ui/InputField";
 import logo from "@assets/logo.webp";
 import { loginAPI } from "@/services/apiClient";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const router = useRouter();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [remember, setRemember] = useState(false);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
     setLoading(true);
-
     try {
-      const payload = {
-        email,
-        password,
-      };
-      const res = await loginAPI(payload);
-
+      const res = await loginAPI({
+        email: data.email,
+        password: data.password,
+      });
       const token = res?.data?.data?.token;
       const user = res?.data?.data?.user;
-      const successMsg =
-        res?.data?.message?.success?.[0] || "Login successful";
+      const successMsg = res?.data?.message?.success?.[0] || "Login successful";
 
-      if (!token) {
-        throw new Error("Token not found");
-      }
+      if (!token) throw new Error("Token not found");
 
-      // ✅ Save token
       if (remember) {
         localStorage.setItem("authToken", token);
         localStorage.setItem("user", JSON.stringify(user));
@@ -49,28 +43,17 @@ const LoginPage = () => {
         sessionStorage.setItem("user", JSON.stringify(user));
       }
 
-      // ✅ Success alert
-      await Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: successMsg,
-        timer: 1500,
-        showConfirmButton: false,
-      });
-
+      toast.success(successMsg, { position: "top-right" });
       router.push("/dashboard");
-
     } catch (error) {
-      const errorMsg =
-        error?.response?.data?.message?.error?.[0] ||
-        error?.response?.data?.message ||
-        "Invalid email or password";
-
-      Swal.fire({
-        icon: "error",
-        title: "Login Failed",
-        text: errorMsg,
-      });
+      const messages = error?.response?.data?.message?.error;
+      if (Array.isArray(messages)) {
+        messages.forEach((msg) => toast.error(msg, { position: "top-right" }));
+      } else if (messages) {
+        toast.error(messages, { position: "top-right" });
+      } else {
+        toast.error("Something went wrong", { position: "top-right" });
+      }
     } finally {
       setLoading(false);
     }
@@ -79,47 +62,53 @@ const LoginPage = () => {
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
       <section className="w-full max-w-[520px] bg-white rounded-2xl p-8 border border-text/10">
-
-        {/* Logo */}
         <div className="flex justify-center mb-8">
           <Link href="/">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={140}
-              height={40}
-              priority
-            />
+            <Image src={logo} alt="Logo" width={140} height={40} priority />
           </Link>
         </div>
 
-        {/* Header */}
         <header className="text-center mb-8">
-          <h4 className="text-2xl font-bold text-secondery">
-            Welcome Back
-          </h4>
-          <p className="mt-2 text-sm text-gray-500">
-            Sign in to your account
-          </p>
+          <h4 className="text-2xl font-bold text-secondery">Welcome Back</h4>
+          <p className="mt-2 text-sm text-gray-500">Sign in to your account</p>
         </header>
 
-        {/* Form */}
-        <form className="space-y-6" onSubmit={handleLogin}>
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <InputField
-            label="Email address"
+            label="Email Address"
+            placeholder="Email Address"
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
+            {...register("email", {
+              required: "Email is required",
+              maxLength: {
+                value: 160,
+                message: "Max 160 characters allowed",
+              },
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email address",
+              },
+            })}
           />
+          {errors.email && (
+            <p className="text-red-500! text-xs">{errors.email.message}</p>
+          )}
 
           <InputField
             label="Password"
+            placeholder="Password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
+            {...register("password", {
+              required: "Password is required",
+              minLength: {
+                value: 6,
+                message: "Minimum 6 characters required",
+              },
+            })}
           />
+          {errors.password && (
+            <p className="text-red-500! text-xs">{errors.password.message}</p>
+          )}
 
           <div className="flex justify-between text-sm">
             <label className="flex cursor-pointer items-center gap-2">

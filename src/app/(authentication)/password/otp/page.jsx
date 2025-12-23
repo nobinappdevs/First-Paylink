@@ -143,6 +143,7 @@ import logo from "@assets/logo.webp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { verifyOtpAPI } from "@/services/apiClient";
+import { toast } from "react-toastify";
 
 const OTPPage = () => {
   const router = useRouter();
@@ -201,15 +202,25 @@ const OTPPage = () => {
       setLoading(true);
       const res = await verifyOtpAPI({ otp, token });
 
-      if (res.data?.message?.success?.[0]) {
+      if (res?.data?.data && token) {
         router.push(`/password/reset?token=${token}`);
+        toast.success("OTP verified successfully.", { position: "top-right" });
       } else {
         setError("Invalid OTP, please try again.");
       }
-    } catch (err) {
-      const message = err?.response?.data?.message || "Something went wrong.";
-      setError(typeof message === "string" ? message : JSON.stringify(message.error?.[0]));
-    } finally {
+    }  catch (error) {
+          const messages = error?.response?.data?.message?.error;
+    
+          if (Array.isArray(messages)) {
+            messages.forEach((msg) => {
+              toast.error(msg, { position: "top-right" });
+            });
+          } else if (messages) {
+            toast.error(messages, { position: "top-right" });
+          } else {
+            toast.error("Something went wrong", { position: "top-right" });
+          }
+        } finally {
       setLoading(false);
     }
   };

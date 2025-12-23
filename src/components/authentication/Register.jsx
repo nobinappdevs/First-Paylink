@@ -38,7 +38,6 @@
 //       policy: data.policy ? "on" : "",
 //     };
 
-
 //     try {
 //       const res = await registerAPI(payload);
 
@@ -237,7 +236,6 @@
 
 // export default RegisterPage;
 
-
 "use client";
 
 import Button from "@/components/ui/Button";
@@ -248,20 +246,17 @@ import Select from "react-select";
 import { reactSelectStyles } from "@/style/selectStyles";
 import logo from "@assets/logo.webp";
 import { useForm, Controller } from "react-hook-form";
-import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { registerAPI } from "@/services/apiClient";
 import countryList from "react-select-country-list";
 import { useMemo } from "react";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const router = useRouter();
 
   // 🌍 Country list from package
-  const countryOptions = useMemo(
-    () => countryList().getData(),
-    []
-  );
+  const countryOptions = useMemo(() => countryList().getData(), []);
 
   const {
     register,
@@ -277,42 +272,29 @@ const RegisterPage = () => {
       email: data.email,
       password: data.password,
       company_name: data.company_name,
-      country: data.country?.label, // backend usually expects name
+      country: data.country?.label,
       policy: data.policy ? "on" : "",
     };
 
     try {
       const res = await registerAPI(payload);
-
-      // ✅ save token & user (interceptor compatible)
       localStorage.setItem("authToken", res?.data?.data?.token);
-      localStorage.setItem(
-        "user",
-        JSON.stringify(res?.data?.data?.user)
-      );
-
-      await Swal.fire({
-        icon: "success",
-        title: "Registration Successful",
-        text:
-          res?.data?.data?.message ||
-          "Account created successfully!",
-        confirmButtonColor: "#10b981",
-      });
+      localStorage.setItem("user", JSON.stringify(res?.data?.data?.user));
+      toast.success("Registration successful!", { position: "top-right" });
 
       router.push("/dashboard");
     } catch (error) {
-      const message =
-        error?.response?.data?.message ||
-        error?.response?.data?.data?.message ||
-        "Something went wrong!";
+      const messages = error?.response?.data?.message?.error;
 
-      Swal.fire({
-        icon: "error",
-        title: "Registration Failed",
-        text: message,
-        confirmButtonColor: "#ef4444",
-      });
+      if (Array.isArray(messages)) {
+        messages.forEach((msg) => {
+          toast.error(msg, { position: "top-right" });
+        });
+      } else if (messages) {
+        toast.error(messages, { position: "top-right" });
+      } else {
+        toast.error("Something went wrong", { position: "top-right" });
+      }
     }
   };
 
@@ -322,13 +304,7 @@ const RegisterPage = () => {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <Link href="/">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={150}
-              height={42}
-              priority
-            />
+            <Image src={logo} alt="Logo" width={150} height={42} priority />
           </Link>
         </div>
 
@@ -408,9 +384,7 @@ const RegisterPage = () => {
               })}
             />
             {errors.email && (
-              <p className="text-red-500! text-xs">
-                {errors.email.message}
-              </p>
+              <p className="text-red-500! text-xs">{errors.email.message}</p>
             )}
           </div>
 
@@ -434,9 +408,7 @@ const RegisterPage = () => {
               )}
             />
             {errors.country && (
-              <p className="text-red-500! text-xs">
-                {errors.country.message}
-              </p>
+              <p className="text-red-500! text-xs">{errors.country.message}</p>
             )}
           </div>
 
@@ -471,9 +443,7 @@ const RegisterPage = () => {
               })}
             />
             {errors.password && (
-              <p className="text-red-500! text-xs">
-                {errors.password.message}
-              </p>
+              <p className="text-red-500! text-xs">{errors.password.message}</p>
             )}
           </div>
 
@@ -494,17 +464,11 @@ const RegisterPage = () => {
             </span>
           </label>
           {errors.policy && (
-            <p className="text-red-500! text-xs">
-              {errors.policy.message}
-            </p>
+            <p className="text-red-500! text-xs">{errors.policy.message}</p>
           )}
 
           {/* Submit */}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting}
-          >
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Signing up..." : "Register Now"}
           </Button>
         </form>
@@ -512,10 +476,7 @@ const RegisterPage = () => {
         {/* Switch */}
         <p className="text-center text-sm text-gray-600 mt-8">
           Already have an account?{" "}
-          <Link
-            href="/login"
-            className="text-primary font-semibold"
-          >
+          <Link href="/login" className="text-primary font-semibold">
             Login Now
           </Link>
         </p>

@@ -17,6 +17,7 @@ import { AlignStartVertical, KeyRound } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import { logOutAPI } from "@/services/apiClient";
+import { toast } from "react-toastify";
 
 const Navbar = ({ handleOpen }) => {
   const [profileOpen, setProfileOpen] = useState(false);
@@ -80,6 +81,7 @@ const Navbar = ({ handleOpen }) => {
     },
   ];
   const handelLogOut = () => {
+    toast
     Swal.fire({
       title: "Are you sure?",
       text: "You will be logged out from your account.",
