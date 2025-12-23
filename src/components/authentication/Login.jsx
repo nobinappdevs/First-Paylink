@@ -31,7 +31,6 @@ const LoginPage = () => {
       });
       const token = res?.data?.data?.token;
       const user = res?.data?.data?.user;
-      const successMsg = res?.data?.message?.success?.[0] || "Login successful";
 
       if (!token) throw new Error("Token not found");
 
@@ -42,8 +41,7 @@ const LoginPage = () => {
         sessionStorage.setItem("authToken", token);
         sessionStorage.setItem("user", JSON.stringify(user));
       }
-
-      toast.success(successMsg, { position: "top-right" });
+      toast.success("Login successful ", { position: "top-right" });
       router.push("/dashboard");
     } catch (error) {
       const messages = error?.response?.data?.message?.error;
