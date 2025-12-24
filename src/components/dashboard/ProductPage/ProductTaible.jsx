@@ -19,7 +19,6 @@ const ProductTaible = () => {
   const [imagePath, setImagePath] = useState("");
   const [defaultImage, setDefaultImage] = useState("");
   const [loadingStatusId, setLoadingStatusId] = useState(null);
-  // 🔴 Delete modal states
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const [deleteLoading, setDeleteLoading] = useState(false);

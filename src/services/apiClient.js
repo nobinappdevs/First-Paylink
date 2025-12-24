@@ -115,8 +115,8 @@ export const createProduct = async (formData) => {
     const response = await apiInstance.post("/user/products/store", formData, {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
-        "Content-Type": "multipart/form-data"
-    },
+        "Content-Type": "multipart/form-data",
+      },
     });
     return response;
   } catch (error) {
@@ -196,14 +196,11 @@ export const ProductEdit = async (id) => {
   }
 
   try {
-    const response = await apiInstance.get(
-      `/user/products/edit?target=${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-      }
-    );
+    const response = await apiInstance.get(`/user/products/edit?target=${id}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
 
     return response;
   } catch (error) {
@@ -215,7 +212,6 @@ export const ProductEdit = async (id) => {
     );
   }
 };
-
 
 export const editProduct = async (formData) => {
   if (!formData) {
@@ -231,8 +227,8 @@ export const editProduct = async (formData) => {
     const response = await apiInstance.post("/user/products/update", formData, {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
-        "Content-Type": "multipart/form-data"
-    },
+        "Content-Type": "multipart/form-data",
+      },
     });
     return response;
   } catch (error) {
@@ -243,3 +239,112 @@ export const editProduct = async (formData) => {
 };
 
 // all product apis ----------------------------- end here
+
+// all product Links api ------------------------ start here
+
+export const createProductLinkList = async (linkData) => {
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in");
+  }
+  try {
+    const res = await apiInstance.post("/user/product-links/store", linkData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res
+  } catch (error) {
+    throw new Error("API request failed");
+  }
+};
+export const UpdateProductLinkList = async (linkData) => {
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in");
+  }
+  try {
+    const res = await apiInstance.post("/user/product-links/update", linkData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+       return res
+  } catch (error) {
+    throw new Error("API request failed");
+  }
+};
+export const UpdateProductLinkStatus = async (linkData) => {
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in");
+  }
+  try {
+    const res = await apiInstance.post("/user/product-links/status", linkData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+       return res
+  } catch (error) {
+    throw new Error("API request failed");
+  }
+};
+export const deleteProductLinkList = async (linkData) => {
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in");
+  }
+  try {
+    const res = await apiInstance.post("/user/product-links/delete", linkData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+       return res
+  } catch (error) {
+    throw new Error("API request failed");
+  }
+};
+
+export const getProductLinkList = async (id) => {
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in");
+  }
+  try {
+    const res = await apiInstance.get(`/user/product-links?product_id=${id}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res;
+  } catch (error) {
+    throw new Error("API request failed");
+  }
+};
+
+export const getProductLinkEditList = async (id) => {
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in");
+  }
+  try {
+    const res = await apiInstance.get(`/user/product-links/edit?target=${id}`, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res;
+  } catch (error) {
+    throw new Error("API request failed");
+  }
+};
+
+// all product Links api ------------------------ end here
