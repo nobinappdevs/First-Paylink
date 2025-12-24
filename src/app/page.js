@@ -19,10 +19,10 @@ export default function Home() {
     try {
       await logOutAPI();
 
-      localStorage.removeItem("authToken");
-      sessionStorage.removeItem("authToken");
-      localStorage.removeItem("user");
-      sessionStorage.removeItem("user");
+      localStorage.removeItem("jwtToken");
+      sessionStorage.removeItem("jwtToken");
+      localStorage.removeItem("userInfo");
+      sessionStorage.removeItem("userInfo");
 
       Swal.fire("Logged Out", "Successfully logged out", "success");
 

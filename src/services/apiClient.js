@@ -4,7 +4,7 @@ import { apiInstance } from "@/lib/axios.instance";
 
 // Helper function to retrieve token from localStorage or sessionStorage
 const getToken = () => {
-    return localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+    return localStorage.getItem("jwtToken") || sessionStorage.getItem("jwtToken");
 };
 
 // User Authentication APIs ------------------------------ start here

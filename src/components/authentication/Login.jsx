@@ -36,11 +36,11 @@ const LoginPage = () => {
       if (!token) throw new Error("Token not found");
 
       if (remember) {
-        localStorage.setItem("authToken", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("jwtToken", token);
+        localStorage.setItem("userInfo", JSON.stringify(user));
       } else {
-        sessionStorage.setItem("authToken", token);
-        sessionStorage.setItem("user", JSON.stringify(user));
+        sessionStorage.setItem("jwtToken", token);
+        sessionStorage.setItem("userInfo", JSON.stringify(user));
       }
       toast.success("Login successful ", { position: "top-right" });
       router.push("/dashboard");

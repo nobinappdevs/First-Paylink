@@ -4,6 +4,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import SkeletonLoader from "@/components/Sheared/Skeleton";
+import { FlaskRound, LucideFlaskRound, LucideFolderKanban, LucideSkipForward } from "lucide-react";
+import { FaJsfiddle, FaSdCard } from "react-icons/fa";
 
 const AuthContext = createContext(null);
 
@@ -14,8 +16,8 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
-    const localToken = localStorage.getItem("authToken");
-    const sessionToken = sessionStorage.getItem("authToken");
+    const localToken = localStorage.getItem("jwtToken");
+    const sessionToken = sessionStorage.getItem("jwtToken");
     const authToken = localToken || sessionToken;
 
     setToken(authToken);
@@ -51,3 +53,4 @@ export const AuthProvider = ({ children }) => {
 };
 
 export const useAuth = () => useContext(AuthContext);
+

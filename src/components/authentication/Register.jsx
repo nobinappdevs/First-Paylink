@@ -279,8 +279,8 @@ const RegisterPage = () => {
 
     try {
       const res = await registerAPI(payload);
-      localStorage.setItem("authToken", res?.data?.data?.token);
-      localStorage.setItem("user", JSON.stringify(res?.data?.data?.user));
+      localStorage.setItem("jwtToken", res?.data?.data?.token);
+      localStorage.setItem("userInfo", JSON.stringify(res?.data?.data?.user));
       toast.success("Registration successful!", { position: "top-right" });
 
       router.push("/dashboard");
@@ -403,6 +403,7 @@ const RegisterPage = () => {
                   {...field}
                   options={countryOptions}
                   placeholder="Select Country"
+                    instanceId="currency-select"
                   styles={reactSelectStyles}
                   isSearchable
                 />
@@ -470,7 +471,7 @@ const RegisterPage = () => {
 
           {/* Submit */}
           <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {loading ? (
+            {isSubmitting ? (
               <>
                 <Loader2 className="size-6 animate-spin" />
               </>

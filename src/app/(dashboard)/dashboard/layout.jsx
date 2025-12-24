@@ -1,38 +1,15 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "@/components/dashboard/Sidebar";
 import Navbar from "@/components/dashboard/dashboardHome/Navbar";
+import useDashboardGuard from "@/hooks/useDashboardGuard";
 import SkeletonLoader from "@/components/Sheared/Skeleton";
-import { getUserProfileAPI } from "@/services/apiClient";
-import { useRouter } from "next/navigation";
 
 const Layouts = ({ children }) => {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
   const sidebarRef = useRef(null);
-  const [loading, setLoading] = useState(true);
-  const [userProfile, setUserProfile] = useState(null);
-  console.log(userProfile?.user?.email_verified);
-
-
-    useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        setLoading(true);
-        const response = await getUserProfileAPI(); // API call
-        setUserProfile(response?.data?.data);
-            if (response?.data?.data?.user?.email_verified === 0) {
-              return router.push("/email-verify");
-    }
-      } catch (error) {
-        console.error("Failed to fetch user profile:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserProfile();
-  }, [ router]);
+  const guardLoading = useDashboardGuard();
 
 
   useEffect(() => {
@@ -49,16 +26,10 @@ const Layouts = ({ children }) => {
     setOpen(!open);
   };
 
-    if (loading) {
-    return <SkeletonLoader layout="layout" />; 
+    if (guardLoading) {
+    return <SkeletonLoader layout="layout" />
   }
 
-  // if (userProfile === null) {
-  //    return null;
-  // }
-  if (userProfile) {
-    return 'helllo.......'
-  }
 
   return (
     <div className="grid grid-cols-12 min-h-screen ">
