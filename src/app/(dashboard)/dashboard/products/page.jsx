@@ -1,5 +1,4 @@
 import ProductTaible from "@/components/dashboard/ProductPage/ProductTaible";
-import React from "react";
 
 const page = () => {
   return (

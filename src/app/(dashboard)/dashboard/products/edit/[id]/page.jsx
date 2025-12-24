@@ -5,7 +5,7 @@ const page = async ({params}) => {
     const {id} = await params
     return (
         <div className="xl:p-8 p-4">
-            <EditProduct />
+            <EditProduct id={id} />
         </div>
     );
 };

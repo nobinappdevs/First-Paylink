@@ -1,98 +1,245 @@
 import { apiInstance } from "@/lib/axios.instance";
 
-
-
 // Helper function to retrieve token from localStorage or sessionStorage
 const getToken = () => {
-    return localStorage.getItem("jwtToken") || sessionStorage.getItem("jwtToken");
+  return localStorage.getItem("jwtToken") || sessionStorage.getItem("jwtToken");
 };
 
 // User Authentication APIs ------------------------------ start here
 export const registerAPI = (formPayload) => {
-    return apiInstance.post('/user/register', formPayload);
-}
+  return apiInstance.post("/user/register", formPayload);
+};
 
 export const loginAPI = (formPayload) => {
-    return apiInstance.post('/user/login', formPayload);
-}
+  return apiInstance.post("/user/login", formPayload);
+};
 
 export const forgotPasswordAPI = (data) => {
-    if (data) {
-        return apiInstance.post('/user/forgot/password/send/otp', { credentials: data });
-    }
-}
+  if (data) {
+    return apiInstance.post("/user/forgot/password/send/otp", {
+      credentials: data,
+    });
+  }
+};
 
 export const verifyOtpAPI = (formPayload) => {
-    return apiInstance.post('/user/forgot/password/verify', {otp: formPayload.otp, token: formPayload.token} );
-}
+  return apiInstance.post("/user/forgot/password/verify", {
+    otp: formPayload.otp,
+    token: formPayload.token,
+  });
+};
 
 export const resetPasswordAPI = (formPayload) => {
-    return apiInstance.post('/user/forgot/password/reset', { password: formPayload.password, password_confirmation: formPayload.password_confirmation, token: formPayload.token } );
-}
+  return apiInstance.post("/user/forgot/password/reset", {
+    password: formPayload.password,
+    password_confirmation: formPayload.password_confirmation,
+    token: formPayload.token,
+  });
+};
 
 export const logOutAPI = () => {
-     const jwtToken = getToken();
-     if (jwtToken) {
-        return apiInstance.get('/user/logout', {
-            headers: {
-                Authorization: `Bearer ${jwtToken}`,
-            },
-        });
-     } else {
-        throw new Error('No token found. Please log in.');
-    }
-}
-
+  const jwtToken = getToken();
+  if (jwtToken) {
+    return apiInstance.get("/user/logout", {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
 
 // User Authentication APIs ------------------------------ end here
 // user profile apis ------------------------------ start here
 export const getUserProfileAPI = () => {
-    const jwrToken = getToken();
-    if (jwrToken) {
-        
-        return apiInstance.get('/user/profile',{
-            headers:{Authorization: `Bearer ${jwrToken}`}
-        });
-    } else {
-        throw new Error('No token found. Please log in.');
-    }   };
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get("/user/profile", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
 // user profile apis ------------------------------ end here
 
-
 export const dashboardDataAPI = () => {
-    const jwrToken = getToken();
-    if (jwrToken) {
-        
-        return apiInstance.get('/user/dashboard',{
-            headers:{Authorization: `Bearer ${jwrToken}`}
-        });
-    } else {
-        throw new Error('No token found. Please log in.');
-    }
-}
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get("/user/dashboard", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
 
 export const transactionHistoryAPI = () => {
-    const jwrToken = getToken();
-    if (jwrToken) {
-        
-        return apiInstance.get('/user/transactions',{
-            headers:{Authorization: `Bearer ${jwrToken}`}
-        });
-    } else {
-        throw new Error('No token found. Please log in.');
-    }
-}
-
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get("/user/transactions", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
 
 // all payment apis ------------------------------ start here
 export const getPaymentMethodsAPI = () => {
-    const jwrToken = getToken();
-    if (jwrToken) {
-        
-        return apiInstance.get('/user/payment-links',{
-            headers:{Authorization: `Bearer ${jwrToken}`}
-        });
-    } else {
-        throw new Error('No token found. Please log in.');
-    } };
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get("/user/payment-links", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
 // all payment apis ------------------------------ end here
+
+// all product apis ----------------------------- start here
+
+export const createProduct = async (formData) => {
+  if (!formData) {
+    throw new Error("Form data is required.");
+  }
+
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  try {
+    const response = await apiInstance.post("/user/products/store", formData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data"
+    },
+    });
+    return response;
+  } catch (error) {
+    throw new Error(
+      error?.response?.data?.message || error.message || "API request failed."
+    );
+  }
+};
+
+export const getProduct = () => {
+  const jwtToken = getToken();
+  if (jwtToken) {
+    return apiInstance.get("/user/products", {
+      headers: { Authorization: `Bearer ${jwtToken}` },
+    });
+  } else {
+    throw new Error("No Toekn found. please log in.");
+  }
+};
+
+export const UpdateProductsStatus = (data) => {
+  const jwtToken = getToken();
+  if (jwtToken) {
+    return apiInstance.post(
+      "/user/products/status",
+      { target: data },
+      {
+        headers: { Authorization: `Bearer ${jwtToken}` },
+      }
+    );
+  } else {
+    throw new Error("No Toekn found. please log in.");
+  }
+};
+
+export const ProductDelete = async (id) => {
+  const jwtToken = getToken();
+
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  if (!id) {
+    throw new Error("Product ID is required.");
+  }
+
+  try {
+    const response = await apiInstance.post(
+      "/user/products/delete",
+      { target: id },
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+    );
+
+    return response;
+  } catch (error) {
+    throw new Error(
+      error?.response?.data?.message?.error?.[0] ||
+        error?.response?.data?.message ||
+        error.message ||
+        "API request failed"
+    );
+  }
+};
+export const ProductEdit = async (id) => {
+  const jwtToken = getToken();
+
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  if (!id) {
+    throw new Error("Product ID is required.");
+  }
+
+  try {
+    const response = await apiInstance.get(
+      `/user/products/edit?target=${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      }
+    );
+
+    return response;
+  } catch (error) {
+    throw new Error(
+      error?.response?.data?.message?.error?.[0] ||
+        error?.response?.data?.message ||
+        error.message ||
+        "Failed to fetch product data"
+    );
+  }
+};
+
+
+export const editProduct = async (formData) => {
+  if (!formData) {
+    throw new Error("Form data is required.");
+  }
+
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  try {
+    const response = await apiInstance.post("/user/products/update", formData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data"
+    },
+    });
+    return response;
+  } catch (error) {
+    throw new Error(
+      error?.response?.data?.message || error.message || "API request failed."
+    );
+  }
+};
+
+// all product apis ----------------------------- end here

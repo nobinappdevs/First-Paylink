@@ -6,6 +6,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "sakib.appdevs.team",
+        pathname: "/**", // সব path allow
+      },
+      {
+        protocol: "https",
         hostname: "api.qrserver.com",
         pathname: "/**",
       },
