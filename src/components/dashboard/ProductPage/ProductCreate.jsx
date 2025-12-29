@@ -40,6 +40,7 @@ const router = useRouter();
   }, []);
 
   const onSubmit = async (data) => {
+    console.log(data);
     const formData = new FormData();
     console.log(formData);
     formData.append("product_name", data.product_name);

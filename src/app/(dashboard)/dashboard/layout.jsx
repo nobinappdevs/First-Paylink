@@ -16,7 +16,7 @@ const Layouts = ({ children }) => {
   const router = useRouter();
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(profileData);
+
 
   const fetchProfile = async () => {
     try {
@@ -28,7 +28,7 @@ const Layouts = ({ children }) => {
       }
       setProfileData(user);
     } catch (error) {
-      toast.success('Please log in to continue.')
+      toast.error('Please log in to continue.')
       router.push('/login')
     } finally {
       setLoading(false);

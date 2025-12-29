@@ -76,6 +76,19 @@ export const otpResendAPI = () =>{
   }
 }
 
+export const updatePasswordAPI = (password) =>{
+    const jwtToken = getToken();
+  if (jwtToken) {
+    return apiInstance.post('/user/profile/password/update',password,{
+      headers: {
+        Authorization: `Bearer ${jwtToken}`
+      }
+    })
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+}
+
 // User Authentication APIs ------------------------------ end here
 // user profile apis ------------------------------ start here
 export const getUserProfileAPI = () => {
@@ -99,6 +112,49 @@ export const deleteAPI = ()=>{
     throw new Error("No token found. Please log in.");
   }
 }
+
+export const updateProfileAPI = (data) => {
+  const jwtToken = getToken();
+
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  return apiInstance.post(
+    "/user/profile/update",
+    data,                 
+    {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+       "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+};
+
+export const getTWOFAAPI = () => {
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get("/user/profile/google-2fa", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
+
+export const twoFAStatusUpdateAPI = ({newStatus}) => {
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.post("/user/profile/google-2fa/status/update", {status: newStatus}, {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
+
+
 
 // user profile apis ------------------------------ end here
 

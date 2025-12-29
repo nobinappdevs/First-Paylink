@@ -304,7 +304,7 @@ const Navbar = ({ handleOpen }) => {
                       </h6>
                     </button>
                   </Link>
-                  <Link href={"/dashboard/updatePassword"}>
+                  <Link href={"/updatePassword"}>
                     <button
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center w-full gap-4 py-2 px-2 hover:bg-gray-100 rounded cursor-pointer"

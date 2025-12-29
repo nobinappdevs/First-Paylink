@@ -140,6 +140,10 @@ import Button from "@/components/ui/Button";
 import { toast } from "react-hot-toast";
 import { emailverifyAPI, otpResendAPI } from "@/services/apiClient";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@assets/logo.webp";
 
 const Page = () => {
   const inputRefs = useRef([]);
@@ -269,8 +273,14 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary/5 px-4">
-      <div className="w-full max-w-md bg-white p-6 rounded-xl shadow">
+    <div className="min-h-screen flex items-center flex-col justify-center bg-secondary/5 px-4">
+      <div className="w-full max-w-lg bg-white p-6 rounded-xl shadow">
+            <div className="flex justify-center mb-8">
+        <Link href="/">
+          <Image src={logo} alt="Logo" width={150} height={42} />
+        </Link>
+      </div>
+      <div className="">
         <h4 className="text-xl font-semibold text-primary text-center">
           Verify OTP
         </h4>
@@ -305,7 +315,13 @@ const Page = () => {
           className="w-full mt-6"
           disabled={loading}
         >
-          {loading ? "Verifying..." : "Verify OTP"}
+                      {loading ? (
+              <>
+                <Loader2 className="size-6 animate-spin" />
+              </>
+            ) : (
+              "Verify OTP"
+            )}
         </Button>
 
         {/* Countdown / Resend */}
@@ -321,10 +337,18 @@ const Page = () => {
               disabled={resending}
               className="text-sm text-primary cursor-pointer hover:underline"
             >
-              {resending ? "Resending..." : "Resend OTP"}
+                      {resending ? (
+              <>
+                <Loader2 className="size-6 animate-spin" />
+              </>
+            ) : (
+              "Resend OTP"
+            )}
             </button>
           )}
         </div>
+      </div>
+            
       </div>
     </div>
   );

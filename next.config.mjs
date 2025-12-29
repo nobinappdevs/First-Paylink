@@ -3,6 +3,7 @@ const nextConfig = {
   reactCompiler: true,
 
   images: {
+    domains: ["qrcode.tec-it.com"],
     remotePatterns: [
       {
         protocol: "https",
