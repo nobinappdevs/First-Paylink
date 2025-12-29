@@ -250,7 +250,7 @@ import { useRouter } from "next/navigation";
 import { registerAPI } from "@/services/apiClient";
 import countryList from "react-select-country-list";
 import { useMemo } from "react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 
 const RegisterPage = () => {

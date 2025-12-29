@@ -141,7 +141,7 @@ import logo from "@assets/logo.webp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { verifyOtpAPI } from "@/services/apiClient";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 
 const OTPPage = () => {
@@ -153,14 +153,12 @@ const OTPPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Redirect if no token
   useEffect(() => {
     if (!token) {
-      router.replace("/password/forgot"); // replace avoids setState in render warning
+      router.replace("/password/forgot");
     }
   }, [token, router]);
 
-  // Input handlers
   const handleChange = (e, index) => {
     let value = e.target.value.replace(/[^0-9]/g, "");
     e.target.value = value;

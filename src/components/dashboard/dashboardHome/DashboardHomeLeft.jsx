@@ -5,10 +5,14 @@ import Button from "../../ui/Button";
 import BalanceCard from "./BalanceCard";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import SkeletonLoader from "@/components/Sheared/Skeleton";
 
-const DashboardHomeLeft = ({dashboardData}) => {
+const DashboardHomeLeft = ({dashboardData, loading}) => {
   const [showBalance, setShowBalance] = useState(true);
-  const balance = "1,997.80 BDT";
+  const balance =` ${dashboardData?.wallet?.balance} ${dashboardData?.wallet?.code}`;
+  if (loading) {
+    return <SkeletonLoader />
+  }
   return (
     <div>
       <div className="md:flex justify-between items-start">
@@ -54,7 +58,7 @@ const DashboardHomeLeft = ({dashboardData}) => {
           </Link>
         </div>
       </div>
-      <BalanceCard />
+      <BalanceCard dashboardData={dashboardData} />
     </div>
   );
 };

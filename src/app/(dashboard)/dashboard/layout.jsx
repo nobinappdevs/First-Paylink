@@ -5,14 +5,38 @@ import Sidebar from "@/components/dashboard/Sidebar";
 import Navbar from "@/components/dashboard/dashboardHome/Navbar";
 import useDashboardGuard from "@/hooks/useDashboardGuard";
 import SkeletonLoader from "@/components/Sheared/Skeleton";
+import { getUserProfileAPI } from "@/services/apiClient";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Layouts = ({ children }) => {
   const [open, setOpen] = useState(false);
   const sidebarRef = useRef(null);
   const guardLoading = useDashboardGuard();
+  const router = useRouter();
+  const [profileData, setProfileData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  console.log(profileData);
 
+  const fetchProfile = async () => {
+    try {
+      const res = await getUserProfileAPI();
+      const user = res?.data?.data?.user;
+      if (user?.email_verified === 0) {
+        router.replace("/email-verify");
+        return;
+      }
+      setProfileData(user);
+    } catch (error) {
+      toast.success('Please log in to continue.')
+      router.push('/login')
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
+    fetchProfile();
     function handler(e) {
       if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
         setOpen(false);
@@ -26,10 +50,9 @@ const Layouts = ({ children }) => {
     setOpen(!open);
   };
 
-    if (guardLoading) {
-    return <SkeletonLoader layout="layout" />
+  if (guardLoading || loading || !profileData) {
+    return <SkeletonLoader layout="layout" />;
   }
-
 
   return (
     <div className="grid grid-cols-12 min-h-screen ">

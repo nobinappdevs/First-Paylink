@@ -52,7 +52,6 @@
 import { DarkModeProvider } from "@/context/DarkModeProvider";
 import "./globals.css";
 import { Roboto, Montserrat } from "next/font/google";
-import { ToastContainer } from "react-toastify";
 import { Toaster } from "react-hot-toast";
 
 export const bodyFont = Roboto({
@@ -75,7 +74,6 @@ export default function RootLayout({ children }) {
       <body className="bg-body antialiased">
         <DarkModeProvider>
             {children}
-            <ToastContainer />
             <Toaster 
           position="top-right" 
           toastOptions={{

@@ -9,7 +9,7 @@ import Button from "../ui/Button";
 import InputField from "../ui/InputField";
 import logo from "@assets/logo.webp";
 import { loginAPI } from "@/services/apiClient";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 
 const LoginPage = () => {

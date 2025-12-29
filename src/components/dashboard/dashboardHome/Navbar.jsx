@@ -17,7 +17,7 @@ import { AlignStartVertical, KeyRound } from "lucide-react";
 import Link from "next/link";
 import Swal from "sweetalert2";
 import { logOutAPI } from "@/services/apiClient";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const Navbar = ({ handleOpen }) => {
   const [profileOpen, setProfileOpen] = useState(false);

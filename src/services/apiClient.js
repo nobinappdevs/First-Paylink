@@ -50,6 +50,32 @@ export const logOutAPI = () => {
   }
 };
 
+export const emailverifyAPI = (otp) =>{
+  const jwtToken = getToken();
+  if (jwtToken) {
+    return apiInstance.post('/user/email/otp/verify', {otp:otp},{
+      headers: {
+        Authorization: `Bearer ${jwtToken}`
+      }
+    })
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+}
+
+export const otpResendAPI = () =>{
+    const jwtToken = getToken();
+  if (jwtToken) {
+    return apiInstance.post('/user/email/resend/code',{},{
+      headers: {
+        Authorization: `Bearer ${jwtToken}`
+      }
+    })
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+}
+
 // User Authentication APIs ------------------------------ end here
 // user profile apis ------------------------------ start here
 export const getUserProfileAPI = () => {
@@ -62,6 +88,18 @@ export const getUserProfileAPI = () => {
     throw new Error("No token found. Please log in.");
   }
 };
+
+export const deleteAPI = ()=>{
+    const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.post("/user/profile/delete/account", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+}
+
 // user profile apis ------------------------------ end here
 
 export const dashboardDataAPI = () => {

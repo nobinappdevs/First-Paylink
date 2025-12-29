@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { forgotPasswordAPI } from "@/services/apiClient";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 
 const page = () => {

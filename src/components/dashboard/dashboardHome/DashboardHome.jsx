@@ -26,7 +26,7 @@ const DashboardHome = () => {
 
   return (
     <div className="xl:p-8 p-4">
-          <DashboardHomeLeft dashboardData={dashboardData} />
+          <DashboardHomeLeft dashboardData={dashboardData} loading={loading} />
           <DashboardChart dashboardData={dashboardData} />
           <TransactionHistory loading={loading} dashboardData={dashboardData} />
     </div>

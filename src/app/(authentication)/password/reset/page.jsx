@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { resetPasswordAPI } from "@/services/apiClient";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 
 const ResetPasswordPage = () => {
