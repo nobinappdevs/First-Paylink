@@ -11,7 +11,7 @@ import {
   FiChevronDown,
   FiBox,
 } from "react-icons/fi";
-import profile from "@assets/profile.png";
+// import profile from "@assets/profile.png";
 import ThemeToggleSwitch from "./ThemeToggleSwitch";
 import { AlignStartVertical, KeyRound } from "lucide-react";
 import Link from "next/link";
@@ -19,11 +19,11 @@ import Swal from "sweetalert2";
 import { logOutAPI } from "@/services/apiClient";
 import { toast } from "react-hot-toast";
 
-const Navbar = ({ handleOpen }) => {
+const Navbar = ({ handleOpen, profileData, avatarPreview: profile }) => {
+  const { email, first_name, last_name } = profileData;
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-
   const profileRef = useRef(null);
   const notificationRef = useRef(null);
   const settingsRef = useRef(null);
@@ -81,7 +81,7 @@ const Navbar = ({ handleOpen }) => {
     },
   ];
   const handelLogOut = () => {
-    toast
+    toast;
     Swal.fire({
       title: "Are you sure?",
       text: "You will be logged out from your account.",
@@ -120,7 +120,7 @@ const Navbar = ({ handleOpen }) => {
       <div className="relative w-full py-2.5 px-4   bg-basic  flex items-center justify-between shadow-[0_4px_6px_-4px_rgba(0,0,0,0.02)]">
         <div className="xl:block hidden">
           <h4>Welcome Back</h4>
-          <h6>Tomas William</h6>
+          <h6>{first_name + last_name}</h6>
         </div>
         <div
           onClick={handleOpen}
@@ -259,10 +259,10 @@ const Navbar = ({ handleOpen }) => {
                       className="rounded-full"
                     />
                     <div>
-                      <h5 className="font-semibold">Tomas William</h5>
-                      <h6 className="text-sm text-gray-500">
-                        william@gmail.com
-                      </h6>
+                      <h5 className="font-semibold">
+                        {first_name + last_name}
+                      </h5>
+                      <h6 className="text-sm text-gray-500">{email}</h6>
                     </div>
                   </button>
                 </Link>

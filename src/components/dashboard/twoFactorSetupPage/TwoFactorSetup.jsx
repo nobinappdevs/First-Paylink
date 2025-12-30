@@ -159,7 +159,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Copy, Smartphone, Apple, ShieldCheck, Info, X } from "lucide-react";
+import { Copy, Smartphone, Apple, ShieldCheck, Info, X, Loader2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import autenticator from "@assets/autenticator.png";
 import { getTWOFAAPI, twoFAStatusUpdateAPI } from "@/services/apiClient";
@@ -358,7 +358,9 @@ const TwoFactorSetup = () => {
                 onClick={handleTwoFAUpdate}
                 disabled={updating}
               >
-                {updating ? "Processing..." : fAData?.qr_status === 0 ? "Enable Now" : "Disable Now"}
+                {updating ?               <>
+                <Loader2 className="size-6 animate-spin" />
+              </> : fAData?.qr_status === 0 ? "Enable Now" : "Disable Now"}
               </Button>
               <Button
                 className="flex-1 justify-center"

@@ -252,9 +252,12 @@ import countryList from "react-select-country-list";
 import { useMemo } from "react";
 import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
+import useAuthRedirect from "@/hooks/useAuthRedirect";
+import SkeletonLoader from "../Sheared/Skeleton";
 
 const RegisterPage = () => {
   const router = useRouter();
+    const authloading = useAuthRedirect()
 
   // 🌍 Country list from package
   const countryOptions = useMemo(() => countryList().getData(), []);
@@ -298,6 +301,10 @@ const RegisterPage = () => {
       }
     }
   };
+
+    if (authloading) {
+    return <SkeletonLoader layout="layout" />
+  }
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4">

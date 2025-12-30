@@ -155,6 +155,44 @@ export const twoFAStatusUpdateAPI = ({newStatus}) => {
 };
 
 
+export const getKYCVerifyAPI = ()=>{
+    const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get("/user/profile/kyc/input-fields", {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+}
+export const psotKYCVerifyAPI = (formData)=>{
+  console.log(formData.back);
+    const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.post("/user/profile/kyc/submit",formData, {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+      "Content-Type": "multipart/form-data",
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+}
+
+export const kycInfoSubmitAPI = (formPayload) => {
+    const token = getToken();
+    if (token) {
+        return apiInstance.post("/vendor/kyc-submit", formPayload, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data",
+            }
+        });
+    } else {
+        throw new Error('No token found. Please log in.');
+    }
+};
+
+
 
 // user profile apis ------------------------------ end here
 

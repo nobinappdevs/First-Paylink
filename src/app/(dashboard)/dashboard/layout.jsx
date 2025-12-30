@@ -16,7 +16,8 @@ const Layouts = ({ children }) => {
   const router = useRouter();
   const [profileData, setProfileData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [avatarPreview, setAvatarPreview] = useState('');
+  const name = profileData?.first_name + profileData?.last_name;
 
   const fetchProfile = async () => {
     try {
@@ -27,6 +28,14 @@ const Layouts = ({ children }) => {
         return;
       }
       setProfileData(user);
+      const data = (res?.data?.data);
+       const defaultImgUrl = `${data?.base_ur}/${data?.default_image}`;
+
+      if (user?.image) {
+        setAvatarPreview(`${data?.base_ur}/${data?.image_path}/${user?.image}`);
+      } else {
+        setAvatarPreview(defaultImgUrl);
+      }
     } catch (error) {
       toast.error('Please log in to continue.')
       router.push('/login')
@@ -72,13 +81,13 @@ const Layouts = ({ children }) => {
         <Sidebar onLinkClick={() => setOpen(false)} />
       </div>
       <div className="xl:col-span-10 col-span-12 relative">
-        <Navbar handleOpen={handleOpen} />
+        <Navbar handleOpen={handleOpen} avatarPreview={avatarPreview} profileData={profileData} />
         <div className="flex  flex-col mt-5 items-center justify-center lg:hidden">
           <h4 className="font-bold leading-6 text-secondery text-xl sm:text-2xl">
             Welcome Back
           </h4>
           <h6 className="text-text text-base font-medium leading-4  pt-2">
-            Tomas William
+            {name}
           </h6>
         </div>
 

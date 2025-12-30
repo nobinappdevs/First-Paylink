@@ -11,11 +11,14 @@ import logo from "@assets/logo.webp";
 import { loginAPI } from "@/services/apiClient";
 import { toast } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
+import useAuthRedirect from "@/hooks/useAuthRedirect";
+import SkeletonLoader from "../Sheared/Skeleton";
 
 const LoginPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [remember, setRemember] = useState(false);
+  const authloading = useAuthRedirect()
 
   const {
     register,
@@ -57,6 +60,9 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
+  if (authloading) {
+    return <SkeletonLoader layout="layout" />
+  }
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4">

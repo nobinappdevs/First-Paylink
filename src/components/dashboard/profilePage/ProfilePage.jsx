@@ -582,7 +582,6 @@ const ProfilePage = () => {
       const data = res?.data?.data;
       const user = data?.user;
       setUser(user)
-      console.log(user);
       const defaultImgUrl = `${data.base_ur}/${data.default_image}`;
       setDefaultProfileImage(defaultImgUrl);
 
