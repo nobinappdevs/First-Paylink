@@ -219,6 +219,31 @@ export const transactionHistoryAPI = () => {
 };
 
 // all payment apis ------------------------------ start here
+export const createPaymentAPI = async (formData) => {
+  if (!formData) {
+    throw new Error("Form data is required.");
+  }
+
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  try {
+    const response = await apiInstance.post("/user/payment-links/store", formData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response;
+  } catch (error) {
+    throw new Error(
+      error?.response?.data?.message || error.message || "API request failed."
+    );
+  }
+};
+
 export const getPaymentMethodsAPI = () => {
   const jwrToken = getToken();
   if (jwrToken) {
@@ -229,6 +254,44 @@ export const getPaymentMethodsAPI = () => {
     throw new Error("No token found. Please log in.");
   }
 };
+
+export const getPaymentMethodsEditAPI = (id) => {
+  const jwrToken = getToken();
+  if (jwrToken) {
+    return apiInstance.get(`/user/payment-links/edit?target=${id}`, {
+      headers: { Authorization: `Bearer ${jwrToken}` },
+    });
+  } else {
+    throw new Error("No token found. Please log in.");
+  }
+};
+
+export const updatePaymentAPI = async (formData) => {
+  if (!formData) {
+    throw new Error("Form data is required.");
+  }
+
+  const jwtToken = getToken();
+  if (!jwtToken) {
+    throw new Error("No token found. Please log in.");
+  }
+
+  try {
+    const response = await apiInstance.post("/user/payment-links/update", formData, {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response;
+  } catch (error) {
+    throw new Error(
+      error?.response?.data?.message || error.message || "API request failed."
+    );
+  }
+};
+
+
 // all payment apis ------------------------------ end here
 
 // all product apis ----------------------------- start here

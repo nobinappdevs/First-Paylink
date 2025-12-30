@@ -19,8 +19,8 @@ const EditProduct = ({ id }) => {
 
   const [currencyOptions, setCurrencyOptions] = useState([]);
   const [loading, setLoading] = useState(true);
-    const [baseUrl, setBaseUrl] = useState("");
-    const [imagePath, setImagePath] = useState("");
+  const [baseUrl, setBaseUrl] = useState("");
+  const [imagePath, setImagePath] = useState("");
 
   const {
     register,
@@ -28,7 +28,7 @@ const EditProduct = ({ id }) => {
     handleSubmit,
     reset,
     setValue,
-    formState: { isSubmitting }
+    formState: { isSubmitting },
   } = useForm({
     defaultValues: {
       product_name: "",
@@ -46,11 +46,11 @@ const EditProduct = ({ id }) => {
         const res = await ProductEdit(productId);
         const currencyData = res?.data?.data?.currency_data || [];
         const productData = res?.data?.data?.product;
-           const data = res?.data?.data;
-              setBaseUrl(data?.base_url || "");
-      setImagePath(data?.image_path || "");
+        const data = res?.data?.data;
+        setBaseUrl(data?.base_url || "");
+        setImagePath(data?.image_path || "");
 
-               const options = currencyData.map((c) => ({
+        const options = currencyData.map((c) => ({
           value: c.id,
           label: `${c.name} (${c.symbol})`,
         }));
@@ -99,7 +99,7 @@ const EditProduct = ({ id }) => {
     formData.append("price", data.price);
     formData.append("desc", data.desc || "");
     formData.append("currency", data.currency);
-     formData.append("target", productId);
+    formData.append("target", productId);
 
     if (data.image?.file) {
       formData.append("image", data.image.file);
@@ -116,9 +116,8 @@ const EditProduct = ({ id }) => {
         });
       } else {
         toast.success("Product Update successfully!", { id: loadingToastId });
-          
       }
-         router.push('/dashboard/products')
+      router.push("/dashboard/products");
     } catch (error) {
       if (error?.response?.data?.message?.error?.length) {
         error.response.data.message.error.forEach((msg) => {
@@ -152,7 +151,12 @@ const EditProduct = ({ id }) => {
               control={control}
               defaultValue={null}
               render={({ field }) => (
-                <ImageUploadField baseUrl={baseUrl} imagePath={imagePath} value={field.value} onChange={field.onChange} />
+                <ImageUploadField
+                  baseUrl={baseUrl}
+                  imagePath={imagePath}
+                  value={field.value}
+                  onChange={field.onChange}
+                />
               )}
             />
           </div>
@@ -185,14 +189,14 @@ const EditProduct = ({ id }) => {
                     isSearchable
                     isLoading={loading}
                     value={
-                      currencyOptions.find((option) => option.value === field.value) ||
-                      null
+                      currencyOptions.find(
+                        (option) => option.value === field.value
+                      ) || null
                     }
                     onChange={(val) => field.onChange(val?.value || "")}
                   />
                 )}
               />
-              
             </div>
 
             <InputField
@@ -215,12 +219,12 @@ const EditProduct = ({ id }) => {
         {/* Submit Button */}
         <Button type="submit" className="w-full flex justify-center" size="lg">
           {isSubmitting ? (
-              <>
-                <Loader2 className="size-6 animate-spin" />
-              </>
-            ) : (
-              "Update"
-            )}
+            <>
+              <Loader2 className="size-6 animate-spin" />
+            </>
+          ) : (
+            "Update"
+          )}
         </Button>
       </form>
     </div>
